@@ -1,0 +1,46 @@
+{
+	"folders": [
+		{
+			"path": "..\\OneDrive\\Documentos\\PlatformIO\\Projects\\Consulta MQTT"
+		},
+		{
+			"name": "MQTT noa",
+			"path": "..\\OneDrive\\Documentos\\PlatformIO\\Projects\\MQTT noa"
+		},
+		{
+			"name": "Micro-RTSP-1",
+			"path": "..\\OneDrive\\Documentos\\PlatformIO\\Projects\\Micro-RTSP-1"
+		},
+		{
+			"name": "esp32cam-ready",
+			"path": "..\\OneDrive\\Documentos\\PlatformIO\\Projects\\esp32cam-ready"
+		},
+		{
+			"name": "ESP32-RTSP",
+			"path": "..\\OneDrive\\Documentos\\PlatformIO\\Projects\\ESP32-RTSP"
+		},
+		{
+			"name": "rtsp-video-streamer-diy-14",
+			"path": "..\\OneDrive\\Documentos\\PlatformIO\\Projects\\rtsp-video-streamer-diy-14"
+		},
+		{
+			"path": "..\\OneDrive\\Documentos\\Unir\\TFG"
+		},
+		{
+			"name": "esp32-cam-webserver-4.0",
+			"path": "..\\OneDrive\\Documentos\\PlatformIO\\Projects\\esp32-cam-webserver-4.0"
+		},
+		{
+			"path": "G:\\Mi unidad\\Domy UNIR\\TFG\\Código"
+		},
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"*.yaml": "home-assistant"
+		},
+		"austin.mode": "CPU time"
+	}
+}

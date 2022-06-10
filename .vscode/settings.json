@@ -1,0 +1,11 @@
+{
+  "austin.mode": "Wall time",
+  "python.autoComplete.extraPaths": [
+      
+  ],
+"python.analysis.completeFunctionParens": true,
+"python.analysis.diagnosticSeverityOverrides": {
+
+},
+"python.analysis.indexing": false
+}
