@@ -1,6 +1,6 @@
 # DETECCIÓN DE OBJETOS EN PLATAFORMA DE VÍA
 
-## Trabajo fin de grado Domingo Martínez Núñez
+## Trabajo Fin de Grado Domingo Martínez Núñez
 
 
 Preparando el entorno:
