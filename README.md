@@ -11,9 +11,9 @@ Para instalar GPU OpenCV en Windows,
 debemos compilar o construir el código fuente de Opencv con CUDA, cuDNN y GPU Nvidia. 
 Para hacer eso necesitamos usar algunas herramientas como Visual Studio 2016 (compilador GCC de C++), CMake, etc.
 
-Hay que instalar CUDA de nvidea  11.5 "CUDA Driver Version / Runtime Version          11.60 / 11.50"
+Hay que instalar CUDA de nvidea  11.3 "CUDA Driver Version / Runtime Version          11.5.50"
 CUDA Capability Major/Minor version number:    8.6
-después la versión que coincida de cuDNN "Download cuDNN v8.3.3 (March 18th, 2022), for CUDA 11.5"
+después la versión que coincida de cuDNN "Download cuDNN v8.0"
 
 - Instalación de Opencv 4.5.5 habilitado para GPU
   - https://thinkinfi.com/install-opencv-gpu-with-cuda-for-windows-10/
