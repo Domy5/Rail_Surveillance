@@ -71,7 +71,7 @@ MIOpen runtime version: N/A
 .../
 ```
 
-## Parametros
+## Parámetros
 
 ### Argumentos
 
