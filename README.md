@@ -5,21 +5,32 @@
 
 Preparando el entorno:
 
-- Instalar:
+- Instalación sin GPU:
+
+  - Tener Python instalado (probado con la versión 3.10)
+  - Clonar repositorio con sus submódulos:
+    - ```git clone --recurse-submodules https://github.com/Domy5/Rail_Surveillance.git```
+     
+  - pip install opencv-contrib-python=4.5.5
+  - Instalar ```pip install -r requirements_sin_gpu.txt```
+
+- Instalación con GPU Nvidea:
   
-Para instalar GPU OpenCV en Windows, 
-debemos compilar o construir el código fuente de Opencv con CUDA, cuDNN y GPU Nvidia. 
+Para instalar OpenCV+GPU en Windows, debemos compilar o construir nuestro porpio código del código fuente de OpenCV con CUDA, cuDNN y GPU Nvidia. 
 Para hacer eso necesitamos usar algunas herramientas como Visual Studio 2016 (compilador GCC de C++), CMake, etc.
 
-Hay que instalar CUDA de nvidea  11.3 "CUDA Driver Version / Runtime Version          11.5.50"
-CUDA Capability Major/Minor version number:    8.6
+  - https://thinkinfi.com/install-opencv-gpu-with-cuda-for-windows-10/
+
+Hay que instalar CUDA de Nvidea  11.3 "CUDA Driver Version / Runtime Version          11.5.50"
+CUDA Capability Major/Minor version number:    8.6 (esta versión dependerá de la Tarjeta gráfica que la que se disponga, en este caso NVIDIA GeForce RTX 3060 Ti, 8192MiB se puede consultar la versión en https://en.wikipedia.org/wiki/CUDA)
 después la versión que coincida de cuDNN "Download cuDNN v8.0"
 
-- Instalación de Opencv 4.5.5 habilitado para GPU
-  - https://thinkinfi.com/install-opencv-gpu-with-cuda-for-windows-10/
+- Tener instalado Opencv 4.5.5 habilitado para GPU
 - Instalación de pyTorch con cuda+cuDNN
-  - Python-3.10.4 torch-1.11.0+cu113 CUDA:0 (NVIDIA GeForce RTX 3060 Ti, 8192MiB)
+ 
+  - ```pip install torch==1.11.0+cu113 torchvision==0.12.0+cu113 torchaudio===0.11.0+cu113 -f https://download.pytorch.org/whl/cu113/torch_stable.html```
 
+Como comprobar el entorno:
 ```
 python -m torch.utils.collect_env
 ```
