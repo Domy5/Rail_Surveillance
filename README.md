@@ -37,7 +37,7 @@ después descargar la versión de cuDNN que coincida con CUDA en este caso "cuDN
   - Instalación de pyTorch con cuda+cuDNN
     - ```pip install torch==1.11.0+cu113 torchvision==0.12.0+cu113 torchaudio===0.11.0+cu113 -f https://download.pytorch.org/whl/cu113/torch_stable.html```
   - Instalar los requetimientos del proyecto (numpy, pandas, torch...)
-    - Instalar ```pip install -r requirements.txt```
+    - Instalar ```pip install -r requirements_con_gpu.txt```
 
 Como comprobar el entorno:
 
@@ -73,30 +73,31 @@ MIOpen runtime version: N/A
 
 ## Parámetros
 
-### Argumentos
+### Argumentos en línea de comandos
 
 deteccion.py [-h] [-v] [-info] [-m] [-d] [-s] [-mm] [-c {gpu,cpu}] [-i INPUT]
 
-opciones:
-
--h    o --help            : mostrar este mensaje de ayuda y salir
--v    o --version         : Versión del programa
--info o --informacion     : Información de las versiones de los paquetes usados
--m    o --mascara         : Muestra la  mascara
--d    o --deteccion       : Muestra la detecciones de objetos
--s    o --slicer          : Muestra barra de desplazamiento (consume muchos recursos)
--mm   o --mouse           : Muestra por consola las coordenadas de los click
--c    o --procesar_imagen : Parámetro GPU o CPU
--i    o --input           : Ruta de video a procesar
+Opciones:
+| Argumento corto | Argumento largo | Descripción |
+|:----------|:-------------|:--|
+|-h | --help | Mostrar este mensaje de ayuda y salir|
+| -v | --version | Versión del programa|
+| -info | --informacion | Información de las versiones de los paquetes usados|
+| -m | --mascara | Muestra la  mascara|
+| -d | --deteccion | Muestra la detecciones de objetos|
+| -s | --slicer | Muestra barra de desplazamiento (consume muchos recursos)|
+| -mm | --mouse | Muestra por consola las coordenadas de los click|
+| -c | --procesar_imagen | Parámetro GPU o CPU|
+| -i | --input | Ruta de video a procesar|
 
 ### En ejecución
 
 - Esc : cierra la ejecución del video
-- p   : para el video 
+- p   : para el video
+- c   : captura un frame del video y lo guarda en "C:\\capturas\\numero_img.jpg'"
 - o   : OSD alterna la información en pantalla:
   - Sin OSD.
   - Alerta, FPS numero de fotograma.
   - Área de observación.
   - Punto detección persona (inferior derecha).
-  - Rectángulo detección (personas, trenes, ).
-- c   : captura un frame del video y lo guarda en "C:\\capturas\\numero_img.jpg'"
+  - Rectángulo detección (personas, trenes).
