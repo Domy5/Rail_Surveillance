@@ -39,7 +39,7 @@ utiles.borrarPantalla()
 
 #print(dir(cv2.cuda))
 
-parser = argparse.ArgumentParser(description='Detector de objetos, computación GPU,CPU')
+parser = argparse.ArgumentParser(description='Detector de objetos, computación GPU, CPU')
 
 parser.add_argument('-v', '--version',action="store_true", default = False, help = 'versión del programa')
 parser.add_argument('-info', '--informacion', action="store_true", default = False, help = 'información de las versiones de los paquetes usados')
@@ -106,11 +106,9 @@ VIDEO = "a1-003 1 minuto 1 via.mkv"
 #VIDEO = "a1-004 2 via.mkv"
 
 # Model
-# model = torch.hub.load('ultralytics/yolov5', 'custom', path='C:/Users/domi_/TFG_code/modelos/yolov5s.pt') 
 
-# model = torch.hub.load('modelos', 'yolov5s')
 # model = torch.hub.load('modelos', 'yolov5s', device='gpu')
-model = torch.hub.load('ultralytics/yolov5', 'custom', path='C:/Users/domi_/TFG_code/modelos/yolov5s.pt') # default
+model = torch.hub.load('ultralytics/yolov5', 'custom', path='modelos/yolov5s.pt') # default
 # model = torch.hub.load('ultralytics/yolov5', 'custom', path='C:/Users/domi_/TFG_code/modelos/yolov5x6.pt') # MEJOR USAR ESTE PERO NO CABE EN GITHUB
 # model.conf = 0.30
 # model.iou = 0.45  # NMS IoU threshold (0-1)
