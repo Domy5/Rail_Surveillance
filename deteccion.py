@@ -17,9 +17,6 @@ import time
 from playsound import playsound
 import numpy as np
 import pandas as pd
-#import numba
-#from numba import cuda
-#from os import system
 
 import utiles
     
@@ -58,7 +55,7 @@ parser.add_argument('-i', '--input',
                     type=str,
                     default = 'videos_pruebas/',
                     required=False,
-                    help = 'video de entrada')
+                    help = 'Ruta de video a procesar')
 
 args = parser.parse_args()
 
@@ -96,14 +93,11 @@ if not torch.cuda.is_available():
     print('Cuidado no hay GPU habilitada se usara CPU para le procesado de imagenes')
     print('Cuidado no hay GPU habilitada se usara CPU para le procesado de imagenes')
     print('Cuidado no hay GPU habilitada se usara CPU para le procesado de imagenes')
+    print(' ')
 
 VIDEO_PATH = r'videos_pruebas/'
 AUDIO_ARCHIVO =  './' + 'Alarma.mp3'
-
-#VIDEO = "a1-001 entero.mkv"
-#VIDEO = "a1-002 caida.mkv"
 VIDEO = "a1-003 1 minuto 1 via.mkv"
-#VIDEO = "a1-004 2 via.mkv"
 
 # Model
 
@@ -117,10 +111,8 @@ model.classes = [0, 6] # 0 = persona, 1 = bicicleta, 6 = tren, 36 = skateboard, 
 cap = cv2.VideoCapture(f'{VIDEO_PATH}{VIDEO}')
 
 # cap = cv2.VideoCapture(VIDEO_PATH,cv2.CAP_INTEL_MFX)
-# cap = cv2.VideoCapture('videos_pruebas/Rail_1.avi')
-# cap = cv2.VideoCapture('videos_pruebas/Rail_2.avi')
  
-#gpu_frame = cv2.cuda_GpuMat(n,m,cv2.CV_8UC4)
+# gpu_frame = cv2.cuda_GpuMat(n,m,cv2.CV_8UC4)
 
 if args.procesar_imagen == 'gpu':
     gpu_frame = cv2.cuda_GpuMat() ## para usar GPU
@@ -215,7 +207,7 @@ while True:
     
     # .loc y .iloc . La diferencia entre ellos es que .loc acepta etiquetas y .iloc – índices. También cuando usamos los accesores primero especificamos filas y luego columnas.
     
-    #print(info.shape[0]) #numero de filas
+    # print(info.shape[0]) #numero de filas
  
     for i in range(info.shape[0]):
         #print(type(info.iloc[[i],[6]]))
