@@ -2,7 +2,6 @@
 
 ## Trabajo Fin de Grado Domingo Martínez Núñez
 
-
 Preparando el entorno:
 
 - **Instalación sin GPU:**
@@ -72,4 +71,32 @@ MIOpen runtime version: N/A
 .../
 ```
 
+## Parametros
 
+### Argumentos
+
+deteccion.py [-h] [-v] [-info] [-m] [-d] [-s] [-mm] [-c {gpu,cpu}] [-i INPUT]
+
+opciones:
+
+-h    o --help            : mostrar este mensaje de ayuda y salir
+-v    o --version         : Versión del programa
+-info o --informacion     : Información de las versiones de los paquetes usados
+-m    o --mascara         : Muestra la  mascara
+-d    o --deteccion       : Muestra la detecciones de objetos
+-s    o --slicer          : Muestra barra de desplazamiento (consume muchos recursos)
+-mm   o --mouse           : Muestra por consola las coordenadas de los click
+-c    o --procesar_imagen : Parámetro GPU o CPU
+-i    o --input           : Ruta de video a procesar
+
+### En ejecución
+
+- Esc : cierra la ejecución del video
+- p   : para el video 
+- o   : OSD alterna la información en pantalla:
+  - Sin OSD.
+  - Alerta, FPS numero de fotograma.
+  - Área de observación.
+  - Punto detección persona (inferior derecha).
+  - Rectángulo detección (personas, trenes, ).
+- c   : captura un frame del video y lo guarda en "C:\\capturas\\numero_img.jpg'"
