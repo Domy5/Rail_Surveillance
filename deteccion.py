@@ -56,7 +56,7 @@ parser.add_argument('-c', '--procesar_imagen',
                     help='parámetro GPU o CPU')
 parser.add_argument('-i', '--input', 
                     type=str,
-                    default = 'G:/Mi unidad/Domy UNIR/TFG/código/videos_pruebas/',
+                    default = 'videos_pruebas/',
                     required=False,
                     help = 'video de entrada')
 
@@ -97,7 +97,7 @@ if not torch.cuda.is_available():
     print('Cuidado no hay GPU habilitada se usara CPU para le procesado de imagenes')
     print('Cuidado no hay GPU habilitada se usara CPU para le procesado de imagenes')
 
-VIDEO_PATH = r'G:/Mi unidad/Domy UNIR/TFG/código/videos_pruebas/'
+VIDEO_PATH = r'videos_pruebas/'
 AUDIO_ARCHIVO =  './' + 'Alarma.mp3'
 
 #VIDEO = "a1-001 entero.mkv"
