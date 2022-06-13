@@ -33,7 +33,7 @@ requests==2.27.1
 scipy==1.8.1
 seaborn==0.11.2
 tensorboard==2.9.0
-torch==1.11.0+cu113
+torch==1.11.0
 torch-tb-profiler==0.4.0
 torchaudio==0.11.0
 torchvision==0.12.0
