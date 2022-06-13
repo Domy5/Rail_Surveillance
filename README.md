@@ -17,7 +17,7 @@
 - **Instalación sin GPU:**
 
   - Instalar OpenCV con sus módulos principales y extras (contrib).
-    - ```pip install opencv-contrib-python=4.5.5```
+    - ```pip install opencv-contrib-python==4.5.5```
     - ```pip install imutils```
   - Instalar los requerimientos del proyecto (numpy, pandas, pyTorch...)
     - ```pip install -r requirements_sin_gpu.txt```
