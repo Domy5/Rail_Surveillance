@@ -100,13 +100,17 @@ AUDIO_ARCHIVO =  './' + 'Alarma.mp3'
 VIDEO = "a1-003 1 minuto 1 via.mkv"
 
 # Model
+model = torch.hub.load('ultralytics/yolov5', 'yolov5x6')  # load on CPU
+# model = torch.hub.load('ultralytics/yolov5', 'custom', path='modelos/yolov5s.pt') # cuidad con cada plataforma
 
-# model = torch.hub.load('modelos', 'yolov5s', device='gpu')
-model = torch.hub.load('ultralytics/yolov5', 'custom', path='modelos/yolov5s.pt') # default
-# model = torch.hub.load('ultralytics/yolov5', 'custom', path='C:/Users/domi_/TFG_code/modelos/yolov5x6.pt') # MEJOR USAR ESTE PERO NO CABE EN GITHUB
-# model.conf = 0.30
-# model.iou = 0.45  # NMS IoU threshold (0-1)
+                       # (optional list) filter by class, i.e. = [0, 15, 16] for COCO persons, cats and dogs
 model.classes = [0, 6] # 0 = persona, 1 = bicicleta, 6 = tren, 36 = skateboard, 26 = handbag, 16 = dog, 24  backpack, 13    bench, 28  suitcase
+#model.conf = 0.25  # NMS confidence threshold
+#model.iou = 0.45  # NMS IoU threshold (0-1)
+#model.agnostic = False  # NMS class-agnostic
+#model.multi_label = False  # NMS multiple labels per box
+#model.max_det = 1000  # maximum number of detections per image
+#model.amp = False  # Automatic Mixed Precision (AMP) inference
 
 cap = cv2.VideoCapture(f'{VIDEO_PATH}{VIDEO}')
 
