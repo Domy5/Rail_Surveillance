@@ -48,7 +48,7 @@ parser.add_argument('-mm', '--mouse', action="store_true", default = False, help
 parser.add_argument('-c', '--procesar_imagen', 
                     type=str,
                     choices=['gpu', 'cpu'],
-                    default='gpu', #########################
+                    default='cpu', #########################
                     required=False,
                     help='parámetro GPU o CPU')
 parser.add_argument('-i', '--input', 
@@ -90,9 +90,9 @@ if not torch.cuda.is_available():
 
     args.procesar_imagen = 'cpu'
     
-    print('Cuidado no hay GPU habilitada se usara CPU para le procesado de imagenes')
-    print('Cuidado no hay GPU habilitada se usara CPU para le procesado de imagenes')
-    print('Cuidado no hay GPU habilitada se usara CPU para le procesado de imagenes')
+    print('No hay GPU habilitada, se usará CPU para le procesado de imagenes')
+    print('No hay GPU habilitada, se usará CPU para le procesado de imagenes')
+    print('No hay GPU habilitada, se usará CPU para le procesado de imagenes')
     print(' ')
 
 VIDEO_PATH = r'videos_pruebas/'
