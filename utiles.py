@@ -8,7 +8,6 @@
 """ Trabajo fin de Grado, deteccion de objetos en plataforma de vias ferroviarias"""
 # ---------------------------------------------------------------------------
 
-
 import time
 import os
 import cv2

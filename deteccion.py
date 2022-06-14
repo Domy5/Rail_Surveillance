@@ -100,7 +100,7 @@ AUDIO_ARCHIVO =  './' + 'Alarma.mp3'
 VIDEO = "a1-003 1 minuto 1 via.mkv"
 
 # Model
-model = torch.hub.load('ultralytics/yolov5', 'yolov5x6')  # load on CPU
+model = torch.hub.load('ultralytics/yolov5', 'yolov5x6')
 # model = torch.hub.load('ultralytics/yolov5', 'custom', path='modelos/yolov5s.pt') # cuidad con cada plataforma
 
                        # (optional list) filter by class, i.e. = [0, 15, 16] for COCO persons, cats and dogs
