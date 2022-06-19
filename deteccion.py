@@ -98,9 +98,9 @@ if not torch.cuda.is_available():
 
     args.procesar_imagen = 'cpu'
 
-    print('No hay GPU habilitada, se usará CPU para le procesado de imagenes')
-    print('No hay GPU habilitada, se usará CPU para le procesado de imagenes')
-    print('No hay GPU habilitada, se usará CPU para le procesado de imagenes')
+    print('No hay GPU habilitada, se usará CPU para el procesado de imagenes')
+    print('No hay GPU habilitada, se usará CPU para el procesado de imagenes')
+    print('No hay GPU habilitada, se usará CPU para el procesado de imagenes')
     print(' ')
 
 VIDEO_PATH = r'videos_pruebas/'
@@ -108,7 +108,8 @@ AUDIO_ARCHIVO = './' + 'Alarma.mp3'
 VIDEO = "a1-003 1 minuto 1 via.mkv"
 
 # Model
-model = torch.hub.load('ultralytics/yolov5', 'yolov5x6', force_reload=True)
+# model = torch.hub.load('ultralytics/yolov5', 'yolov5x6', force_reload=True)
+model = torch.hub.load('ultralytics/yolov5', 'yolov5x6')
 # model = torch.hub.load('ultralytics/yolov5', 'custom', path='modelos/yolov5s.pt') # cuidad con cada plataforma
 
 # (optional list) filter by class, i.e. = [0, 15, 16] for COCO persons, cats and dogs

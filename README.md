@@ -11,8 +11,8 @@
     - Para Unix o MacOS, ejecuta:
       - ```source deteccion-env/bin/activate```
 
-    - Clonar repositorio con sus submódulos:
-      - ```git clone --recurse-submodules https://github.com/Domy5/Rail_Surveillance.git```
+    - Clonar repositorio:
+      - ```git clone https://github.com/Domy5/Rail_Surveillance.git```
 
 - **Instalación sin GPU:**
 
@@ -39,10 +39,10 @@
   - Instalar CUDA Capability Major/Minor version number:    8.6 (esta versión dependerá de la Tarjeta gráfica que la que se disponga, en este caso NVIDIA GeForce RTX 3060 Ti, 8192MiB, se puede consultar la versión en https://en.wikipedia.org/wiki/CUDA)
   - Descargar la versión de cuDNN que coincida con CUDA en este caso "cuDNN v8.0" (guardar en la carpeta correspondiente normalmente "C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.5\bin\")
 
-    - Tener instalado OpenCV 4.5.5 habilitado para GPU (paso anterior de compilación OpenCV para GPU)
+    - Tener instalado OpenCV habilitado para GPU (paso anterior de compilación OpenCV para GPU)
     - Instalación de pyTorch con cuda+cuDNN
-      - ```pip install torch==1.11.0+cu113 torchvision==0.12.0+cu113 torchaudio===0.11.0+cu113 -f https://download.pytorch.org/whl/cu113/torch_stable.html```
-    - Instalar los requetimientos del proyecto (numpy, pandas, torch...)
+      - ```pip install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu113 ```
+    - Instalar los requetimientos del proyecto (pandas, matplotlib...)
       - ```pip install -r requirements_con_gpu.txt```
 
 Podemos comprobar lo instalddo en el entorno con este comando:
