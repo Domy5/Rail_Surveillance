@@ -134,11 +134,10 @@ if args.procesar_imagen == 'gpu':
 cv2.namedWindow(nombre_ventana)
 cv2.moveWindow(nombre_ventana, 10, 50)
 
-frames = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
-framess = cap.get(cv2.CAP_PROP_FRAME_COUNT)
+frames = cap.get(cv2.CAP_PROP_FRAME_COUNT)
 fps = int(cap.get(cv2.CAP_PROP_FPS))
 
-seconds = int(framess / fps)
+seconds = int(frames / fps)
 video_time = str(datetime.timedelta(seconds=seconds))
 
 print("#######################")
@@ -250,7 +249,7 @@ while True:
         # if name =='train':
         #    print("QUE LLEGA EL TREN¡¡¡¡¡")
 
-        if clase == 0:  # persona
+        if clase == 0:  # Persona
             x = x1.astype(int)
             y = y1.astype(int)
             punto = [x - 10, y - 10]
@@ -259,7 +258,7 @@ while True:
             if OSD > 5:
                 cv2.imshow(nombre_ventana, np.squeeze(detect.render()))
 
-        if clase == 6:  # persona
+        if clase == 6:  # Tren
             print("QUE LLEGA EL TREN¡¡¡¡¡")
 
     area_pts = np.array([[0, 195], [350, 0], [384, 0], [252, 480], [0, 480]])

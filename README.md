@@ -10,7 +10,6 @@
       - ```deteccion-env\Scripts\activate.bat```
     - Para Unix o MacOS, ejecuta:
       - ```source deteccion-env/bin/activate```
-
     - Clonar repositorio:
       - ```git clone https://github.com/Domy5/Rail_Surveillance.git```
 
