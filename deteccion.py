@@ -8,6 +8,9 @@
 """ Trabajo fin de Grado, deteccion de objetos en plataforma de vias ferroviarias"""
 # ---------------------------------------------------------------------------
 
+# https://blog.roboflow.com/object-detection/
+# https://blog.roboflow.com/automl-vs-rekognition-vs-custom-vision/
+
 import argparse
 import cv2
 import sys
@@ -30,6 +33,9 @@ scale = 0.5
 nombre_ventana = 'TFG Domy 0.26'
 lista_puntos = []
 contafoto = 0
+
+punto = [0, 0]
+
 OSD = 6  # OSD significa "On Screen Display"
 
 utiles.borrarPantalla()
@@ -55,7 +61,7 @@ parser.add_argument('-mm', '--mouse', action="store_true", default=False,
 parser.add_argument('-c', '--procesar_imagen',
                     type=str,
                     choices=['gpu', 'cpu'],
-                    default='cpu',
+                    default='gpu',  # default='cpu',
                     required=False,
                     help='parámetro GPU o CPU')
 parser.add_argument('-i', '--input',
@@ -106,11 +112,19 @@ if not torch.cuda.is_available():
 VIDEO_PATH = r'videos_pruebas/'
 AUDIO_ARCHIVO = './' + 'Alarma.mp3'
 VIDEO = "a1-003 1 minuto 1 via.mkv"
+#VIDEO = "output.avi"
+#VIDEO = "Madrid_un_policier_sauve_une_femme_tombe_sur_les_v.mp4"
 
-# Model
-# model = torch.hub.load('ultralytics/yolov5', 'yolov5x6', force_reload=True)
+# Model https://pytorch.org/hub/research-models
+# model = torch.hub.load('ultralytics/yolov5', 'YOLOv5x-cls', force_reload=True)
+# model = torch.hub.load('ultralytics/yolov5', 'yolov5x6', pretrained=True)
+##model = torch.hub.load('ultralytics/yolov5', 'yolov5x6')
 model = torch.hub.load('ultralytics/yolov5', 'yolov5x6')
+
+
+# model = torch.hub.load('ultralytics/yolov5', 'yolov5s-cls')
 # model = torch.hub.load('ultralytics/yolov5', 'custom', path='modelos/yolov5s.pt') # cuidad con cada plataforma
+# model = torch.hub.load('ultralytics/yolov5', 'custom', path='modelos/yolov5s-cls.pt') # ver esto --> https://zenodo.org/record/7002879#.YxNFEHbtb30
 
 # (optional list) filter by class, i.e. = [0, 15, 16] for COCO persons, cats and dogs
 # 0 = persona, 1 = bicicleta, 6 = tren, 36 = skateboard, 26 = handbag, 16 = dog, 24  backpack, 13    bench, 28  suitcase
@@ -254,7 +268,8 @@ while True:
             y = y1.astype(int)
             punto = [x - 10, y - 10]
             if OSD > 4:
-                cv2.circle(frame, (punto), 1, (255, 255, 0), 3)
+                # correción fernando 28/junio
+                cv2.circle(frame, tuple(punto), 1, (255, 255, 0), 3)
             if OSD > 5:
                 cv2.imshow(nombre_ventana, np.squeeze(detect.render()))
 
@@ -262,6 +277,7 @@ while True:
             print("QUE LLEGA EL TREN¡¡¡¡¡")
 
     area_pts = np.array([[0, 195], [350, 0], [384, 0], [252, 480], [0, 480]])
+    #area_pts = np.array([[0, 1], [10, 0], [14, 0], [12, 10], [0, 40]])
 
     if utiles.punto_en_poligono(punto, area_pts):
         print("PERSONAS EN LA VIA¡¡¡")
