@@ -12,6 +12,8 @@ import time
 import os
 import cv2
 
+lista_puntos = []
+
 def mide_tiempo(funcion): # Metodo decorador para medir tiempos de otro metodo
    def funcion_medida(*args, **kwargs):
        inicio = time.time()
@@ -53,22 +55,34 @@ def dibujando(event, x, y, flags, param):
         con el formato que necesita para dibujar con cv2
     """
     # Imprimimos la información sobre los eventos que se estén realizando con el raton
+    
+       
     global lista_puntos
+    puntos = [', punto11 = ', ', punto12 = ',', punto21 = ', ', punto22 = ',', punto31 = ', ', punto32 = ',', punto41 = ', ', punto42 = ',', punto51 = ', ', punto52 = ']
+    lista = []
+    
     if event == 1:
-       # print('event=', event)
-       # print('x=', x)
-       # print('y=', y)
-       # print('flags=', flags)
-       # print('[{},{}],'.format(x, y), end="")
-       # print('[{},{}],'.format(x, y))
-        lista_puntos.append('[{},{}]'.format(x, y))
+    # print('event=', event)
+    # print('x=', x)
+    # print('y=', y)
+    # print('flags=', flags)
+    # print('[{},{}],'.format(x, y), end="")
+        print('{},{},'.format(x, y))
+        lista_puntos.append('{}'.format(x))
+        lista_puntos.append('{}'.format(y))
         
-        if len(lista_puntos) > 4:
-            str1 = 'area_pts = np.array(['
-            str2 = "'".join(lista_puntos).replace('\'',',')
-            str3 ='])'              
-            print (str1+str2+str3)  # area_pts = np.array([[0, 195], [350, 0], [384, 0], [252, 480], [0, 480]])
+        if len(lista_puntos) > 9:
             
+            str1 = 'ROI_poligonoXXX = ROI_poligono(id_poligono = \'XXX\''
+            #str2 = "'".join(lista_puntos).replace('\'',',')
+            
+            for p, l in zip(puntos, lista_puntos):
+                lista.append("{}{}".format(p,l))
+            
+            str2 = ''.join(lista)
+            str3 =', id_camara = \'XXX\')'              
+            print (str1 + str2 + str3) # ROI_poligono2 = ROI_poligono(id_poligono = '2', punto11 = '1', punto12 = '1', punto21 = '1', punto22 = '1', punto31 = '1', punto32 = '1', punto41 = '1', punto42 = '1', punto51 = '1', punto52 = '1', id_camara = '2') 
+  
             lista_puntos = []
 
 def punto_en_poligono(punto, poligono):
