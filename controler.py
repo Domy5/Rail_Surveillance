@@ -1,4 +1,7 @@
-# https://www.youtube.com/watch?v=XSAjQDM8ZS4
+#!/usr/bin/env python
+# coding: utf-8
+
+# # https://www.youtube.com/watch?v=XSAjQDM8ZS4
 # https://www.youtube.com/watch?v=uB0928SOTEQ
 # https://www.sqlalchemy.org/
 # 
@@ -12,9 +15,7 @@ from sqlalchemy import create_engine
 
 from sqlalchemy.orm import relationship
 from sqlalchemy.orm import sessionmaker
-
-from pruebas import Punto22
-
+from sqlalchemy.exc import IntegrityError as exc
 
 
 engine = create_engine('sqlite:///BBDD/Camaras.sqlite', echo=True)
@@ -60,18 +61,75 @@ class ROI_poligono(Base):
 Session = sessionmaker(engine)
 session = Session()
 
-
-
-if __name__ == "__main__":
-    Base.metadata.drop_all(engine)
+if __name__ == "__main__": 
+    Base.metadata.drop_all(engine) 
     Base.metadata.create_all(engine)
+    
+    try:
+  
+        camara1 = Camara(id_camara = '1', linea = 'L01', estacion = 'Chamartin', anden = '1' , contramarcha = '0', ruta = 'videos_pruebas/a1-003 1 minuto 1 via.mkv') 
+        camara2 = Camara(id_camara = '2', linea = 'L02', estacion = 'Las Rosas', anden = '1' , contramarcha = '0', ruta = 'videos_pruebas/output.avi') 
+      
+    #area_pts = np.array([[0, 195], [350, 0], [384, 0], [252, 480], [0, 480]]) 
+        ROI_poligono1 = ROI_poligono(id_poligono = '1', punto11 = '0', punto12 = '195', punto21 = '350', punto22 = '0', punto31 = '384', punto32 = '0', punto41 = '252', punto42 = '480', punto51 = '0', punto52 = '480', id_camara = '1') 
+        ROI_poligono2 = ROI_poligono(id_poligono = '2', punto11 = '1', punto12 = '1', punto21 = '1', punto22 = '1', punto31 = '1', punto32 = '1', punto41 = '1', punto42 = '1', punto51 = '1', punto52 = '1', id_camara = '2') 
+      
+        session.add(camara1) 
+        session.add(camara2)
+        
+        session.add(ROI_poligono1)  
+        session.add(ROI_poligono2) 
+      
+        session.commit()
+        session.close()
+        
+    except exc.IntegrityError as e:
+        print ('Error: Integrity')
+        print (e)
+    except exc.SQLAlchemyError as e:
+        print ('Error: Integrity')
+        print (e)
+        session.close()
 
-    camara1 = Camara(id_camara = '1', linea = 'L01', estacion = 'Chamartin', anden = '1' , contramarcha = '0', ruta = 'videos_pruebas/a1-003 1 minuto 3 via.mkv')
+def get_ruta_video(id_camara):
     
-    #area_pts = np.array([[0, 195], [350, 0], [384, 0], [252, 480], [0, 480]])
-    ROI_poligono1 = ROI_poligono(id_poligono = '1', punto11 = '0', punto12 = '195', punto21 = '350', punto22 = '0', punto31 = '384', punto32 = '0', punto41 = '252', punto42 = '480', punto51 = '0', punto52 = '480', id_camara = '1')
+    Session = sessionmaker(bind=engine) 
+    session = Session() 
     
-    session.add(camara1)
-    session.add(ROI_poligono1)
+    camara = session.query(Camara).filter(Camara.id_camara == id_camara).all()
     
-    session.commit()
+    session.close()
+    
+    return camara[0].ruta
+
+def get_ROI_video(id_camara):
+    
+    Session = sessionmaker(bind=engine) 
+    session = Session() 
+    
+    poligono = session.query(ROI_poligono).filter(ROI_poligono.id_camara == id_camara).all()
+    
+    session.close()
+    
+    # area_pts = np.array([[0, 195], [350, 0], [384, 0], [252, 480], [0, 480]])
+
+    poligono = [[poligono[0].punto11,poligono[0].punto12],[poligono[0].punto21,poligono[0].punto22],[poligono[0].punto31,poligono[0].punto32],[poligono[0].punto41,poligono[0].punto42],[poligono[0].punto51,poligono[0].punto52]]
+    
+    #return poligono[0]
+    return poligono
+
+############### pruebas
+
+ruta = get_ruta_video(1)
+
+print(ruta)
+
+poli = get_ROI_video(1)
+
+print("tipo: " + str(type(poli)))
+
+print(poli)
+
+
+
+

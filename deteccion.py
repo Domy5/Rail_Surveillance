@@ -22,7 +22,7 @@ import time
 import numpy as np
 import pandas as pd
 
-import utiles
+import utiles, controler
 
 loop_flag = 0
 pos = 0
@@ -67,9 +67,9 @@ parser.add_argument('-c', '--procesar_imagen',
                     help='parámetro GPU o CPU')
 parser.add_argument('-i', '--input',
                     type=str,
-                    default='videos_pruebas/',
+                    default='1', # Cambio de camara de video
                     required=False,
-                    help='Ruta de video a procesar')
+                    help='Código administrativo de la estación')
 
 args = parser.parse_args()
 
@@ -110,9 +110,19 @@ if not torch.cuda.is_available():
     print('No hay GPU habilitada, se usará CPU para el procesado de imagenes')
     print(' ')
 
-VIDEO_PATH = r'videos_pruebas/'
-AUDIO_ARCHIVO = './' + 'Alarma.mp3'
-VIDEO = "a1-003 1 minuto 1 via.mkv"
+#VIDEO_PATH = r'videos_pruebas/'
+#AUDIO_ARCHIVO = './' + 'Alarma.mp3'
+#VIDEO = "a1-003 1 minuto 1 via.mkv"
+
+
+if args.input:
+
+    ruta = controler.get_ruta_video(args.input)
+    poligono = controler.get_ROI_video(args.input)
+    
+    cap = cv2.VideoCapture(f'{ruta}')
+    area_pts = np.array(poligono)
+
 #VIDEO = "output.avi"
 #VIDEO = "Madrid_un_policier_sauve_une_femme_tombe_sur_les_v.mp4"
 
@@ -137,7 +147,7 @@ model.classes = [0, 6]
 # model.max_det = 1000  # maximum number of detections per image
 # model.amp = False  # Automatic Mixed Precision (AMP) inference
 
-cap = cv2.VideoCapture(f'{VIDEO_PATH}{VIDEO}')
+
 
 # cap = cv2.VideoCapture(VIDEO_PATH,cv2.CAP_INTEL_MFX)
 
@@ -277,8 +287,8 @@ while True:
         if clase == 6:  # Tren
             print("QUE LLEGA EL TREN¡¡¡¡¡")
 
-    area_pts = np.array([[0, 195], [350, 0], [384, 0], [252, 480], [0, 480]])
-    #area_pts = np.array([[0, 1], [10, 0], [14, 0], [12, 10], [0, 40]])
+    # area_pts = np.array([[0, 195], [350, 0], [384, 0], [252, 480], [0, 480]])
+    # area_pts = np.array([[0, 1], [10, 0], [14, 0], [12, 10], [0, 40]])
 
     if utiles.punto_en_poligono(punto, area_pts):
         print("PERSONAS EN LA VIA¡¡¡")
