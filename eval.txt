@@ -1,0 +1,795 @@
+AutoShape(
+  (model): DetectMultiBackend(
+    (model): DetectionModel(
+      (model): Sequential(
+        (0): Conv(
+          (conv): Conv2d(3, 80, kernel_size=(6, 6), stride=(2, 2), padding=(2, 2))
+          (act): SiLU(inplace=True)
+        )
+        (1): Conv(
+          (conv): Conv2d(80, 160, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+          (act): SiLU(inplace=True)
+        )
+        (2): C3(
+          (cv1): Conv(
+            (conv): Conv2d(160, 80, kernel_size=(1, 1), stride=(1, 1))
+            (act): SiLU(inplace=True)
+          )
+          (cv2): Conv(
+            (conv): Conv2d(160, 80, kernel_size=(1, 1), stride=(1, 1))
+            (act): SiLU(inplace=True)
+          )
+          (cv3): Conv(
+            (conv): Conv2d(160, 160, kernel_size=(1, 1), stride=(1, 1))
+            (act): SiLU(inplace=True)
+          )
+          (m): Sequential(
+            (0): Bottleneck(
+              (cv1): Conv(
+                (conv): Conv2d(80, 80, kernel_size=(1, 1), stride=(1, 1))
+                (act): SiLU(inplace=True)
+              )
+              (cv2): Conv(
+                (conv): Conv2d(80, 80, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (act): SiLU(inplace=True)
+              )
+            )
+            (1): Bottleneck(
+              (cv1): Conv(
+                (conv): Conv2d(80, 80, kernel_size=(1, 1), stride=(1, 1))
+                (act): SiLU(inplace=True)
+              )
+              (cv2): Conv(
+                (conv): Conv2d(80, 80, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (act): SiLU(inplace=True)
+              )
+            )
+            (2): Bottleneck(
+              (cv1): Conv(
+                (conv): Conv2d(80, 80, kernel_size=(1, 1), stride=(1, 1))
+                (act): SiLU(inplace=True)
+              )
+              (cv2): Conv(
+                (conv): Conv2d(80, 80, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (act): SiLU(inplace=True)
+              )
+            )
+            (3): Bottleneck(
+              (cv1): Conv(
+                (conv): Conv2d(80, 80, kernel_size=(1, 1), stride=(1, 1))
+                (act): SiLU(inplace=True)
+              )
+              (cv2): Conv(
+                (conv): Conv2d(80, 80, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (act): SiLU(inplace=True)
+              )
+            )
+          )
+        )
+        (3): Conv(
+          (conv): Conv2d(160, 320, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+          (act): SiLU(inplace=True)
+        )
+        (4): C3(
+          (cv1): Conv(
+            (conv): Conv2d(320, 160, kernel_size=(1, 1), stride=(1, 1))
+            (act): SiLU(inplace=True)
+          )
+          (cv2): Conv(
+            (conv): Conv2d(320, 160, kernel_size=(1, 1), stride=(1, 1))
+            (act): SiLU(inplace=True)
+          )
+          (cv3): Conv(
+            (conv): Conv2d(320, 320, kernel_size=(1, 1), stride=(1, 1))
+            (act): SiLU(inplace=True)
+          )
+          (m): Sequential(
+            (0): Bottleneck(
+              (cv1): Conv(
+                (conv): Conv2d(160, 160, kernel_size=(1, 1), stride=(1, 1))
+                (act): SiLU(inplace=True)
+              )
+              (cv2): Conv(
+                (conv): Conv2d(160, 160, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (act): SiLU(inplace=True)
+              )
+            )
+            (1): Bottleneck(
+              (cv1): Conv(
+                (conv): Conv2d(160, 160, kernel_size=(1, 1), stride=(1, 1))
+                (act): SiLU(inplace=True)
+              )
+              (cv2): Conv(
+                (conv): Conv2d(160, 160, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (act): SiLU(inplace=True)
+              )
+            )
+            (2): Bottleneck(
+              (cv1): Conv(
+                (conv): Conv2d(160, 160, kernel_size=(1, 1), stride=(1, 1))
+                (act): SiLU(inplace=True)
+              )
+              (cv2): Conv(
+                (conv): Conv2d(160, 160, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (act): SiLU(inplace=True)
+              )
+            )
+            (3): Bottleneck(
+              (cv1): Conv(
+                (conv): Conv2d(160, 160, kernel_size=(1, 1), stride=(1, 1))
+                (act): SiLU(inplace=True)
+              )
+              (cv2): Conv(
+                (conv): Conv2d(160, 160, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (act): SiLU(inplace=True)
+              )
+            )
+            (4): Bottleneck(
+              (cv1): Conv(
+                (conv): Conv2d(160, 160, kernel_size=(1, 1), stride=(1, 1))
+                (act): SiLU(inplace=True)
+              )
+              (cv2): Conv(
+                (conv): Conv2d(160, 160, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (act): SiLU(inplace=True)
+              )
+            )
+            (5): Bottleneck(
+              (cv1): Conv(
+                (conv): Conv2d(160, 160, kernel_size=(1, 1), stride=(1, 1))
+                (act): SiLU(inplace=True)
+              )
+              (cv2): Conv(
+                (conv): Conv2d(160, 160, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (act): SiLU(inplace=True)
+              )
+            )
+            (6): Bottleneck(
+              (cv1): Conv(
+                (conv): Conv2d(160, 160, kernel_size=(1, 1), stride=(1, 1))
+                (act): SiLU(inplace=True)
+              )
+              (cv2): Conv(
+                (conv): Conv2d(160, 160, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (act): SiLU(inplace=True)
+              )
+            )
+            (7): Bottleneck(
+              (cv1): Conv(
+                (conv): Conv2d(160, 160, kernel_size=(1, 1), stride=(1, 1))
+                (act): SiLU(inplace=True)
+              )
+              (cv2): Conv(
+                (conv): Conv2d(160, 160, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (act): SiLU(inplace=True)
+              )
+            )
+          )
+        )
+        (5): Conv(
+          (conv): Conv2d(320, 640, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+          (act): SiLU(inplace=True)
+        )
+        (6): C3(
+          (cv1): Conv(
+            (conv): Conv2d(640, 320, kernel_size=(1, 1), stride=(1, 1))
+            (act): SiLU(inplace=True)
+          )
+          (cv2): Conv(
+            (conv): Conv2d(640, 320, kernel_size=(1, 1), stride=(1, 1))
+            (act): SiLU(inplace=True)
+          )
+          (cv3): Conv(
+            (conv): Conv2d(640, 640, kernel_size=(1, 1), stride=(1, 1))
+            (act): SiLU(inplace=True)
+          )
+          (m): Sequential(
+            (0): Bottleneck(
+              (cv1): Conv(
+                (conv): Conv2d(320, 320, kernel_size=(1, 1), stride=(1, 1))
+                (act): SiLU(inplace=True)
+              )
+              (cv2): Conv(
+                (conv): Conv2d(320, 320, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (act): SiLU(inplace=True)
+              )
+            )
+            (1): Bottleneck(
+              (cv1): Conv(
+                (conv): Conv2d(320, 320, kernel_size=(1, 1), stride=(1, 1))
+                (act): SiLU(inplace=True)
+              )
+              (cv2): Conv(
+                (conv): Conv2d(320, 320, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (act): SiLU(inplace=True)
+              )
+            )
+            (2): Bottleneck(
+              (cv1): Conv(
+                (conv): Conv2d(320, 320, kernel_size=(1, 1), stride=(1, 1))
+                (act): SiLU(inplace=True)
+              )
+              (cv2): Conv(
+                (conv): Conv2d(320, 320, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (act): SiLU(inplace=True)
+              )
+            )
+            (3): Bottleneck(
+              (cv1): Conv(
+                (conv): Conv2d(320, 320, kernel_size=(1, 1), stride=(1, 1))
+                (act): SiLU(inplace=True)
+              )
+              (cv2): Conv(
+                (conv): Conv2d(320, 320, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (act): SiLU(inplace=True)
+              )
+            )
+            (4): Bottleneck(
+              (cv1): Conv(
+                (conv): Conv2d(320, 320, kernel_size=(1, 1), stride=(1, 1))
+                (act): SiLU(inplace=True)
+              )
+              (cv2): Conv(
+                (conv): Conv2d(320, 320, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (act): SiLU(inplace=True)
+              )
+            )
+            (5): Bottleneck(
+              (cv1): Conv(
+                (conv): Conv2d(320, 320, kernel_size=(1, 1), stride=(1, 1))
+                (act): SiLU(inplace=True)
+              )
+              (cv2): Conv(
+                (conv): Conv2d(320, 320, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (act): SiLU(inplace=True)
+              )
+            )
+            (6): Bottleneck(
+              (cv1): Conv(
+                (conv): Conv2d(320, 320, kernel_size=(1, 1), stride=(1, 1))
+                (act): SiLU(inplace=True)
+              )
+              (cv2): Conv(
+                (conv): Conv2d(320, 320, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (act): SiLU(inplace=True)
+              )
+            )
+            (7): Bottleneck(
+              (cv1): Conv(
+                (conv): Conv2d(320, 320, kernel_size=(1, 1), stride=(1, 1))
+                (act): SiLU(inplace=True)
+              )
+              (cv2): Conv(
+                (conv): Conv2d(320, 320, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (act): SiLU(inplace=True)
+              )
+            )
+            (8): Bottleneck(
+              (cv1): Conv(
+                (conv): Conv2d(320, 320, kernel_size=(1, 1), stride=(1, 1))
+                (act): SiLU(inplace=True)
+              )
+              (cv2): Conv(
+                (conv): Conv2d(320, 320, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (act): SiLU(inplace=True)
+              )
+            )
+            (9): Bottleneck(
+              (cv1): Conv(
+                (conv): Conv2d(320, 320, kernel_size=(1, 1), stride=(1, 1))
+                (act): SiLU(inplace=True)
+              )
+              (cv2): Conv(
+                (conv): Conv2d(320, 320, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (act): SiLU(inplace=True)
+              )
+            )
+            (10): Bottleneck(
+              (cv1): Conv(
+                (conv): Conv2d(320, 320, kernel_size=(1, 1), stride=(1, 1))
+                (act): SiLU(inplace=True)
+              )
+              (cv2): Conv(
+                (conv): Conv2d(320, 320, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (act): SiLU(inplace=True)
+              )
+            )
+            (11): Bottleneck(
+              (cv1): Conv(
+                (conv): Conv2d(320, 320, kernel_size=(1, 1), stride=(1, 1))
+                (act): SiLU(inplace=True)
+              )
+              (cv2): Conv(
+                (conv): Conv2d(320, 320, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (act): SiLU(inplace=True)
+              )
+            )
+          )
+        )
+        (7): Conv(
+          (conv): Conv2d(640, 960, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+          (act): SiLU(inplace=True)
+        )
+        (8): C3(
+          (cv1): Conv(
+            (conv): Conv2d(960, 480, kernel_size=(1, 1), stride=(1, 1))
+            (act): SiLU(inplace=True)
+          )
+          (cv2): Conv(
+            (conv): Conv2d(960, 480, kernel_size=(1, 1), stride=(1, 1))
+            (act): SiLU(inplace=True)
+          )
+          (cv3): Conv(
+            (conv): Conv2d(960, 960, kernel_size=(1, 1), stride=(1, 1))
+            (act): SiLU(inplace=True)
+          )
+          (m): Sequential(
+            (0): Bottleneck(
+              (cv1): Conv(
+                (conv): Conv2d(480, 480, kernel_size=(1, 1), stride=(1, 1))
+                (act): SiLU(inplace=True)
+              )
+              (cv2): Conv(
+                (conv): Conv2d(480, 480, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (act): SiLU(inplace=True)
+              )
+            )
+            (1): Bottleneck(
+              (cv1): Conv(
+                (conv): Conv2d(480, 480, kernel_size=(1, 1), stride=(1, 1))
+                (act): SiLU(inplace=True)
+              )
+              (cv2): Conv(
+                (conv): Conv2d(480, 480, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (act): SiLU(inplace=True)
+              )
+            )
+            (2): Bottleneck(
+              (cv1): Conv(
+                (conv): Conv2d(480, 480, kernel_size=(1, 1), stride=(1, 1))
+                (act): SiLU(inplace=True)
+              )
+              (cv2): Conv(
+                (conv): Conv2d(480, 480, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (act): SiLU(inplace=True)
+              )
+            )
+            (3): Bottleneck(
+              (cv1): Conv(
+                (conv): Conv2d(480, 480, kernel_size=(1, 1), stride=(1, 1))
+                (act): SiLU(inplace=True)
+              )
+              (cv2): Conv(
+                (conv): Conv2d(480, 480, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (act): SiLU(inplace=True)
+              )
+            )
+          )
+        )
+        (9): Conv(
+          (conv): Conv2d(960, 1280, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+          (act): SiLU(inplace=True)
+        )
+        (10): C3(
+          (cv1): Conv(
+            (conv): Conv2d(1280, 640, kernel_size=(1, 1), stride=(1, 1))
+            (act): SiLU(inplace=True)
+          )
+          (cv2): Conv(
+            (conv): Conv2d(1280, 640, kernel_size=(1, 1), stride=(1, 1))
+            (act): SiLU(inplace=True)
+          )
+          (cv3): Conv(
+            (conv): Conv2d(1280, 1280, kernel_size=(1, 1), stride=(1, 1))
+            (act): SiLU(inplace=True)
+          )
+          (m): Sequential(
+            (0): Bottleneck(
+              (cv1): Conv(
+                (conv): Conv2d(640, 640, kernel_size=(1, 1), stride=(1, 1))
+                (act): SiLU(inplace=True)
+              )
+              (cv2): Conv(
+                (conv): Conv2d(640, 640, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (act): SiLU(inplace=True)
+              )
+            )
+            (1): Bottleneck(
+              (cv1): Conv(
+                (conv): Conv2d(640, 640, kernel_size=(1, 1), stride=(1, 1))
+                (act): SiLU(inplace=True)
+              )
+              (cv2): Conv(
+                (conv): Conv2d(640, 640, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (act): SiLU(inplace=True)
+              )
+            )
+            (2): Bottleneck(
+              (cv1): Conv(
+                (conv): Conv2d(640, 640, kernel_size=(1, 1), stride=(1, 1))
+                (act): SiLU(inplace=True)
+              )
+              (cv2): Conv(
+                (conv): Conv2d(640, 640, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (act): SiLU(inplace=True)
+              )
+            )
+            (3): Bottleneck(
+              (cv1): Conv(
+                (conv): Conv2d(640, 640, kernel_size=(1, 1), stride=(1, 1))
+                (act): SiLU(inplace=True)
+              )
+              (cv2): Conv(
+                (conv): Conv2d(640, 640, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (act): SiLU(inplace=True)
+              )
+            )
+          )
+        )
+        (11): SPPF(
+          (cv1): Conv(
+            (conv): Conv2d(1280, 640, kernel_size=(1, 1), stride=(1, 1))
+            (act): SiLU(inplace=True)
+          )
+          (cv2): Conv(
+            (conv): Conv2d(2560, 1280, kernel_size=(1, 1), stride=(1, 1))
+            (act): SiLU(inplace=True)
+          )
+          (m): MaxPool2d(kernel_size=5, stride=1, padding=2, dilation=1, ceil_mode=False)
+        )
+        (12): Conv(
+          (conv): Conv2d(1280, 960, kernel_size=(1, 1), stride=(1, 1))
+          (act): SiLU(inplace=True)
+        )
+        (13): Upsample(scale_factor=2.0, mode=nearest)
+        (14): Concat()
+        (15): C3(
+          (cv1): Conv(
+            (conv): Conv2d(1920, 480, kernel_size=(1, 1), stride=(1, 1))
+            (act): SiLU(inplace=True)
+          )
+          (cv2): Conv(
+            (conv): Conv2d(1920, 480, kernel_size=(1, 1), stride=(1, 1))
+            (act): SiLU(inplace=True)
+          )
+          (cv3): Conv(
+            (conv): Conv2d(960, 960, kernel_size=(1, 1), stride=(1, 1))
+            (act): SiLU(inplace=True)
+          )
+          (m): Sequential(
+            (0): Bottleneck(
+              (cv1): Conv(
+                (conv): Conv2d(480, 480, kernel_size=(1, 1), stride=(1, 1))
+                (act): SiLU(inplace=True)
+              )
+              (cv2): Conv(
+                (conv): Conv2d(480, 480, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (act): SiLU(inplace=True)
+              )
+            )
+            (1): Bottleneck(
+              (cv1): Conv(
+                (conv): Conv2d(480, 480, kernel_size=(1, 1), stride=(1, 1))
+                (act): SiLU(inplace=True)
+              )
+              (cv2): Conv(
+                (conv): Conv2d(480, 480, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (act): SiLU(inplace=True)
+              )
+            )
+            (2): Bottleneck(
+              (cv1): Conv(
+                (conv): Conv2d(480, 480, kernel_size=(1, 1), stride=(1, 1))
+                (act): SiLU(inplace=True)
+              )
+              (cv2): Conv(
+                (conv): Conv2d(480, 480, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (act): SiLU(inplace=True)
+              )
+            )
+            (3): Bottleneck(
+              (cv1): Conv(
+                (conv): Conv2d(480, 480, kernel_size=(1, 1), stride=(1, 1))
+                (act): SiLU(inplace=True)
+              )
+              (cv2): Conv(
+                (conv): Conv2d(480, 480, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (act): SiLU(inplace=True)
+              )
+            )
+          )
+        )
+        (16): Conv(
+          (conv): Conv2d(960, 640, kernel_size=(1, 1), stride=(1, 1))
+          (act): SiLU(inplace=True)
+        )
+        (17): Upsample(scale_factor=2.0, mode=nearest)
+        (18): Concat()
+        (19): C3(
+          (cv1): Conv(
+            (conv): Conv2d(1280, 320, kernel_size=(1, 1), stride=(1, 1))
+            (act): SiLU(inplace=True)
+          )
+          (cv2): Conv(
+            (conv): Conv2d(1280, 320, kernel_size=(1, 1), stride=(1, 1))
+            (act): SiLU(inplace=True)
+          )
+          (cv3): Conv(
+            (conv): Conv2d(640, 640, kernel_size=(1, 1), stride=(1, 1))
+            (act): SiLU(inplace=True)
+          )
+          (m): Sequential(
+            (0): Bottleneck(
+              (cv1): Conv(
+                (conv): Conv2d(320, 320, kernel_size=(1, 1), stride=(1, 1))
+                (act): SiLU(inplace=True)
+              )
+              (cv2): Conv(
+                (conv): Conv2d(320, 320, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (act): SiLU(inplace=True)
+              )
+            )
+            (1): Bottleneck(
+              (cv1): Conv(
+                (conv): Conv2d(320, 320, kernel_size=(1, 1), stride=(1, 1))
+                (act): SiLU(inplace=True)
+              )
+              (cv2): Conv(
+                (conv): Conv2d(320, 320, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (act): SiLU(inplace=True)
+              )
+            )
+            (2): Bottleneck(
+              (cv1): Conv(
+                (conv): Conv2d(320, 320, kernel_size=(1, 1), stride=(1, 1))
+                (act): SiLU(inplace=True)
+              )
+              (cv2): Conv(
+                (conv): Conv2d(320, 320, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (act): SiLU(inplace=True)
+              )
+            )
+            (3): Bottleneck(
+              (cv1): Conv(
+                (conv): Conv2d(320, 320, kernel_size=(1, 1), stride=(1, 1))
+                (act): SiLU(inplace=True)
+              )
+              (cv2): Conv(
+                (conv): Conv2d(320, 320, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (act): SiLU(inplace=True)
+              )
+            )
+          )
+        )
+        (20): Conv(
+          (conv): Conv2d(640, 320, kernel_size=(1, 1), stride=(1, 1))
+          (act): SiLU(inplace=True)
+        )
+        (21): Upsample(scale_factor=2.0, mode=nearest)
+        (22): Concat()
+        (23): C3(
+          (cv1): Conv(
+            (conv): Conv2d(640, 160, kernel_size=(1, 1), stride=(1, 1))
+            (act): SiLU(inplace=True)
+          )
+          (cv2): Conv(
+            (conv): Conv2d(640, 160, kernel_size=(1, 1), stride=(1, 1))
+            (act): SiLU(inplace=True)
+          )
+          (cv3): Conv(
+            (conv): Conv2d(320, 320, kernel_size=(1, 1), stride=(1, 1))
+            (act): SiLU(inplace=True)
+          )
+          (m): Sequential(
+            (0): Bottleneck(
+              (cv1): Conv(
+                (conv): Conv2d(160, 160, kernel_size=(1, 1), stride=(1, 1))
+                (act): SiLU(inplace=True)
+              )
+              (cv2): Conv(
+                (conv): Conv2d(160, 160, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (act): SiLU(inplace=True)
+              )
+            )
+            (1): Bottleneck(
+              (cv1): Conv(
+                (conv): Conv2d(160, 160, kernel_size=(1, 1), stride=(1, 1))
+                (act): SiLU(inplace=True)
+              )
+              (cv2): Conv(
+                (conv): Conv2d(160, 160, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (act): SiLU(inplace=True)
+              )
+            )
+            (2): Bottleneck(
+              (cv1): Conv(
+                (conv): Conv2d(160, 160, kernel_size=(1, 1), stride=(1, 1))
+                (act): SiLU(inplace=True)
+              )
+              (cv2): Conv(
+                (conv): Conv2d(160, 160, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (act): SiLU(inplace=True)
+              )
+            )
+            (3): Bottleneck(
+              (cv1): Conv(
+                (conv): Conv2d(160, 160, kernel_size=(1, 1), stride=(1, 1))
+                (act): SiLU(inplace=True)
+              )
+              (cv2): Conv(
+                (conv): Conv2d(160, 160, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (act): SiLU(inplace=True)
+              )
+            )
+          )
+        )
+        (24): Conv(
+          (conv): Conv2d(320, 320, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+          (act): SiLU(inplace=True)
+        )
+        (25): Concat()
+        (26): C3(
+          (cv1): Conv(
+            (conv): Conv2d(640, 320, kernel_size=(1, 1), stride=(1, 1))
+            (act): SiLU(inplace=True)
+          )
+          (cv2): Conv(
+            (conv): Conv2d(640, 320, kernel_size=(1, 1), stride=(1, 1))
+            (act): SiLU(inplace=True)
+          )
+          (cv3): Conv(
+            (conv): Conv2d(640, 640, kernel_size=(1, 1), stride=(1, 1))
+            (act): SiLU(inplace=True)
+          )
+          (m): Sequential(
+            (0): Bottleneck(
+              (cv1): Conv(
+                (conv): Conv2d(320, 320, kernel_size=(1, 1), stride=(1, 1))
+                (act): SiLU(inplace=True)
+              )
+              (cv2): Conv(
+                (conv): Conv2d(320, 320, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (act): SiLU(inplace=True)
+              )
+            )
+            (1): Bottleneck(
+              (cv1): Conv(
+                (conv): Conv2d(320, 320, kernel_size=(1, 1), stride=(1, 1))
+                (act): SiLU(inplace=True)
+              )
+              (cv2): Conv(
+                (conv): Conv2d(320, 320, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (act): SiLU(inplace=True)
+              )
+            )
+            (2): Bottleneck(
+              (cv1): Conv(
+                (conv): Conv2d(320, 320, kernel_size=(1, 1), stride=(1, 1))
+                (act): SiLU(inplace=True)
+              )
+              (cv2): Conv(
+                (conv): Conv2d(320, 320, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (act): SiLU(inplace=True)
+              )
+            )
+            (3): Bottleneck(
+              (cv1): Conv(
+                (conv): Conv2d(320, 320, kernel_size=(1, 1), stride=(1, 1))
+                (act): SiLU(inplace=True)
+              )
+              (cv2): Conv(
+                (conv): Conv2d(320, 320, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (act): SiLU(inplace=True)
+              )
+            )
+          )
+        )
+        (27): Conv(
+          (conv): Conv2d(640, 640, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+          (act): SiLU(inplace=True)
+        )
+        (28): Concat()
+        (29): C3(
+          (cv1): Conv(
+            (conv): Conv2d(1280, 480, kernel_size=(1, 1), stride=(1, 1))
+            (act): SiLU(inplace=True)
+          )
+          (cv2): Conv(
+            (conv): Conv2d(1280, 480, kernel_size=(1, 1), stride=(1, 1))
+            (act): SiLU(inplace=True)
+          )
+          (cv3): Conv(
+            (conv): Conv2d(960, 960, kernel_size=(1, 1), stride=(1, 1))
+            (act): SiLU(inplace=True)
+          )
+          (m): Sequential(
+            (0): Bottleneck(
+              (cv1): Conv(
+                (conv): Conv2d(480, 480, kernel_size=(1, 1), stride=(1, 1))
+                (act): SiLU(inplace=True)
+              )
+              (cv2): Conv(
+                (conv): Conv2d(480, 480, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (act): SiLU(inplace=True)
+              )
+            )
+            (1): Bottleneck(
+              (cv1): Conv(
+                (conv): Conv2d(480, 480, kernel_size=(1, 1), stride=(1, 1))
+                (act): SiLU(inplace=True)
+              )
+              (cv2): Conv(
+                (conv): Conv2d(480, 480, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (act): SiLU(inplace=True)
+              )
+            )
+            (2): Bottleneck(
+              (cv1): Conv(
+                (conv): Conv2d(480, 480, kernel_size=(1, 1), stride=(1, 1))
+                (act): SiLU(inplace=True)
+              )
+              (cv2): Conv(
+                (conv): Conv2d(480, 480, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (act): SiLU(inplace=True)
+              )
+            )
+            (3): Bottleneck(
+              (cv1): Conv(
+                (conv): Conv2d(480, 480, kernel_size=(1, 1), stride=(1, 1))
+                (act): SiLU(inplace=True)
+              )
+              (cv2): Conv(
+                (conv): Conv2d(480, 480, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (act): SiLU(inplace=True)
+              )
+            )
+          )
+        )
+        (30): Conv(
+          (conv): Conv2d(960, 960, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+          (act): SiLU(inplace=True)
+        )
+        (31): Concat()
+        (32): C3(
+          (cv1): Conv(
+            (conv): Conv2d(1920, 640, kernel_size=(1, 1), stride=(1, 1))
+            (act): SiLU(inplace=True)
+          )
+          (cv2): Conv(
+            (conv): Conv2d(1920, 640, kernel_size=(1, 1), stride=(1, 1))
+            (act): SiLU(inplace=True)
+          )
+          (cv3): Conv(
+            (conv): Conv2d(1280, 1280, kernel_size=(1, 1), stride=(1, 1))
+            (act): SiLU(inplace=True)
+          )
+          (m): Sequential(
+            (0): Bottleneck(
+              (cv1): Conv(
+                (conv): Conv2d(640, 640, kernel_size=(1, 1), stride=(1, 1))
+                (act): SiLU(inplace=True)
+              )
+              (cv2): Conv(
+                (conv): Conv2d(640, 640, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (act): SiLU(inplace=True)
+              )
+            )
+            (1): Bottleneck(
+              (cv1): Conv(
+                (conv): Conv2d(640, 640, kernel_size=(1, 1), stride=(1, 1))
+                (act): SiLU(inplace=True)
+              )
+              (cv2): Conv(
+                (conv): Conv2d(640, 640, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+        (33): Detect(
+          (m): ModuleList(
+            (0): Conv2d(320, 255, kernel_size=(1, 1), stride=(1, 1))
+            (1): Conv2d(640, 255, kernel_size=(1, 1), stride=(1, 1))
+            (2): Conv2d(960, 255, kernel_size=(1, 1), stride=(1, 1))
+            (3): Conv2d(1280, 255, kernel_size=(1, 1), stride=(1, 1))
+          )
+        )
+      )
+    )
+  )
+)
