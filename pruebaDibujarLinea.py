@@ -37,9 +37,9 @@ ret, frame = cap.read()
 area_pts = np.array([[0, 195], [350, 0], [384, 0], [252, 480], [0, 480]])
 
 # Crea una imagen en negro
-img = np.zeros(shape=(frame.shape[:2]), dtype=np.uint8)
+#img = np.zeros(shape=(frame.shape[:2]), dtype=np.uint8)
 
-#img = np.zeros((512,512,3), np.uint8)
+img = np.zeros((512,512,3), np.uint8)
 
 diferencia_punto1 = (area_pts[2][0] - area_pts[1][0]) // 2
 diferencia_punto2 = (area_pts[3][0] - area_pts[4][0]) // 2
@@ -62,10 +62,10 @@ p2 = diferencia_punto2 + area_pts[3][0]
 #  (x,y)   
 
 # Pinta poligono
-img = cv2.drawContours(img, [area_pts], -1, (255), -1)
+img = cv2.drawContours(img, [area_pts], -1, (255,0,0), -1)
 # pintar linea
 #img = cv2.line(img, (34, 0), (0, 255), (150), 4)
-img = cv2.line(img, (area_pts[0][0],area_pts[0][1]), (area_pts[3][0],area_pts[3][1]), (0, 0, 255), 4)
+img = cv2.line(img, (area_pts[0][0],area_pts[0][1]), (area_pts[3][0],area_pts[3][1]), (0,255 ,0 ), 4)
 #img = cv2.line(img, (p1, 0), (0, p2), (0, 0, 255), 1)
 img = cv2.line(img, (p1, 0), (area_pts[0][0]+(area_pts[3][0]-area_pts[0][0])//2, area_pts[3][1]+(area_pts[0][1]-area_pts[3][1])//2), (0, 0, 255), 4)
 img = cv2.line(img, (p1, 0), (0, round(513.1908713692945)), (0, 100, 0), 1)
