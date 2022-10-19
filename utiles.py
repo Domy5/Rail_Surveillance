@@ -77,7 +77,7 @@ def dibujando(event, x, y, flags, param):
             #str2 = "'".join(lista_puntos).replace('\'',',')
             
             for p, l in zip(puntos, lista_puntos):
-                lista.append("{}{}".format(p,l))
+                lista.append("{}\'{}\'".format(p,l))
             
             str2 = ''.join(lista)
             str3 =', id_camara = \'XXX\')'              

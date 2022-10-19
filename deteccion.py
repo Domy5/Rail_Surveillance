@@ -31,7 +31,7 @@ fpsmax = 0
 contador = 0
 numero_img = 0
 scale = 0.5
-nombre_ventana = 'TFG Domy 0.26'
+nombre_ventana = 'TFG Domy 0.39'
 lista_puntos = []
 contafoto = 0
 
@@ -46,19 +46,12 @@ utiles.borrarPantalla()
 parser = argparse.ArgumentParser(
     description='Detector de objetos, computación GPU, CPU')
 
-parser.add_argument('-v', '--version', action="store_true",
-                    default=False, help='versión del programa')
-parser.add_argument('-info', '--informacion', action="store_true",
-                    default=False, help='información de las versiones de los paquetes usados')
-parser.add_argument('-m', '--mascara', action="store_true",
-                    default=False, help='muestra la  mascara')
-parser.add_argument('-d', '--deteccion', action="store_true",
-                    default=False, help='muestra la detecciones de objetos')
-parser.add_argument('-s', '--slicer', action="store_true", default=False,
-                    help='muestra barra de desplazamiento (consume muchos recursos)')
-parser.add_argument('-mm', '--mouse', action="store_true", default=False,
-                    help='muestra por consola las coordenadas de los click')
-
+parser.add_argument('-v', '--version', action="store_true",default=False, help='versión del programa')
+parser.add_argument('-info', '--informacion', action="store_true",default=False, help='información de las versiones de los paquetes usados')
+parser.add_argument('-m', '--mascara', action="store_true",default=False, help='muestra la  mascara')
+parser.add_argument('-d', '--deteccion', action="store_true",default=False, help='muestra la detecciones de objetos')
+parser.add_argument('-s', '--slicer', action="store_true", default=False,help='muestra barra de desplazamiento (consume muchos recursos)')
+parser.add_argument('-mm', '--mouse', action="store_true", default=False,help='muestra por consola las coordenadas de los click')
 parser.add_argument('-c', '--procesar_imagen',
                     type=str,
                     choices=['gpu', 'cpu'],
@@ -67,7 +60,7 @@ parser.add_argument('-c', '--procesar_imagen',
                     help='parámetro GPU o CPU')
 parser.add_argument('-i', '--input',
                     type=str,
-                    default='1', # Cambio de camara de video
+                    default='2', # Cambio de camara de video y sus ROI
                     required=False,
                     help='Código administrativo de la estación')
 
@@ -114,7 +107,6 @@ if not torch.cuda.is_available():
 #AUDIO_ARCHIVO = './' + 'Alarma.mp3'
 #VIDEO = "a1-003 1 minuto 1 via.mkv"
 
-
 if args.input:
 
     ruta = controler.get_ruta_video(args.input)
@@ -130,7 +122,13 @@ if args.input:
 # model = torch.hub.load('ultralytics/yolov5', 'YOLOv5x-cls', force_reload=True)
 # model = torch.hub.load('ultralytics/yolov5', 'yolov5x6', pretrained=True)
 ##model = torch.hub.load('ultralytics/yolov5', 'yolov5x6')
+
 model = torch.hub.load('ultralytics/yolov5', 'yolov5x6')
+
+#model = torch.hub.load('WongKinYiu/yolov7','yolov7-e6e.pt')
+
+#model = create(name='yolov7', pretrained=True, channels=3, classes=80, autoshape=True)  # pretrained example
+
 
 
 # model = torch.hub.load('ultralytics/yolov5', 'yolov5s-cls')
