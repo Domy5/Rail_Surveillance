@@ -39,6 +39,7 @@ nombre_ventana = 'TFG Domy 0.39'
 lista_puntos = []
 punto = [0, 0]
 contarfoto = 0
+cantidad_contornos = 0
 
 color_verde = (0, 255, 0)  # color verde en BGR
 color_rojo = (0, 0, 255)  # color rojo en BGR
@@ -133,7 +134,7 @@ if args.procesar_imagen == 'gpu':
 
 # model = torch.hub.load('ultralytics/yolov5', 'yolov5x6', force_reload=True)
 
-model = torch.hub.load('ultralytics/yolov5', 'yolov5x6')
+model = torch.hub.load('ultralytics/yolov5', 'yolov5x6', pretrained=True)
 
 # The compiled module will have precision as specified by "op_precision".
 # Here, it will have FP16 precision.
@@ -241,6 +242,10 @@ while True:
     # Detección
     #detect = model(frame, size = 640)
     detect = model(frame)
+    
+    #detect.print()
+        #Speed: 11.0ms pre-process, 59.3ms inference, 3.0ms NMS per image at shape (1, 3, 512, 640)
+        #image 1/1: 480x640 5 persons
 
     # info es un objeto de tipo <class 'pandas.core.frame.DataFrame'>
     info = detect.pandas().xyxy[0]
@@ -325,8 +330,12 @@ while True:
     color = color_verde
 
     if contorno :
-        texto_estado = 'Precaucion Movimiento'
-        color = color_amarillo
+        cantidad_contornos +=1
+        
+        if cantidad_contornos == 5:
+            texto_estado = 'Precaucion Movimiento'
+            color = color_amarillo
+            cantidad_contornos = 0
         
     if persona_en_via :
         texto_estado = 'ALERTA Movimiento'
@@ -336,9 +345,9 @@ while True:
     if  tren and persona_en_via :
         texto_estado = 'ALERTA Movimiento'
         color = color_rojo
-        print("LLEGADA DEL TREN¡¡¡¡¡")
+        print("LLEGADA DEL TREN CON PERSONA EN LA VIA¡¡¡¡¡")
             
-    if  tren :
+    if  tren : # QUITAR CONTORNOS SI ESTA EL TREN 
         tres = False
     else:
         tres = True
@@ -347,9 +356,13 @@ while True:
 
     if uno:
       
-       cv2.putText(frame, texto_estado, (height -130, width -240),cv2.FONT_HERSHEY_SIMPLEX, 0.7, color, 2)
-       cv2.putText(frame, "FPS: {:.2f}".format(fpsmax), (height -130, width -210),cv2.FONT_HERSHEY_SIMPLEX, 0.7, color, 2)
-       cv2.putText(frame, "N fotos: {:.2f}".format(numero_fotograma), (height -130, width -180),cv2.FONT_HERSHEY_SIMPLEX, 0.7, color, 2)
+       cv2.putText(frame, texto_estado, (10, 15),cv2.FONT_HERSHEY_SIMPLEX, 0.7, color, 2)
+       cv2.putText(frame, "FPS: {:.2f}".format(fpsmax), (10, 45),cv2.FONT_HERSHEY_SIMPLEX, 0.7, color, 2)
+       cv2.putText(frame, "N fotos: {:.2f}".format(numero_fotograma), (10, 75),cv2.FONT_HERSHEY_SIMPLEX, 0.7, color, 2)      
+       
+       #cv2.putText(frame, texto_estado, (height -130, width -240),cv2.FONT_HERSHEY_SIMPLEX, 0.7, color, 2)
+       #cv2.putText(frame, "FPS: {:.2f}".format(fpsmax), (height -130, width -210),cv2.FONT_HERSHEY_SIMPLEX, 0.7, color, 2)
+       #cv2.putText(frame, "N fotos: {:.2f}".format(numero_fotograma), (height -130, width -180),cv2.FONT_HERSHEY_SIMPLEX, 0.7, color, 2)
         # cv2.putText(frame, "FPS?: {:.2f}".format(fps1), (10, 120),cv2.FONT_HERSHEY_SIMPLEX, 1, color, 2)
         # cv2.putText(frame, "Total fotogramas: {:.2f}".format(total_frames), (10, 160),cv2.FONT_HERSHEY_SIMPLEX, 1, color, 2)
     
@@ -358,7 +371,7 @@ while True:
         
     if args.mascara:
         cv2.imshow('fgmask', fgmask)
-        cv2.moveWindow('fgmask', 10, 75 + height);
+        #cv2.moveWindow('fgmask', 10, 75 + height);
 
     if args.deteccion:
         cv2.imshow(nombre_ventana, np.squeeze(detect.render()))
