@@ -23,7 +23,7 @@
 
 - **Instalación con GPU (Nvidia):**
   
-  - Para instalar **OpenCV para GPU**, debemos compilar o construir nuestro propio código del código fuente de OpenCV con CUDA, cuDNN y GPU Nvidia, para hacer esto necesitamos usar algunas herramientas como Visual Studio 2016 (compilador GCC de C++), CMake, etc.
+  - Para instalar **OpenCV para GPU**, debemos compilar o construir nuestro propio código del código fuente de OpenCV con CUDA, cuDNN y GPU Nvidia, para hacer esto necesitamos usar algunas herramientas como Visual Studio 2016, CMake (compilador GCC de C++), etc.
 
     - Para Windows, ejecuta:
     
@@ -44,7 +44,7 @@
     - Instalar los requetimientos del proyecto (pandas, matplotlib...)
       - ```pip install -r requirements_con_gpu.txt```
 
-Podemos comprobar lo instalddo en el entorno con este comando:
+Podemos comprobar lo instalado en el entorno con este comando:
 
 ```
 python -m torch.utils.collect_env
