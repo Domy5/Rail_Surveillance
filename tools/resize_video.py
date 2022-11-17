@@ -5,16 +5,14 @@
 # Created Date: abril 2022
 # version ='1.0'
 # ---------------------------------------------------------------------------
-""" Trabajo fin de Grado, deteccion de objetos en plataforma de vias ferroviarias"""
+""" Deteccion de objetos en plataforma de vias ferroviarias"""
 # ---------------------------------------------------------------------------
 
-
-import argparse
 import cv2
-import utiles
+import tools.utils as utils
 
 VIDEO = "a1-003 1 minuto 1 via.mkv"
-VIDEO_PATH = r'videos_pruebas/'
+VIDEO_PATH = r'test_video/'
 
 HEIGHT = 480
 WIDTH = 640
@@ -39,7 +37,7 @@ while True:
     else:
         break
     count+=1
-    utiles.borrarPantalla()
+    utils.borrarPantalla()
     print(count)
     
 cap.release()

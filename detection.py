@@ -25,7 +25,7 @@ import time
 import numpy as np
 import pandas as pd
 
-import utiles
+import tools.utils as utils
 import controler
 
 
@@ -59,7 +59,7 @@ cuatro = True
 cinco = True
 seis = True
 
-utiles.borrarPantalla()
+utils.borrarPantalla()
 
 # print(dir(cv2.cuda))
 
@@ -92,10 +92,10 @@ if args.version:
 if args.informacion:
     print(f"Version: {nombre_ventana}")
 
-    utiles.os.system("nvidia-smi")
+    utils.os.system("nvidia-smi")
     print(f"CUDA version: {torch.version.cuda}")
     print("cuda" if torch.cuda.is_available() else "cpu")
-    print("1 == using cuda, 0 = not using cuda: ", utiles.is_cuda_cv())
+    print("1 == using cuda, 0 = not using cuda: ", utils.is_cuda_cv())
     print("CudaDeviceInfo  version:", cv2.cuda.getDevice())
     print("CudaDeviceInfo  version:", cv2.cuda.printCudaDeviceInfo(cv2.cuda.getDevice()))
     print("Python version:", sys.version)
@@ -113,8 +113,6 @@ if not torch.cuda.is_available():
 
     args.procesar_imagen = 'cpu'
 
-    print('No hay GPU habilitada, se usará CPU para el procesado de imagenes')
-    print('No hay GPU habilitada, se usará CPU para el procesado de imagenes')
     print('No hay GPU habilitada, se usará CPU para el procesado de imagenes')
     print(' ')
 
@@ -135,6 +133,7 @@ if args.procesar_imagen == 'gpu':
 # model = torch.hub.load('ultralytics/yolov5', 'yolov5x6', force_reload=True)
 
 model = torch.hub.load('ultralytics/yolov5', 'yolov5x6', pretrained=True)
+
 
 # The compiled module will have precision as specified by "op_precision".
 # Here, it will have FP16 precision.
@@ -188,10 +187,10 @@ print('6:-> Activar mejor rendimiento')
 # utiles.borrarPantalla()
 
 if args.slicer:
-    cv2.createTrackbar('time', nombre_ventana, 0, frames, utiles.nothing)
+    cv2.createTrackbar('time', nombre_ventana, 0, frames, utils.nothing)
     
 if args.mouse:
-    cv2.setMouseCallback(nombre_ventana, utiles.dibujando)
+    cv2.setMouseCallback(nombre_ventana, utils.dibujando)
 
 # fgbg = cv2.bgsegm.createBackgroundSubtractorMOG( )
 # fgbg = cv2.bgsegm.createBackgroundSubtractorMOG(history = 200,nmixtures = 5, backgroundRatio = 0.7,noiseSigma = 0 )
@@ -282,7 +281,7 @@ while True:
         if cinco:
             cv2.imshow(nombre_ventana, np.squeeze(detect.render()))
 
-    if utiles.punto_en_poligono(punto, area_pts):
+    if utils.punto_en_poligono(punto, area_pts):
         persona_en_via = True
         #playsound(AUDIO_ARCHIVO, False)
 
