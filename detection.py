@@ -6,7 +6,7 @@
 # version ='1.0'
 # https://github.com/Domy5/Rail_Surveillance/
 # ---------------------------------------------------------------------------
-""" Trabajo fin de Grado, deteccion de objetos en plataforma de vias ferroviarias"""
+""" Deteccion de objetos en plataforma de vias ferroviarias"""
 # ---------------------------------------------------------------------------
 
 # https://blog.roboflow.com/object-detection/
@@ -35,7 +35,7 @@ numero_fotograma = 0
 fpsmax = 0
 contador = 0
 numero_img = 0
-nombre_ventana = 'TFG Domy 0.39'
+nombre_ventana = 'Rail_Surveillance 0.42'
 lista_puntos = []
 punto = [0, 0]
 contarfoto = 0
@@ -369,7 +369,7 @@ while True:
         cv2.drawContours(frame, [area_pts], -1, color, 2)  # dibuja ROI
         
     if args.mascara:
-        cv2.imshow('fgmask', fgmask)
+        cv2.imshow('Background Subtraction in ROI', fgmask)
         #cv2.moveWindow('fgmask', 10, 75 + height);
 
     if args.deteccion:
