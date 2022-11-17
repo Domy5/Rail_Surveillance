@@ -21,7 +21,7 @@ import torchvision
 ##import torch_tensorrt
 import imutils
 import time
-# from playsound import playsound
+from playsound import playsound
 import numpy as np
 import pandas as pd
 
@@ -367,6 +367,7 @@ while True:
     
     if dos:
         cv2.drawContours(frame, [area_pts], -1, color, 2)  # dibuja ROI
+        cv2.drawContours(fgmask, [area_pts], -1, color_gris, 2) # dibuja ROI en Background Subtraction in ROI
         
     if args.mascara:
         cv2.imshow('Background Subtraction in ROI', fgmask)
