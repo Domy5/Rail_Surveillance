@@ -11,6 +11,7 @@
 import time
 import os
 import cv2
+from playsound import playsound
 
 lista_puntos = []
 
@@ -103,7 +104,13 @@ def punto_en_poligono(punto, poligono):
             if poligono[i][0] + (y - poligono[i][1]) / (poligono[j][1] - poligono[i][1]) * (poligono[j][0] - poligono[i][0]) < x:
                 salida = not salida
         j = i
-    return salida 
+    return salida
+
+def play_track(track_path):
+    """Play Music in a loop."""
+    while True:
+        playsound(track_path)
+        time.sleep(0.1)
 
 
 def nothing(emp):
