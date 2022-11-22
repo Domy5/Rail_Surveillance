@@ -11,7 +11,7 @@
 import time
 import os
 import cv2
-from playsound import playsound
+import pygame
 
 lista_puntos = []
 
@@ -108,9 +108,13 @@ def punto_en_poligono(punto, poligono):
 
 def play_track(track_path):
     """Play Music in a loop."""
-    while True:
-        playsound(track_path)
-        time.sleep(0.1)
+    
+    pygame.init()
+    pygame.mixer.init()
+    
+    sonido_fondo = pygame.mixer.Sound(track_path)
+    pygame.mixer.Sound.play(sonido_fondo) # Con -1 indicamos que queremos que se repita indefinidamente
+
 
 
 def nothing(emp):

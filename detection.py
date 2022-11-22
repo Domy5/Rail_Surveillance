@@ -335,11 +335,13 @@ while True:
             texto_estado = 'Precaucion Movimiento'
             color = color_amarillo
             cantidad_contornos = 0
+            utils.play_track('alarm_2.wav')
         
     if persona_en_via :
         texto_estado = 'ALERTA Movimiento'
         color = color_rojo
         print("PERSONAS EN LA VIA¡¡¡")
+        utils.play_track('//sound//alarm_1.wavv')
         
     if  tren and persona_en_via :
         texto_estado = 'ALERTA Movimiento'
