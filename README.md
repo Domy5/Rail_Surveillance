@@ -1,3 +1,6 @@
+![Rail_Surveillance](/assets/images/Rail_Surveillance_1.jpg)
+![Rail_Surveillance](/assets/images/Rail_Surveillance_2.jpg)
+
 # DETECCIÓN DE OBJETOS EN PLATAFORMA DE VÍA
 
 ## Preparar el entorno:
