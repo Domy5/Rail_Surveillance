@@ -15,7 +15,7 @@ import pygame
 
 lista_puntos = []
 
-def mide_tiempo(funcion): # Metodo decorador para medir tiempos de otro metodo
+def measures_time(funcion): # Metodo decorador para medir tiempos de otro metodo
    def funcion_medida(*args, **kwargs):
        inicio = time.time()
        c = funcion(*args, **kwargs)
@@ -23,10 +23,10 @@ def mide_tiempo(funcion): # Metodo decorador para medir tiempos de otro metodo
        return c
    return funcion_medida
 
-#@mide_tiempo 
-def borrarPantalla(): #Definimos la función estableciendo el nombre que queramos
-    """Borra la terminar
-    Borrado de la terminal independientemente de sistema operativo
+#@measures_time 
+def clear_screen(): #Definimos la función estableciendo el nombre que queramos
+    """Delete the terminal
+        Deletion of the terminal regardless of operating system
     """
     
     if os.name == "posix":
@@ -38,7 +38,7 @@ def borrarPantalla(): #Definimos la función estableciendo el nombre que queramo
     print("")
     
 def is_cuda_cv():
-    """Comprobación CUDA
+    """Verification CUDA
     1 == using cuda, 0 = not using cuda
     """
     try:  
@@ -50,13 +50,12 @@ def is_cuda_cv():
     except:
         return 0
     
-def dibujando(event, x, y, flags, param):
-    """Evento ratón
-    Imprimimos la información sobre los eventos que se estén realizando con el raton 
-        con el formato que necesita para dibujar con cv2
+def draw_dots(event, x, y, flags, param):
+    """mouse event
+     We print the information about the events that are being carried out with the mouse
+     with the format you need to draw with cv2
     """
-    # Imprimimos la información sobre los eventos que se estén realizando con el raton
-    
+    # We print the information about the events that are being carried out with the mouse
        
     global lista_puntos
     puntos = [', punto11 = ', ', punto12 = ',', punto21 = ', ', punto22 = ',', punto31 = ', ', punto32 = ',', punto41 = ', ', punto42 = ',', punto51 = ', ', punto52 = ']
@@ -86,11 +85,11 @@ def dibujando(event, x, y, flags, param):
   
             lista_puntos = []
 
-def punto_en_poligono(punto, poligono):
+def point_in_polygon(punto, poligono):
     """Ray casting
-    Comprueba si un punto se encuentra dentro de un polígono
+    Check if a point is inside a polygon
         
-       poligono - Lista de tuplas con los puntos que forman los vértices [(x1, x2), (x2, y2), ..., (xn, yn)]
+        polygon - List of tuples with the points that form the vertices [(x1, x2), (x2, y2), ..., (xn, yn)]
     """
     i = 0
     x = punto[0]
@@ -106,19 +105,17 @@ def punto_en_poligono(punto, poligono):
         j = i
     return salida
 
-def play_track(main_dir, track):
+def play_track(main_dir, track, play):
     """Play Music in a loop."""
     
-    pygame.init()
-    pygame.mixer.init()
-    
-    #file = os.path.join(main_dir, track)
-    
-    pygame.mixer.Sound(os.path.join(main_dir, track)).play()
-    #sonido_fondo = pygame.mixer.Sound(file).play()
-    #pygame.mixer.Sound.play(sonido_fondo) # Con -1 indicamos que queremos que se repita indefinidamente
-
-
+    if (play):
+        pygame.init()
+        pygame.mixer.init()
+        pygame.mixer.Sound(os.path.join(main_dir, track)).play()
+        
+        #file = os.path.join(main_dir, track)
+        #sonido_fondo = pygame.mixer.Sound(file).play()
+        #pygame.mixer.Sound.play(sonido_fondo) # Con -1 indicamos que queremos que se repita indefinidamente
 
 def nothing(emp):
     pass
