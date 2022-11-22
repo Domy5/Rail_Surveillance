@@ -106,14 +106,17 @@ def punto_en_poligono(punto, poligono):
         j = i
     return salida
 
-def play_track(track_path):
+def play_track(main_dir, track):
     """Play Music in a loop."""
     
     pygame.init()
     pygame.mixer.init()
     
-    sonido_fondo = pygame.mixer.Sound(track_path)
-    pygame.mixer.Sound.play(sonido_fondo) # Con -1 indicamos que queremos que se repita indefinidamente
+    #file = os.path.join(main_dir, track)
+    
+    pygame.mixer.Sound(os.path.join(main_dir, track)).play()
+    #sonido_fondo = pygame.mixer.Sound(file).play()
+    #pygame.mixer.Sound.play(sonido_fondo) # Con -1 indicamos que queremos que se repita indefinidamente
 
 
 
