@@ -1,10 +1,22 @@
-# RAIL SURVEILLANCE
+
+<h1 align="center"> RAIL SURVEILLANCE </h1>
 
 ![Rail_Surveillance](/assets/images/Rail_Surveillance_1.jpg)
 ![Rail_Surveillance](/assets/images/Rail_Surveillance_2.jpg)
+   <p align="left">
+   <img src="https://img.shields.io/badge/STATUS-EN%20DESAROLLO-green">
+   <img src="https://img.shields.io/badge/LICENCE-CC%20(by--nc--nd)-green">
+   </p>
 
-# DETECCIÓN DE OBJETOS EN PLATAFORMA DE VÍA
+Implementación de herramienta software de VIGILANCIA FERROVIARIA que permita la detención de personas y/u objetos en un área delimitada como peligrosa en vías de trenes metropolitanos, a través de las cámaras de CCTV existentes.
 
+## Índice
+
+* [Índice](#índice)
+* [Preparar el entorno](#preparar-el-entorno)
+* [Parámetros](#parámetros)
+* [Descripción del proyecto](#descripción-del-proyecto)
+* [Estado del proyecto](#Estado-del-proyecto)
 ## Preparar el entorno:
 
   - **Tener instalado Python (probado con la versión 3.10)**
