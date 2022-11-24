@@ -1,24 +1,35 @@
+<!---
+https://www.aluracursos.com/blog/como-escribir-un-readme-increible-en-tu-github
+https://ajaxhispano.com/ask/comentarios-en-markdown-13816/
+-->
 
 <h1 align="center"> RAIL SURVEILLANCE </h1>
 
 ![Rail_Surveillance](/assets/images/Rail_Surveillance_1.jpg)
 ![Rail_Surveillance](/assets/images/Rail_Surveillance_2.jpg)
+<!---( ![Rail_Surveillance](/assets/images/CC.png) ) -->
    <p align="left">
    <img src="https://img.shields.io/badge/STATUS-EN%20DESAROLLO-green">
    <img src="https://img.shields.io/badge/LICENCE-CC%20(by--nc--nd)-green">
    </p>
+:octocat: :steam_locomotive:
 
 Implementación de herramienta software de VIGILANCIA FERROVIARIA que permita la detención de personas y/u objetos en un área delimitada como peligrosa en vías de trenes metropolitanos, a través de las cámaras de CCTV existentes.
 
-## Índice
+## :notebook: Índice
 
-* [Índice](#índice)
-* [Preparar el entorno](#preparar-el-entorno)
-* [Parámetros](#parámetros)
-* [Descripción del proyecto](#descripción-del-proyecto)
-* [Estado del proyecto](#Estado-del-proyecto)
-## Preparar el entorno:
+* :hammer: [Funcionalidades del proyecto](#funcionalidades-del-proyecto)
+* 🛠️ [Preparar el entorno](#preparar-el-entorno)
+* :page_with_curl: [Argumentos en línea de comandos](#argumentos-en-línea-de-comandos)
+* :pushpin: [En ejecución](en-ejecución)
 
+## :hammer: Funcionalidades del proyecto
+
+- `Funcionalidad 1`: Alertar por la detección de personas en el área delimitada.
+- `Funcionalidad 2`: Alertar por la detección de movimientos diferente a trenes en el área delimitada.
+- `Funcionalidad 3`: Emitir Alarma Sonoras al detección de peligros
+- `Funcionalidad 4`: Guardar Capturas de pantallas de los percances.
+## 🛠️ Preparar el entorno:
   - **Tener instalado Python (probado con la versión 3.10)**
 
     - Es conveniene usar entornos virtuales como venv:
@@ -92,17 +103,14 @@ MIOpen runtime version: N/A
 
 .../
 ```
-
-## Parámetros:
-
-### Argumentos en línea de comandos:
+## :page_with_curl: Argumentos en línea de comandos:
 
 deteccion.py [-h] [-v] [-info] [-m] [-d] [-s] [-mm] [-c {gpu,cpu}] [-i INPUT]
 
 Opciones:
 | Argumento corto | Argumento largo | Descripción |
 |:----------|:-------------|:--|
-|-h | --help | Mostrar este mensaje de ayuda y salir|
+|-h | --help | Mostrar mensaje de ayuda y salir|
 | -v | --version | Versión del programa|
 | -info | --informacion | Información de las versiones de los paquetes usados|
 | -m | --mascara | Muestra la  mascara|
@@ -112,7 +120,7 @@ Opciones:
 | -c | --procesar_imagen | Parámetro GPU o CPU|
 | -i | --input | Ruta de video a procesar|
 
-### En ejecución:
+## :pushpin: En ejecución:
 
 - Esc : cierra la ejecución del video
 - p   : para el video
@@ -124,6 +132,7 @@ Opciones:
   - 4:-> Punto pie derecho
   - 5:-> Rectángulo detección, Contornos en la escena (Personas, trenes, bolsos, carros)
   - 6:-> Activar mejor rendimiento
+  - 7:-> Activar sonoria de alarmas
 ### CUDA con Nvidea:
 
 - Tener una tarjeta Nvidea
