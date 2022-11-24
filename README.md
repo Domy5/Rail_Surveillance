@@ -1,6 +1,8 @@
 <!---
 https://www.aluracursos.com/blog/como-escribir-un-readme-increible-en-tu-github
 https://ajaxhispano.com/ask/comentarios-en-markdown-13816/
+https://github-emoji-picker.vercel.app/
+https://www.img2go.com/es/convertir-video-a-gif
 -->
 
 <h1 align="center"> RAIL SURVEILLANCE </h1>
@@ -18,38 +20,47 @@ Implementación de herramienta software de VIGILANCIA FERROVIARIA que permita la
 
 ## :notebook: Índice
 
-* :hammer: [Funcionalidades del proyecto](#funcionalidades-del-proyecto)
-* 🛠️ [Preparar el entorno](#preparar-el-entorno)
-* :page_with_curl: [Argumentos en línea de comandos](#argumentos-en-línea-de-comandos)
-* :pushpin: [En ejecución](en-ejecución)
+- [:notebook: Índice](#notebook-índice)
+- [:hammer: Funcionalidades del proyecto](#hammer-funcionalidades-del-proyecto)
+- [:hammer\_and\_wrench: Preparar el entorno](#hammer_and_wrench-preparar-el-entorno)
+- [:page\_with\_curl: Ejecución del programa:](#page_with_curl-ejecución-del-programa)
+- [:pushpin: Instalación Toolkit CUDA para tarjetas gráficas Nvidea:](#pushpin-instalación-toolkit-cuda-para-tarjetas-gráficas-nvidea)
 
 ## :hammer: Funcionalidades del proyecto
-
+***
 - `Funcionalidad 1`: Alertar por la detección de personas en el área delimitada.
 - `Funcionalidad 2`: Alertar por la detección de movimientos diferente a trenes en el área delimitada.
-- `Funcionalidad 3`: Emitir Alarma Sonoras al detección de peligros
-- `Funcionalidad 4`: Guardar Capturas de pantallas de los percances.
-## 🛠️ Preparar el entorno:
-  - **Tener instalado Python (probado con la versión 3.10)**
+- `Funcionalidad 3`: Emitir Alarma Sonoras al detectar peligros en el área delimitada.
+- `Funcionalidad 4`: Guardar Capturas de pantallas de los percances detectados.
+## :hammer_and_wrench: Preparar el entorno
+***
+  - **Instalar Python 3.10 (probado en esta versión)**
+  
+Es posible instalar directamente en su entorno por defecto, pero altamente recomendable instalar en un entorno virtual de la siguiente manera:
 
-    - Es conveniene usar entornos virtuales como venv:
-      - ```python -m venv deteccion-env```
-    - Para Windows, ejecuta:
-      - ```deteccion-env\Scripts\activate.bat```
-    - Para Unix o MacOS, ejecuta:
-      - ```source deteccion-env/bin/activate```
-    - Clonar repositorio:
+  - Generar entorno virtual con el nombre "deteccion-env":
+    - ```python -m venv deteccion-env```
+  - Para activar en instalaciones Windows, ejecuta:
+    - ```deteccion-env\Scripts\activate.bat```
+  - Para activar en instalaciones Unix o MacOS, ejecuta:
+    - ```source deteccion-env/bin/activate```
+
+Clonamos el repositorio en esta misma carpeta:
+- Clonar repositorio:
       - ```git clone https://github.com/Domy5/Rail_Surveillance.git```
+
+
+Ahora hay dos posibilidades, disponer o no de una GPU, tarjeta gráfica compatible con programación CUDA (Tarjeta Gráficas Nvidea).
 
 - **Instalación sin GPU:**
 
   - Instalar OpenCV con sus módulos principales y extras (contrib).
-    - ```pip install opencv-contrib-python==4.5.5.62```
-    - ```pip install imutils```
+    - ```opencv-contrib-python==4.5.5.62```
+    - ```imutils```
   - Instalar los requerimientos del proyecto (numpy, pandas, pyTorch...)
-    - ```pip install -r requirements_sin_gpu.txt```
+    - ```install -r requirements_sin_gpu.txt```
 
-- **Instalación con GPU (Nvidia):**
+- **Instalación con GPU (Tarjera Gráfica Nvidia):**
   
   - Para instalar **OpenCV para GPU**, debemos compilar o construir nuestro propio código del código fuente de OpenCV con CUDA, cuDNN y GPU Nvidia, para hacer esto necesitamos usar algunas herramientas como Visual Studio 2016, CMake (compilador GCC de C++), etc.
 
@@ -68,15 +79,16 @@ Implementación de herramienta software de VIGILANCIA FERROVIARIA que permita la
 
     - Tener instalado OpenCV habilitado para GPU (paso anterior de compilación OpenCV para GPU)
     - Instalación de pyTorch con cuda+cuDNN
-      - ```pip install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu113 ```
+      - ```install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu113 ```
     - Instalar los requetimientos del proyecto (pandas, matplotlib...)
-      - ```pip install -r requirements_con_gpu.txt```
+      - ```install -r requirements_con_gpu.txt```
 
 Podemos comprobar lo instalado en el entorno con este comando:
 
 ```
 python -m torch.utils.collect_env
 ```
+Lo que nos dará como resultado esta salida por consola:
 
 ```
 Collecting environment information...
@@ -103,14 +115,31 @@ MIOpen runtime version: N/A
 
 .../
 ```
-## :page_with_curl: Argumentos en línea de comandos:
+## :page_with_curl: Ejecución del programa:
+***
+
+Para lanzar el programa solo será necesario ejecutar este comando:
+
+```
+python deteccion.py
+```
+
+Ejemplo de Prealarma:
+
+![Rail_Surveillance](/assets/images/caida.gif)
+
+Ejemplo de Alarma:
+
+![Rail_Surveillance](/assets/images/caida_1.gif)
+
+Disponemos de configuración a traves de linea de **argumentos en línea de comandos:**
 
 deteccion.py [-h] [-v] [-info] [-m] [-d] [-s] [-mm] [-c {gpu,cpu}] [-i INPUT]
 
 Opciones:
 | Argumento corto | Argumento largo | Descripción |
 |:----------|:-------------|:--|
-|-h | --help | Mostrar mensaje de ayuda y salir|
+| -h | --help | Mostrar mensaje de ayuda y salir|
 | -v | --version | Versión del programa|
 | -info | --informacion | Información de las versiones de los paquetes usados|
 | -m | --mascara | Muestra la  mascara|
@@ -120,11 +149,12 @@ Opciones:
 | -c | --procesar_imagen | Parámetro GPU o CPU|
 | -i | --input | Ruta de video a procesar|
 
-## :pushpin: En ejecución:
+Una vez **en ejecución** podemos modificar el comportamiento de ciertas caracteristicas del programa:
 
-- Esc : cierra la ejecución del video
-- p   : para el video
-- c   : captura un frame del video y lo guarda en "C:\\capturas\\numero_img.jpg'"
+- Esc : Cierra la ejecución del video
+- p   : Parar el video
+- c   : Captura un frame del video y lo guarda en "C:\\capturas\\numero_img.jpg'"
+- s   : Activar sonoria de alarmas
 - OSD :
   - 1:-> Infor Alarma, FPS, numero de fotograma
   - 2:-> ROI
@@ -132,16 +162,13 @@ Opciones:
   - 4:-> Punto pie derecho
   - 5:-> Rectángulo detección, Contornos en la escena (Personas, trenes, bolsos, carros)
   - 6:-> Activar mejor rendimiento
-  - 7:-> Activar sonoria de alarmas
-### CUDA con Nvidea:
+## :pushpin: Instalación Toolkit CUDA para tarjetas gráficas Nvidea:
+***
 
 - Tener una tarjeta Nvidea
 - su tarjeta gráfica es elegible para el marco CUDA Toolkit https://en.wikipedia.org/wiki/CUDA (ejemplo para RTX 3060 Ti es GPU "GA102, GA103, GA104, GA106, GA107" y Micro-architecture Ampere, Compute capability (version) 8.6 )
   - CUDA SDK 11.1 – 11.7 support for compute capability 3.5 – 8.6 (Kepler (in part), Maxwell, Pascal, Volta, Turing, Ampere).
-
-# Instalación
-
-- Tener recien intalado solo Python 3.10.5 (no anaconda)
+- Tener recien intalado solo Python 3.10 (no anaconda)
 - Instalar “numpy” (pip install numpy)
 - Descargar Community edition Visual Studio, en mi caso he descargado Visual Studio 2019
   -  Verifique "Desarrollo de escritorio con C ++", y Continúe con los valores predeterminados y haga clic en instalar
@@ -241,3 +268,5 @@ https://thinkinfi.com/install-opencv-gpu-with-cuda-for-windows-10/
 
 https://thinkinfi.com/use-opencv-with-gpu-python/
 
+
+![Rail_Surveillance](/assets/images/CC_pequeño.png)

@@ -176,14 +176,23 @@ print("Tiempo de video      :", video_time)
 print("HEIGHT: {}".format(height))
 print("WIDTH: {}".format(width))
 print("")
-print("OSD:")
-print('1:-> Infor Alarma, FPS, N fotos')
-print('2:-> ROI')
-print('3:-> Contornos dentro de ROI por subtracion de fondo')
-print('4:-> Punto pie derecho')
-print('5:-> Contornos en la escena (Personas, trenes, bolsos, carros)')
-print('6:-> Activar mejor rendimiento')
-print('7:-> Activar sonoria de alarmas')
+print('Opciones:')
+print('------------------------------')
+print('- Esc :-> Cierra la ejecución del video')
+print('- p   :-> Parar el video')
+print('- c   :-> Captura un frame del video y lo guarda en \\capturas\\numero_img.jpg')
+print('- s   :-> Activar sonoria de alarmas')
+print('')
+print('------------------------------')
+print('')
+print('OSD:')
+print('------------------------------')
+print('- 1 :-> Infor Alarma, FPS, N fotos')
+print('- 2 :-> ROI')
+print('- 3 :-> Contornos dentro de ROI por subtracion de fondo')
+print('- 4 :-> Punto pie derecho en personas')
+print('- 5 :-> Contornos en la escena (Personas, trenes, bolsos, carros)')
+print('- 6 :-> Activar mejor rendimiento')
 print('------------------------------')
 print('')
        
@@ -415,7 +424,7 @@ while True:
         flag_5 = False if flag_5 else True    
     if k == ord('6'):                       # Activar mejor rendimiento
         flag_6 = False if flag_6 else True    
-    if k == ord('7'):                       # Activar sonoria de alarmas
+    if k == ord('s'):                       # Activar sonoria de alarmas
         flag_7 = False if flag_7 else True
 
     # Cerrar ventana desde X
