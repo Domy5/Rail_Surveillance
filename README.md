@@ -14,16 +14,17 @@ https://www.img2go.com/es/convertir-video-a-gif
    <img src="https://img.shields.io/badge/STATUS-EN%20DESAROLLO-green">
    <img src="https://img.shields.io/badge/LICENCE-CC%20(by--nc--nd)-green">
    </p>
-:octocat: :steam_locomotive:
+:octocat:
 
 Implementación de herramienta software de VIGILANCIA FERROVIARIA que permita la detención de personas y/u objetos en un área delimitada como peligrosa en vías de trenes metropolitanos, a través de las cámaras de CCTV existentes.
 
 ## :notebook: Índice
 
+<!---- [:notebook: Índice](#notebook-índice)-->
 - [:notebook: Índice](#notebook-índice)
 - [:hammer: Funcionalidades del proyecto](#hammer-funcionalidades-del-proyecto)
 - [:hammer\_and\_wrench: Preparar el entorno](#hammer_and_wrench-preparar-el-entorno)
-- [:page\_with\_curl: Ejecución del programa:](#page_with_curl-ejecución-del-programa)
+- [:page\_with\_curl::arrow\_forward: Ejecución del programa:](#page_with_curlarrow_forward-ejecución-del-programa)
 - [:pushpin: Instalación Toolkit CUDA para tarjetas gráficas Nvidea:](#pushpin-instalación-toolkit-cuda-para-tarjetas-gráficas-nvidea)
 
 ## :hammer: Funcionalidades del proyecto
@@ -35,6 +36,7 @@ Implementación de herramienta software de VIGILANCIA FERROVIARIA que permita la
 ## :hammer_and_wrench: Preparar el entorno
 ***
   - **Instalar Python 3.10 (probado en esta versión)**
+    - https://www.python.org/downloads/release/python-3108/
   
 Es posible instalar directamente en su entorno por defecto, pero altamente recomendable instalar en un entorno virtual de la siguiente manera:
 
@@ -45,12 +47,12 @@ Es posible instalar directamente en su entorno por defecto, pero altamente recom
   - Para activar en instalaciones Unix o MacOS, ejecuta:
     - ```source deteccion-env/bin/activate```
 
-Clonamos el repositorio en esta misma carpeta:
+Clonar el repositorio en esta misma carpeta:
 - Clonar repositorio:
       - ```git clone https://github.com/Domy5/Rail_Surveillance.git```
 
 
-Ahora hay dos posibilidades, disponer o no de una GPU, tarjeta gráfica compatible con programación CUDA (Tarjeta Gráficas Nvidea).
+Ahora hay dos posibilidades, disponer o no de una GPU, (tarjeta gráfica compatible con programación CUDA de Nvidea).
 
 - **Instalación sin GPU:**
 
@@ -115,10 +117,10 @@ MIOpen runtime version: N/A
 
 .../
 ```
-## :page_with_curl: Ejecución del programa:
+## :page_with_curl::arrow_forward: Ejecución del programa:
 ***
 
-Para lanzar el programa solo será necesario ejecutar este comando:
+Para lanzar el programa solo será necesario ejecutar el comando:
 
 ```
 python deteccion.py
@@ -132,7 +134,7 @@ Ejemplo de Alarma:
 
 ![Rail_Surveillance](/assets/images/caida_1.gif)
 
-Disponemos de configuración a traves de linea de **argumentos en línea de comandos:**
+Se dispone de configuración a traves de **argumentos en línea de comandos:**
 
 deteccion.py [-h] [-v] [-info] [-m] [-d] [-s] [-mm] [-c {gpu,cpu}] [-i INPUT]
 
@@ -149,12 +151,13 @@ Opciones:
 | -c | --procesar_imagen | Parámetro GPU o CPU|
 | -i | --input | Ruta de video a procesar|
 
-Una vez **en ejecución** podemos modificar el comportamiento de ciertas caracteristicas del programa:
+Una vez **en ejecución** podemos modificar el comportamiento de ciertas características del programa:
 
-- Esc : Cierra la ejecución del video
-- p   : Parar el video
-- c   : Captura un frame del video y lo guarda en "C:\\capturas\\numero_img.jpg'"
-- s   : Activar sonoria de alarmas
+- Opciones :
+  - Esc : Cierra la ejecución del video
+  - p   : Parar el video
+  - c   : Captura un frame del video y lo guarda en "\\capturas\\numero_img.jpg'"
+  - s   : Activar sonoria de alarmas
 - OSD :
   - 1:-> Infor Alarma, FPS, numero de fotograma
   - 2:-> ROI
