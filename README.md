@@ -69,7 +69,7 @@ Now there are two possibilities, to have or not to have a GPU, (graphics card co
     - ```opencv-contrib-python==4.5.5.62```
     - ```imutils```
   - Install project requirements (numpy, pandas, pyTorch...)
-    - ```install -r requirements_sin_gpu.txt```
+    - ```install -r requirements_without_gpu.txt```
 
 - **Installation with GPU (graphics card compatible with CUDA programming of Nvidea):**
   
@@ -92,7 +92,7 @@ Now there are two possibilities, to have or not to have a GPU, (graphics card co
     - pyTorch installation with cuda+cuDNN
       - ```install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu113 ```
     - Install project requetimientos (pandas, matplotlib...)
-      - ```install -r requirements_con_gpu.txt```
+      - ```install -r requirements_with_gpu.txt```
 
 We can check what is installed in the environment with this command:
 
@@ -151,7 +151,7 @@ Alarm example:
 
 Configuration is available through **command line arguments:**
 
-deteccion.py [-h] [-v] [-info] [-m] [-d] [-s] [-mm] [-c {gpu,cpu}] [-i INPUT]
+deteccion.py [-h] [-v] [-info] [-m] [-d] [-s] [-mm] [-c {gpu,cpu}] [-i input]
 
 Options:
 | Short argument | Long argument | Description |
