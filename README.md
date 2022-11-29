@@ -14,7 +14,10 @@ https://www.img2go.com/es/convertir-video-a-gif
    <img src="https://img.shields.io/badge/STATUS-In%20Development-red">
    <img src="https://img.shields.io/badge/LICENCE-CC%20(by--nc--nd)-green">
    </p>
-:octocat:
+   
+<h1 align="center"> :octocat: </h1>
+
+
 
 Implementation of a RAILWAY SURVEILLANCE software tool that allows the detention of people and/or objects in an area delimited as dangerous on metropolitan train tracks, through existing CCTV cameras.
 
