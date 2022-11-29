@@ -11,21 +11,21 @@ https://www.img2go.com/es/convertir-video-a-gif
 ![Rail_Surveillance](/assets/images/Rail_Surveillance_2.jpg)
 <!---( ![Rail_Surveillance](/assets/images/CC.png) ) -->
    <p align="left">
-   <img src="https://img.shields.io/badge/STATUS-EN%20DESAROLLO-green">
+   <img src="https://img.shields.io/badge/STATUS-In%20Development-red">
    <img src="https://img.shields.io/badge/LICENCE-CC%20(by--nc--nd)-green">
    </p>
 :octocat:
 
 Implementation of a RAILWAY SURVEILLANCE software tool that allows the detention of people and/or objects in an area delimited as dangerous on metropolitan train tracks, through existing CCTV cameras.
 
-## :notebook: Índice
+## :notebook: Index
 
 <!---- [:notebook: Index(#notebook-index)-->
-- [:notebook: Index(#notebook-index)
-- [:hammer: Project Functionality ](#hammer-project-functionality )
-- [:hammer\_and\_wrench: Preparing the environment](#hammer_and_wrench-preparing-the-environment)
-- [:page\_with\_curl::arrow\_forward: Program implementation:](#page_with_curlarrow_forward-program_implementation)
-- [:pushpin: CUDA Toolkit Installation for Nvidea Graphics Cards:](#pushpin-installation-toolkit-cuda-for-graphic-cards-nvidea)
+- [:notebook: Index](#notebook-index)
+- [:hammer: Project Functionality](#hammer-project-functionality)
+- [:hammer_and_wrench: Preparing the environment](#hammer_and_wrench-preparing-the-environment)
+- [:page_with_curl::arrow_forward: Program implementation](#page_with_curlarrow_forward-program-implementation)
+- [:pushpin: CUDA Toolkit Installation for Nvidea Graphics Cards](#pushpin-cuda-toolkit-installation-for-nvidea-graphics-cards)
 
 ## :hammer: Project Functionality 
 ***
@@ -33,6 +33,12 @@ Implementation of a RAILWAY SURVEILLANCE software tool that allows the detention
 - `Functionality  2`: Alerting for the detection of movements other than trains in the delimited area.
 - `Functionality  3`: Emit an audible alarm when detecting hazards in the delimited area.
 - `Functionality  4`: Save screenshots of the detected problems.
+
+<h6 align="right">
+
+[:notebook: Index](#notebook-index)
+</h6>
+
 ## :hammer_and_wrench: Preparing the environment
 ***
   - **Install Python 3.10 (tested on this version)**
@@ -49,7 +55,7 @@ It is possible to install directly in your default environment, but highly recom
 
 Clone the repository in this same folder:
 - Clone repository:
-      - ```git clone https://github.com/Domy5/Rail_Surveillance.git```
+  - ```git clone https://github.com/Domy5/Rail_Surveillance.git```
 
 
 Now there are two possibilities, to have or not to have a GPU, (graphics card compatible with CUDA programming of Nvidea).
@@ -70,7 +76,7 @@ Now there are two possibilities, to have or not to have a GPU, (graphics card co
     
       - https://thinkinfi.com/install-opencv-gpu-with-cuda-for-windows-10/
       
-    - ‏For linux:
+    - For linux:
     
       - https://towardsdev.com/installing-opencv-4-with-cuda-in-ubuntu-20-04-fde6d6a0a367
       - https://gist.github.com/raulqf/f42c718a658cddc16f9df07ecc627be7
@@ -117,6 +123,12 @@ MIOpen runtime version: N/A
 
 .../
 ```
+
+<h6 align="right">
+
+[:notebook: Index](#notebook-index)
+</h6>
+
 ## :page_with_curl::arrow_forward: Program implementation:
 ***
 
@@ -145,8 +157,8 @@ Options:
 | -v | --version | Version of the program|
 | -info | --information | Information about the versions of the used packages|
 | -m | --mask | Show the mask|
-| -d | --detection | | Display object detections |
-| -s | --s-slicer | | Show scrollbar (resource-intensive)|
+| -d | --detection | Display object detections |
+| -s | --s-slicer | Show scrollbar (resource-intensive)|
 | -mm | --mouse | Displays console click coordinates|
 | -c | --process_image | GPU or CPU parameter|
 | -i | --input | Video path to process|
@@ -165,6 +177,12 @@ Once **in execution** we can modify the behavior of certain program features:
   - 4:-> Right foot point
   - 5:-> Rectangle detection, Contours in the scene (People, trains, bags, cars)
   - 6:-> Enable best performance
+
+<h6 align="right">
+
+[:notebook: Index](#notebook-index)
+</h6>
+  
 ## :pushpin: CUDA Toolkit Installation for Nvidea Graphics Cards:
 ***
 
@@ -273,3 +291,8 @@ https://thinkinfi.com/use-opencv-with-gpu-python/
 
 
 ![Rail_Surveillance](/assets/images/CC_pequeño.png)
+
+<h6 align="right">
+
+[:notebook: Index](#notebook-index)
+</h6>
