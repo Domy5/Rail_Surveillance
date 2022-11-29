@@ -52,9 +52,9 @@ It is possible to install directly in your default environment, but highly recom
   - Generate virtual environment with the name ```detection-env```:
     - ```python -m venv deteccion-env```.
   - To activate on Windows installations, run:
-    - ```env-detection-scripts-activate.bat```.
+    - ```env-detection-scripts-activate.bat```
   - To activate on Unix or MacOS installations, run:
-    - ```source detection-env/bin/activate```.
+    - ```source detection-env/bin/activate```
 
 Clone the repository in this same folder:
 - Clone repository:
@@ -66,10 +66,10 @@ Now there are two possibilities, to have or not to have a GPU, (graphics card co
 - **Installation without GPU:** Install OpenCV with its main modules and extras (contrib).
 
   - Install OpenCV with its main and extra modules (contrib).
-    - ```opencv-contrib-python==4.5.5.62````.
+    - ```opencv-contrib-python==4.5.5.62```
     - ```imutils```
   - Install project requirements (numpy, pandas, pyTorch...)
-    - ```install -r requirements_sin_gpu.txt````
+    - ```install -r requirements_sin_gpu.txt```
 
 - **Installation with GPU (graphics card compatible with CUDA programming of Nvidea):**
   
@@ -90,7 +90,7 @@ Now there are two possibilities, to have or not to have a GPU, (graphics card co
 
     - Have GPU-enabled OpenCV installed (previous step of compiling OpenCV for GPU)
     - pyTorch installation with cuda+cuDNN
-      - ```install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu113 ````
+      - ```install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu113 ```
     - Install project requetimientos (pandas, matplotlib...)
       - ```install -r requirements_con_gpu.txt```
 
@@ -193,7 +193,7 @@ Once **in execution** we can modify the behavior of certain program features:
 - Your graphics card is eligible for the CUDA Toolkit framework https://en.wikipedia.org/wiki/CUDA (example for RTX 3060 Ti is GPU "GA102, GA103, GA104, GA106, GA107" and Micro-architecture Ampere, Compute capability (version) 8.6 )
   - CUDA SDK 11.1 - 11.7 support for compute capability 3.5 - 8.6 (Kepler (in part), Maxwell, Pascal, Volta, Turing, Ampere).
 - Have just installed only Python 3.10 (not anaconda).
-- Install "numpy" (pip install numpy)
+- Install "numpy"
 - Download Community edition Visual Studio, in my case I have downloaded Visual Studio 2019
   - Check "Desktop development with C++", and continue with the defaults and click on install
 - Download CMake: https://cmake.org/download/
