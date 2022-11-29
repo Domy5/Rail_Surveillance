@@ -16,81 +16,81 @@ https://www.img2go.com/es/convertir-video-a-gif
    </p>
 :octocat:
 
-Implementación de herramienta software de VIGILANCIA FERROVIARIA que permita la detención de personas y/u objetos en un área delimitada como peligrosa en vías de trenes metropolitanos, a través de las cámaras de CCTV existentes.
+Implementation of a RAILWAY SURVEILLANCE software tool that allows the detention of people and/or objects in an area delimited as dangerous on metropolitan train tracks, through existing CCTV cameras.
 
 ## :notebook: Índice
 
-<!---- [:notebook: Índice](#notebook-índice)-->
-- [:notebook: Índice](#notebook-índice)
-- [:hammer: Funcionalidades del proyecto](#hammer-funcionalidades-del-proyecto)
-- [:hammer\_and\_wrench: Preparar el entorno](#hammer_and_wrench-preparar-el-entorno)
-- [:page\_with\_curl::arrow\_forward: Ejecución del programa:](#page_with_curlarrow_forward-ejecución-del-programa)
-- [:pushpin: Instalación Toolkit CUDA para tarjetas gráficas Nvidea:](#pushpin-instalación-toolkit-cuda-para-tarjetas-gráficas-nvidea)
+<!---- [:notebook: Index(#notebook-index)-->
+- [:notebook: Index(#notebook-index)
+- [:hammer: Project Functionality ](#hammer-project-functionality )
+- [:hammer\_and\_wrench: Preparing the environment](#hammer_and_wrench-preparing-the-environment)
+- [:page\_with\_curl::arrow\_forward: Program implementation:](#page_with_curlarrow_forward-program_implementation)
+- [:pushpin: CUDA Toolkit Installation for Nvidea Graphics Cards:](#pushpin-installation-toolkit-cuda-for-graphic-cards-nvidea)
 
-## :hammer: Funcionalidades del proyecto
+## :hammer: Project Functionality 
 ***
-- `Funcionalidad 1`: Alertar por la detección de personas en el área delimitada.
-- `Funcionalidad 2`: Alertar por la detección de movimientos diferente a trenes en el área delimitada.
-- `Funcionalidad 3`: Emitir Alarma Sonoras al detectar peligros en el área delimitada.
-- `Funcionalidad 4`: Guardar Capturas de pantallas de los percances detectados.
-## :hammer_and_wrench: Preparar el entorno
+- `Functionality  1`: Alert for the detection of people in the delimited area.
+- `Functionality  2`: Alerting for the detection of movements other than trains in the delimited area.
+- `Functionality  3`: Emit an audible alarm when detecting hazards in the delimited area.
+- `Functionality  4`: Save screenshots of the detected problems.
+## :hammer_and_wrench: Preparing the environment
 ***
-  - **Instalar Python 3.10 (probado en esta versión)**
+  - **Install Python 3.10 (tested on this version)**
     - https://www.python.org/downloads/release/python-3108/
   
-Es posible instalar directamente en su entorno por defecto, pero altamente recomendable instalar en un entorno virtual de la siguiente manera:
+It is possible to install directly in your default environment, but highly recommended to install in a virtual environment as follows:
 
-  - Generar entorno virtual con el nombre "deteccion-env":
-    - ```python -m venv deteccion-env```
-  - Para activar en instalaciones Windows, ejecuta:
-    - ```deteccion-env\Scripts\activate.bat```
-  - Para activar en instalaciones Unix o MacOS, ejecuta:
-    - ```source deteccion-env/bin/activate```
+  - Generate virtual environment with the name ```detection-env```:
+    - ```python -m venv deteccion-env```.
+  - To activate on Windows installations, run:
+    - ```env-detection-scripts-activate.bat```.
+  - To activate on Unix or MacOS installations, run:
+    - ```source detection-env/bin/activate```.
 
-Clonar el repositorio en esta misma carpeta:
-- Clonar repositorio:
+Clone the repository in this same folder:
+- Clone repository:
       - ```git clone https://github.com/Domy5/Rail_Surveillance.git```
 
 
-Ahora hay dos posibilidades, disponer o no de una GPU, (tarjeta gráfica compatible con programación CUDA de Nvidea).
+Now there are two possibilities, to have or not to have a GPU, (graphics card compatible with CUDA programming of Nvidea).
 
-- **Instalación sin GPU:**
+- **Installation without GPU:** Install OpenCV with its main modules and extras (contrib).
 
-  - Instalar OpenCV con sus módulos principales y extras (contrib).
-    - ```opencv-contrib-python==4.5.5.62```
+  - Install OpenCV with its main and extra modules (contrib).
+    - ```opencv-contrib-python==4.5.5.62````.
     - ```imutils```
-  - Instalar los requerimientos del proyecto (numpy, pandas, pyTorch...)
-    - ```install -r requirements_sin_gpu.txt```
+  - Install project requirements (numpy, pandas, pyTorch...)
+    - ```install -r requirements_sin_gpu.txt````
 
-- **Instalación con GPU (Tarjera Gráfica Nvidia):**
+- **Installation with GPU (graphics card compatible with CUDA programming of Nvidea):**
   
-  - Para instalar **OpenCV para GPU**, debemos compilar o construir nuestro propio código del código fuente de OpenCV con CUDA, cuDNN y GPU Nvidia, para hacer esto necesitamos usar algunas herramientas como Visual Studio 2016, CMake (compilador GCC de C++), etc.
+  - For installation **OpenCV for GPU**, we need to compile or build our own code from OpenCV source code with CUDA, cuDNN and Nvidia GPU, to do this we need to use some tools like Visual Studio 2016, CMake (GCC C++ compiler), etc.
 
-    - Para Windows, ejecuta:
+    - For Windows, run:
     
       - https://thinkinfi.com/install-opencv-gpu-with-cuda-for-windows-10/
       
-    - Para linux:
+    - ‏For linux:
     
       - https://towardsdev.com/installing-opencv-4-with-cuda-in-ubuntu-20-04-fde6d6a0a367
       - https://gist.github.com/raulqf/f42c718a658cddc16f9df07ecc627be7
 
-  - Instalar CUDA de Nvidea  11.3 "CUDA Driver Version / Runtime Version          11.5.50"
-  - Instalar CUDA Capability Major/Minor version number:    8.6 (esta versión dependerá de la Tarjeta gráfica que la que se disponga, en este caso NVIDIA GeForce RTX 3060 Ti, 8192MiB, se puede consultar la versión en https://en.wikipedia.org/wiki/CUDA)
-  - Descargar la versión de cuDNN que coincida con CUDA en este caso "cuDNN v8.0" (guardar en la carpeta correspondiente normalmente "C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.5\bin\")
+  - Install CUDA from Nvidea 11.3 "CUDA Driver Version / Runtime Version          11.5.50"
+  - Install CUDA Capability Major/Minor version number:    8.6 (this version will depend on the graphics card you have, in this case NVIDIA GeForce RTX 3060 Ti, 8192MiB, you can check the version in https://en.wikipedia.org/wiki/CUDA)
+  - Download the version of cuDNN that matches CUDA in this case "cuDNN v8.0" (save in the corresponding folder usually "C:\Program Files").
 
-    - Tener instalado OpenCV habilitado para GPU (paso anterior de compilación OpenCV para GPU)
-    - Instalación de pyTorch con cuda+cuDNN
-      - ```install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu113 ```
-    - Instalar los requetimientos del proyecto (pandas, matplotlib...)
+    - Have GPU-enabled OpenCV installed (previous step of compiling OpenCV for GPU)
+    - pyTorch installation with cuda+cuDNN
+      - ```install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu113 ````
+    - Install project requetimientos (pandas, matplotlib...)
       - ```install -r requirements_con_gpu.txt```
 
-Podemos comprobar lo instalado en el entorno con este comando:
+We can check what is installed in the environment with this command:
 
 ```
 python -m torch.utils.collect_env
 ```
-Lo que nos dará como resultado esta salida por consola:
+This will result in this console output:
 
 ```
 Collecting environment information...
@@ -117,84 +117,84 @@ MIOpen runtime version: N/A
 
 .../
 ```
-## :page_with_curl::arrow_forward: Ejecución del programa:
+## :page_with_curl::arrow_forward: Program implementation:
 ***
 
-Para lanzar el programa solo será necesario ejecutar el comando:
+To launch the program it is only necessary to execute the command:
 
 ```
 python deteccion.py
 ```
 
-Ejemplo de Prealarma:
+Prealarm example:
 
-![Rail_Surveillance](/assets/images/caida.gif)
+![Rail_Surveillance](/assets/images/caida.gif).
 
-Ejemplo de Alarma:
+Alarm example:
 
 ![Rail_Surveillance](/assets/images/caida_1.gif)
 
-Se dispone de configuración a traves de **argumentos en línea de comandos:**
+Configuration is available through **command line arguments:**
 
 deteccion.py [-h] [-v] [-info] [-m] [-d] [-s] [-mm] [-c {gpu,cpu}] [-i INPUT]
 
-Opciones:
-| Argumento corto | Argumento largo | Descripción |
+Options:
+| Short argument | Long argument | Description |
 |:----------|:-------------|:--|
-| -h | --help | Mostrar mensaje de ayuda y salir|
-| -v | --version | Versión del programa|
-| -info | --informacion | Información de las versiones de los paquetes usados|
-| -m | --mascara | Muestra la  mascara|
-| -d | --deteccion | Muestra la detecciones de objetos|
-| -s | --slicer | Muestra barra de desplazamiento (consume muchos recursos)|
-| -mm | --mouse | Muestra por consola las coordenadas de los click|
-| -c | --procesar_imagen | Parámetro GPU o CPU|
-| -i | --input | Ruta de video a procesar|
+| -h | --help | Show help message and exit|
+| -v | --version | Version of the program|
+| -info | --information | Information about the versions of the used packages|
+| -m | --mask | Show the mask|
+| -d | --detection | | Display object detections |
+| -s | --s-slicer | | Show scrollbar (resource-intensive)|
+| -mm | --mouse | Displays console click coordinates|
+| -c | --process_image | GPU or CPU parameter|
+| -i | --input | Video path to process|
 
-Una vez **en ejecución** podemos modificar el comportamiento de ciertas características del programa:
+Once **in execution** we can modify the behavior of certain program features:
 
-- Opciones :
-  - Esc : Cierra la ejecución del video
-  - p   : Parar el video
-  - c   : Captura un frame del video y lo guarda en "\\capturas\\numero_img.jpg'"
-  - s   : Activar sonoria de alarmas
+- Options :
+  - Esc : Close video execution
+  - p : Stop the video
+  - c : Captures a frame of the video and saves it in "\\capturas\\numero_img.jpg"
+  - s : Activate alarm sound
 - OSD :
-  - 1:-> Infor Alarma, FPS, numero de fotograma
+  - 1:-> Infor Alarm, FPS, frame number...
   - 2:-> ROI
-  - 3:-> Contornos dentro de ROI por subtracion de fondo
-  - 4:-> Punto pie derecho
-  - 5:-> Rectángulo detección, Contornos en la escena (Personas, trenes, bolsos, carros)
-  - 6:-> Activar mejor rendimiento
-## :pushpin: Instalación Toolkit CUDA para tarjetas gráficas Nvidea:
+  - 3:-> Outlines inside ROI by background subtraction
+  - 4:-> Right foot point
+  - 5:-> Rectangle detection, Contours in the scene (People, trains, bags, cars)
+  - 6:-> Enable best performance
+## :pushpin: CUDA Toolkit Installation for Nvidea Graphics Cards:
 ***
 
-- Tener una tarjeta Nvidea
-- su tarjeta gráfica es elegible para el marco CUDA Toolkit https://en.wikipedia.org/wiki/CUDA (ejemplo para RTX 3060 Ti es GPU "GA102, GA103, GA104, GA106, GA107" y Micro-architecture Ampere, Compute capability (version) 8.6 )
-  - CUDA SDK 11.1 – 11.7 support for compute capability 3.5 – 8.6 (Kepler (in part), Maxwell, Pascal, Volta, Turing, Ampere).
-- Tener recien intalado solo Python 3.10 (no anaconda)
-- Instalar “numpy” (pip install numpy)
-- Descargar Community edition Visual Studio, en mi caso he descargado Visual Studio 2019
-  -  Verifique "Desarrollo de escritorio con C ++", y Continúe con los valores predeterminados y haga clic en instalar
-- Descargar CMake: https://cmake.org/download/
-- Descargar CUDA desde el siguiente enlace. He descargado CUDA Toolkit 11.5
+- Have an Nvidea card
+- Your graphics card is eligible for the CUDA Toolkit framework https://en.wikipedia.org/wiki/CUDA (example for RTX 3060 Ti is GPU "GA102, GA103, GA104, GA106, GA107" and Micro-architecture Ampere, Compute capability (version) 8.6 )
+  - CUDA SDK 11.1 - 11.7 support for compute capability 3.5 - 8.6 (Kepler (in part), Maxwell, Pascal, Volta, Turing, Ampere).
+- Have just installed only Python 3.10 (not anaconda).
+- Install "numpy" (pip install numpy)
+- Download Community edition Visual Studio, in my case I have downloaded Visual Studio 2019
+  - Check "Desktop development with C++", and continue with the defaults and click on install
+- Download CMake: https://cmake.org/download/
+- Download CUDA from the following link. I have downloaded CUDA Toolkit 11.5
 https://developer.nvidia.com/cuda-toolkit-archive
-- Descargar cuDNN según CUDA
-Para descargar cuDNN, debe registrarse en el sitio web de NVIDIA, luego puede descargar cuDNN: https://developer.nvidia.com/rdp/cudnn-archive
-  -   Busque la carpeta de instalación de CUDA, en mi caso: C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.5
-      -   Copie todos los archivos (un archivo en mi caso) de la carpeta bin de CuDNN y péguelos dentro de la carpeta bin de CUDA (carpeta de instalación)
-      -   Copie todos los archivos (un archivo en mi caso) de la carpeta de inclusión de CuDNN y péguelos dentro de la carpeta de inclusión de CUDA (carpeta de instalación )
-      -   Copie todos los archivos (un archivo en mi caso) de la carpeta lib/x64 de CuDNN y péguelos dentro de la carpeta lib/x64 de CUDA (carpeta de instalación)
+- Download cuDNN according to CUDA
+To download cuDNN, you need to register on NVIDIA website, then you can download cuDNNN: https://developer.nvidia.com/rdp/cudnn-archive
+  - Browse to the CUDA installation folder, in my case: C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.5
+      - Copy all files (one file in my case) from the CuDNN bin folder and paste them into the CUDA bin folder (installation folder).
+      - Copy all files (one file in my case) from the CuDNN include folder and paste them into the CUDA include folder (installation folder).
+      - Copy all files (one file in my case) from the CuDNN lib/x64 folder and paste them inside the CUDA lib/x64 folder (installation folder)
   
-Al hacer eso, la instalación de cuDNN ya está finalizada.
+By doing so, the cuDNN installation is finished.
 
-- Carpeta Nueva por ejemplo "Build_CUDA"
+- New folder e.g. "Build_CUDA".
 
-- Descargar https://github.com/opencv/opencv/archive/4.6.0.zip
-- Descargar https://github.com/opencv/opencv_contrib/archive/refs/tags/4.6.0.zip
-- Extaer los archivos Zip e n la nueva carpeta.
-- Deberíamos cambiar el código “opencv-XX.0\cmake\OpenCVDetectPython.cmake” para que detecte el compilador python3 por defecto.
+- Download https://github.com/opencv/opencv/archive/4.6.0.zip
+- Download https://github.com/opencv/opencv_contrib/archive/refs/tags/4.6.0.zip
+- Extract the Zip files into the new folder.
+- We should change the code "opencv-XX.0cmakeOpenCVDetectPython.cmake" to detect python3 compiler by default.
 
-Código anterior :
+Previous code :
 
 ```
 if(PYTHON_DEFAULT_EXECUTABLE)
@@ -209,7 +209,7 @@ elseif(PYTHON3_EXECUTABLE AND PYTHON3INTERP_FOUND)
     set(PYTHON_DEFAULT_EXECUTABLE "${PYTHON3_EXECUTABLE}")
 endif()
 ```
-Reemplace con este código :
+Replace with this code :
 ```
 if(PYTHON_DEFAULT_EXECUTABLE)
     set(PYTHON_DEFAULT_AVAILABLE "TRUE")
@@ -224,13 +224,13 @@ elseif(PYTHON2INTERP_FOUND)
 endif() 
 ```
 
-- Abra la aplicación Cmake 
-- Proporcione la ruta del código fuente de OpenCV
-- Proporcione la ruta de la carpeta 'Build_CUDA'
-- Haga clic en el botón " Configurar "
-- En la ventana Configurar, seleccione la plataforma opcional como x64
-- Haga clic en el botón " Finalizar "
-- Ahora configure las siguientes variables buscando y verificando esas variables en la pestaña de búsqueda:
+- Open the Cmake application 
+- Provide the path to the OpenCV source code
+- Provide the path to the 'Build_CUDA' folder
+- Click on the "Configure" button
+- In the Configure window, select the optional platform as x64
+- Click the "Finish" button
+- Now configure the following variables by searching and verifying those variables in the search tab:
   
 
 
@@ -240,26 +240,26 @@ OPENCV_DNN_CUDA — Check it
 ENABLE_FAST_MATH — Check it
 OPENCV_EXTRA_MODULES_PATH — Provide path of “modules” directory from “opencv-contrib-X.X.0” C:/Build_CUDA/opencv_contrib-4.6.0/modules"
 ```
-- Presiona el botón de configuración nuevamente, espera la salida de " configuración finalizada "
-- Ahora necesitamos configurar algunas variables más
+- Press the configuration button again, wait for the "configuration complete" output.
+- Now we need to configure some more variables
   
 ```
 CUDA_FAST_MATH — Check it
-CUDA_ARCH_BIN — 8.6 (Esto depende de la tarjeta grafica, buscar en wikipedia el Compute capability en mi caso para la RTX 3060 Ti es (version) 8.6)
+CUDA_ARCH_BIN — 8.6 (This depends on the graphics card, look in wikipedia the Compute capability in my case for the RTX 3060 Ti is (version) 8.6)
 ```
-- Presiona el botón de configuración nuevamente, espera la salida de " configuración finalizada "
-- Después de eso, haga clic en el botón Generar y espere la salida " Generación finalizada ".
+- Press the Setup button again, wait for the output of ``Setup completed``.
+- After that, click the Generate button and wait for the output " Generating done ".
 
-- Con Configuring done y Generating done
-Su configuración y generación de código están listas . Ahora puedes cerrar la aplicación cmake-gui
+- With Configuring done and Generating done
+Your configuration and code generation are ready . Now you can close the cmake-gui application.
 
-- <span style="color: red;">He generado un ZIP en este paso</span>
+- <span style="color: red;">I have generated a ZIP file in this step.</span>
 
-- Abrir OpenCV.sln
-- Cambie el modo "depurar" al modo "liberar" ("Debug" por "Release")(Ubicado barra de opciones arriba derecha)
-- Expanda “ CMakeTargets ” (Ubicado a la derecha), Haga clic derecho en " ALL_BUILD " y haga clic en construir, Esto puede tardar unos 30 minutos en completarse.(14:13.15:28)
-- Ahora haga clic con el botón derecho en " INSTALAR " (del mismo "CMakeTargets") y haga clic en compilar . Esto no llevará mucho tiempo.
-- Verificar
+- Open OpenCV.sln
+- Change the "Debug" mode to "Release" mode ("Debug" for "Release")(Located top right options bar)
+- Expand " CMakeTargets " (Located on the right), Right click on " ALL_BUILD " and click on build, This may take about 30 minutes to complete.(14:13.15:28)
+- Now right click on "INSTALL" (from the same "CMakeTargets") and click compile. This will not take long.
+- Verify
 
 ```
 import cv2
