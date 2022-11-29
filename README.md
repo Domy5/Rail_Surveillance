@@ -129,7 +129,7 @@ MIOpen runtime version: N/A
 [:notebook: Index](#notebook-index)
 </h6>
 
-## :page_with_curl::arrow_forward: Program implementation:
+## :page_with_curl::arrow_forward: Program implementation
 ***
 
 To launch the program it is only necessary to execute the command:
@@ -183,7 +183,7 @@ Once **in execution** we can modify the behavior of certain program features:
 [:notebook: Index](#notebook-index)
 </h6>
   
-## :pushpin: CUDA Toolkit Installation for Nvidea Graphics Cards:
+## :pushpin: CUDA Toolkit Installation for Nvidea Graphics Cards
 ***
 
 - Have an Nvidea card
