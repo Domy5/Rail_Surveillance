@@ -32,10 +32,10 @@ Implementation of a RAILWAY SURVEILLANCE software tool that allows the detention
 
 ## :hammer: Project Functionality 
 ***
-- `Functionality  1`: Alert for the detection of people in the delimited area.
-- `Functionality  2`: Alerting for the detection of movements other than trains in the delimited area.
-- `Functionality  3`: Emit an audible alarm when detecting hazards in the delimited area.
-- `Functionality  4`: Save screenshots of the detected problems.
+- `Functionality  1:` Alert for the detection of people in the delimited area.
+- `Functionality  2:` Alerting for the detection of movements other than trains in the delimited area.
+- `Functionality  3:` Emit an audible alarm when detecting hazards in the delimited area.
+- `Functionality  4:` Save screenshots of the detected problems.
 
 <h6 align="right">
 
