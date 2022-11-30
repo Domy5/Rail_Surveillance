@@ -9,11 +9,8 @@ https://www.img2go.com/es/convertir-video-a-gif
 
 ![Rail_Surveillance](/assets/images/Rail_Surveillance_1.jpg)
 ![Rail_Surveillance](/assets/images/Rail_Surveillance_2.jpg)
-<!---( ![Rail_Surveillance](/assets/images/CC.png) ) -->
-   <p align="left">
-   <img src="https://img.shields.io/badge/STATUS-In%20Development-red">
-   <img src="https://img.shields.io/badge/LICENCE-CC%20(by--nc--nd)-green">
-   </p>
+![STATUS: In Development](https://img.shields.io/badge/STATUS-In%20Development-red)
+[![LICENSE: CC BY-NC-SA 4.0](https://img.shields.io/badge/LICENSE-CC%20BY--NC--SA%204.0-green.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
    
 <h1 align="center"> :octocat: </h1>
 
