@@ -135,6 +135,8 @@ if args.procesar_imagen == 'gpu':
 
 model = torch.hub.load('ultralytics/yolov5', 'yolov5x6', pretrained=True)
 
+#model = torch.hub.load('ultralytics/yolov5', 'yolov5x6', pretrained=True, force_reload=True)
+
 
 # The compiled module will have precision as specified by "op_precision".
 # Here, it will have FP16 precision.
@@ -205,11 +207,22 @@ if args.slicer:
 if args.mouse:
     cv2.setMouseCallback(windows_name, utils.draw_dots)
 
+# Subtractors
+#mogSubtractor = cv2.bgsegm.createBackgroundSubtractorMOG(300)
+#mog2Subtractor = cv2.createBackgroundSubtractorMOG2(300, 400, False)
+#gmgSubtractor = cv2.bgsegm.createBackgroundSubtractorGMG(10, .8)
+#knnSubtractor = cv2.createBackgroundSubtractorKNN(100, 400, True)
+#cntSubtractor = cv2.bgsegm.createBackgroundSubtractorCNT(5, True)
+
 # fgbg = cv2.bgsegm.createBackgroundSubtractorMOG( )
 # fgbg = cv2.bgsegm.createBackgroundSubtractorMOG(history = 200,nmixtures = 5, backgroundRatio = 0.7,noiseSigma = 0 )
 # fgbg = cv2.bgsegm.createBackgroundSubtractorGMG()
 # fgbg = cv2.bgsegm.createBackgroundSubtractorGSOC()
-fgbg = cv2.createBackgroundSubtractorMOG2()
+
+mog2Subtractor = cv2.createBackgroundSubtractorMOG2()
+
+# https://docs.opencv.org/4.x/d2/d55/group__bgsegm.html
+
 
 Kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (3, 3))
 
@@ -228,7 +241,7 @@ while True:
 
     ret, frame = cap.read()
     
-    if ret == False:
+    if not ret:
         break
     
     contorno = False
@@ -302,8 +315,8 @@ while True:
     imAux = cv2.drawContours(imAux, [area_pts], -1, (255), -1)
     imagen_area = cv2.bitwise_and(gray, gray, mask=imAux)
 
-    fgmask = fgbg.apply(imagen_area)
-    fgmask = cv2.morphologyEx(fgmask, cv2.MORPH_OPEN, Kernel)
+    fgmask = mog2Subtractor.apply(imagen_area)
+    # fgmask = cv2.morphologyEx(fgmask, cv2.MORPH_OPEN, Kernel)  # Sería mejor aplicar apertura morfológica al resultado para eliminar los ruidos. // https://docs.opencv.org/4.x/d8/d38/tutorial_bgsegm_bg_subtraction.html
     fgmask = cv2.dilate(fgmask, None, iterations=2)
 
     cnts = cv2.findContours(fgmask, cv2.RETR_EXTERNAL,cv2.CHAIN_APPROX_SIMPLE)[0]
