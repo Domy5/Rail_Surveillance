@@ -135,7 +135,7 @@ if args.procesar_imagen == 'gpu':
 
 model = torch.hub.load('ultralytics/yolov5', 'yolov5x6', pretrained=True)
 
-#model = torch.hub.load('ultralytics/yolov5', 'yolov5x6', pretrained=True, force_reload=True)
+# model = torch.hub.load('ultralytics/yolov5', 'yolov5x6', pretrained=True, force_reload=True)
 
 
 # The compiled module will have precision as specified by "op_precision".
@@ -222,7 +222,6 @@ if args.mouse:
 mog2Subtractor = cv2.createBackgroundSubtractorMOG2()
 
 # https://docs.opencv.org/4.x/d2/d55/group__bgsegm.html
-
 
 Kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (3, 3))
 
@@ -316,7 +315,7 @@ while True:
     imagen_area = cv2.bitwise_and(gray, gray, mask=imAux)
 
     fgmask = mog2Subtractor.apply(imagen_area)
-    # fgmask = cv2.morphologyEx(fgmask, cv2.MORPH_OPEN, Kernel)  # Sería mejor aplicar apertura morfológica al resultado para eliminar los ruidos. // https://docs.opencv.org/4.x/d8/d38/tutorial_bgsegm_bg_subtraction.html
+    fgmask = cv2.morphologyEx(fgmask, cv2.MORPH_OPEN, Kernel)  # Sería mejor aplicar apertura morfológica al resultado para eliminar los ruidos. // https://docs.opencv.org/4.x/d8/d38/tutorial_bgsegm_bg_subtraction.html
     fgmask = cv2.dilate(fgmask, None, iterations=2)
 
     cnts = cv2.findContours(fgmask, cv2.RETR_EXTERNAL,cv2.CHAIN_APPROX_SIMPLE)[0]
