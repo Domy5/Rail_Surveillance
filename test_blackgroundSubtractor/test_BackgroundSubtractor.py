@@ -6,7 +6,7 @@ import csv
 from os import remove
 from os import path
 
-fileCSV = 'test_blackground_subtractor/test_BS.csv'
+fileCSV = 'test_blackgroundSubtractor/test_BS.csv'
 
 if path.exists(fileCSV):
     remove(fileCSV)
