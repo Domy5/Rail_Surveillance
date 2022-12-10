@@ -290,8 +290,10 @@ https://thinkinfi.com/install-opencv-gpu-with-cuda-for-windows-10/
 https://thinkinfi.com/use-opencv-with-gpu-python/
 
 
+<h6 align="center"> 
 ![Rail_Surveillance](/assets/images/CC_pequeño.png)
-
+</h6>
+ 
 <h6 align="right">
 
 [:notebook: Index](#notebook-index)
