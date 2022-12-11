@@ -6,7 +6,7 @@
 # version ='1.0'
 # https://github.com/Domy5/Rail_Surveillance/
 # ---------------------------------------------------------------------------
-""" Deteccion de objetos en plataforma de vias ferroviarias"""
+""" Deteccion de objetos en plataforma de vias ferroviarias """
 # ---------------------------------------------------------------------------
 
 # https://blog.roboflow.com/object-detection/
@@ -26,8 +26,7 @@ import numpy as np
 import pandas as pd
 
 import tools.utils as utils
-import controler
-
+import db.controler as controler
 
 loop_flag = 0
 pos = 0
