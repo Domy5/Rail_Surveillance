@@ -25,8 +25,8 @@ Session = sessionmaker(controler.engine)
 session = Session()
 
 #if __name__ == "__main__": 
-controler.Base.metadata.drop_all(controler.engine) 
-controler.Base.metadata.create_all(controler.engine)
+controler.base.metadata.drop_all(controler.engine) 
+controler.base.metadata.create_all(controler.engine)
 
 try:
 

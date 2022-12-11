@@ -24,9 +24,9 @@ from sqlalchemy.exc import IntegrityError as exc
 
 # engine = create_engine('sqlite:///db/Camaras.sqlite', echo=True)
 engine = create_engine('sqlite:///db/Camaras.sqlite')
-Base = declarative_base()
+base = declarative_base()
 
-class Camara(Base):
+class Camara(base):
     __tablename__ = 'camara'
 
     id_camara = Column(Integer(), primary_key=True)
@@ -40,7 +40,7 @@ class Camara(Base):
     def __str__(self):
         return self.id_camara
 
-class ROI_poligono(Base):
+class ROI_poligono(base):
     __tablename__ = 'ROI_poligono'
     
     id_poligono = Column(Integer, primary_key=True)
