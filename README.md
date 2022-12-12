@@ -12,9 +12,11 @@ https://www.img2go.com/es/convertir-video-a-gif
 ![STATUS: In Development](https://img.shields.io/badge/STATUS-In%20Development-red)
 [![LICENSE: CC BY-NC-SA 4.0](https://img.shields.io/badge/LICENSE-CC%20BY--NC--SA%204.0-green.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
    
-<h1 align="center"> :octocat: </h1>
+<h5 align="center"> :octocat:
 
+[English](README.md) | [Spanish](README-ES.md)
 
+</h5>
 
 Implementation of a RAILWAY SURVEILLANCE software tool that allows the detention of people and/or objects in an area delimited as dangerous on metropolitan train tracks, through existing CCTV cameras.
 
@@ -289,11 +291,8 @@ https://thinkinfi.com/install-opencv-gpu-with-cuda-for-windows-10/
 
 https://thinkinfi.com/use-opencv-with-gpu-python/
 
-
-<h6 align="center"> 
 ![Rail_Surveillance](/assets/images/CC_pequeño.png)
-</h6>
- 
+
 <h6 align="right">
 
 [:notebook: Index](#notebook-index)
