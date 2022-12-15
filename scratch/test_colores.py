@@ -1,3 +1,14 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+# ----------------------------------------------------------------------------
+# Created By  : Domingo Martínez Núñez
+# Created Date: abril 2022
+# version ='1.0'
+# https://github.com/Domy5/Rail_Surveillance/
+# ---------------------------------------------------------------------------
+""" Detention of people and/or objects on the railway platform in real time """
+# ---------------------------------------------------------------------------
+
 import argparse
 import cv2
 import sys
@@ -6,7 +17,6 @@ import torch
 import time
 import numpy as np
 import pandas as pd
-import utiles
 
 color_verde = (0, 255, 0)  # color verde en BGR
 color_rojo = (0, 0, 255)  # color rojo en BGR
@@ -17,7 +27,6 @@ color_amarillo = (0, 255, 255)  # color azul_cyan en BGR
 color_blanco = (255, 255, 255)  # color azul_cyan en BGR
 color_naranja = (26, 127, 239)  # color azul_cyan en BGR
 color_marron = (37, 73, 141)  # color azul_cyan en BGR
-
 
 print("empeznado")
 

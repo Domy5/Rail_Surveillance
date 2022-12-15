@@ -5,7 +5,7 @@
 # Created Date: abril 2022
 # version ='1.0'
 # ---------------------------------------------------------------------------
-""" Trabajo fin de Grado, deteccion de objetos en plataforma de vias ferroviarias"""
+""" Detention of people and/or objects on the railway platform in real time """
 # ---------------------------------------------------------------------------
 
 import time
@@ -15,7 +15,7 @@ import pygame
 
 lista_puntos = []
 
-def measures_time(funcion): # Metodo decorador para medir tiempos de otro metodo
+def measures_time(funcion): # Decorator method to measure times of another method
    def funcion_medida(*args, **kwargs):
        inicio = time.time()
        c = funcion(*args, **kwargs)
@@ -24,7 +24,7 @@ def measures_time(funcion): # Metodo decorador para medir tiempos de otro metodo
    return funcion_medida
 
 #@measures_time 
-def clear_screen(): #Definimos la función estableciendo el nombre que queramos
+def clear_screen(): # We define the function establishing the name that we want
     """Delete the terminal
         Deletion of the terminal regardless of operating system
     """

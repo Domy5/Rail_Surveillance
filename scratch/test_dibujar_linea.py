@@ -1,3 +1,14 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+# ----------------------------------------------------------------------------
+# Created By  : Domingo Martínez Núñez
+# Created Date: abril 2022
+# version ='1.0'
+# https://github.com/Domy5/Rail_Surveillance/
+# ---------------------------------------------------------------------------
+""" Detention of people and/or objects on the railway platform in real time """
+# ---------------------------------------------------------------------------
+
 import argparse
 import cv2
 import sys

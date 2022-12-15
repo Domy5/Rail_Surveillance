@@ -5,14 +5,14 @@
 # Created Date: abril 2022
 # version ='1.0'
 # ---------------------------------------------------------------------------
-""" Deteccion de objetos en plataforma de vias ferroviarias"""
+""" Detention of people and/or objects on the railway platform in real time """
 # ---------------------------------------------------------------------------
 
 import cv2
 import tools.utils as utils
 
 VIDEO = "a1-003 1 minuto 1 via.mkv"
-VIDEO_PATH = r'test_video/'
+VIDEO_PATH = r'video_test/'
 
 HEIGHT = 480
 WIDTH = 640

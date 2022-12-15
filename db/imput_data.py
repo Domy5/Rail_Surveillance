@@ -6,7 +6,7 @@
 # version ='1.0'
 # https://github.com/Domy5/Rail_Surveillance/
 # ---------------------------------------------------------------------------
-""" Deteccion de objetos en plataforma de vias ferroviarias """
+""" Detention of people and/or objects on the railway platform in real time """
 # ---------------------------------------------------------------------------
 
 import sqlite3 as sql
