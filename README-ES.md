@@ -14,7 +14,12 @@ https://www.img2go.com/es/convertir-video-a-gif
    <img src="https://img.shields.io/badge/STATUS-EN%20DESAROLLO-green">
    <img src="https://img.shields.io/badge/LICENCE-CC%20(by--nc--nd)-green">
    </p>
-:octocat:
+
+<h5 align="center"> :octocat:
+
+[English](README.md) | [Spanish](README-ES.md)
+
+</h5>
 
 Implementación de herramienta software de VIGILANCIA FERROVIARIA que permita la detención de personas y/u objetos en un área delimitada como peligrosa en vías de trenes metropolitanos, a través de las cámaras de CCTV existentes.
 
