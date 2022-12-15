@@ -17,7 +17,7 @@ import csv
 from os import remove
 from os import path
 
-fileCSV = 'test_blackgroundSubtractor/test_BS.csv'
+fileCSV = 'bg_subtractor_test/test_BS.csv'
 
 if path.exists(fileCSV):
     remove(fileCSV)
@@ -29,7 +29,7 @@ with open(fileCSV, "a+", newline ='') as csvfile:
       
 
 # Video Capture
-capture = cv2.VideoCapture("./test_video/a1-003 1 minuto 1 via.mkv")
+capture = cv2.VideoCapture("./video_test/a1-003 1 minuto 1 via.mkv")
 
 # Subtractors improved parameter
 #mogSubtractor = cv2.bgsegm.createBackgroundSubtractorMOG(300)

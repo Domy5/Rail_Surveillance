@@ -6,20 +6,17 @@
 # version ='1.0'
 # https://github.com/Domy5/Rail_Surveillance/
 # ---------------------------------------------------------------------------
-""" Deteccion de objetos en plataforma de vias ferroviarias """
+""" Detention of people and/or objects on the railway platform in real time"""
 # ---------------------------------------------------------------------------
-
-# https://blog.roboflow.com/object-detection/
-# https://blog.roboflow.com/automl-vs-rekognition-vs-custom-vision/
 
 import argparse
 import cv2
 import sys
 import datetime
 import torch
-import torchvision
+#import torchvision
 ##import torch_tensorrt
-import imutils
+#import imutils
 import time
 from playsound import playsound
 import numpy as np
@@ -144,7 +141,7 @@ model = torch.hub.load('ultralytics/yolov5', 'yolov5x6', pretrained=True)
 #####    workspace_size = 1 << 22
 # )
 
-# print(model.eval())  # https://www.youtube.com/watch?v=3Kae4FF0x0k&t=1s
+# print(model.eval())
 
 # (optional list) filter by class, i.e. = [0, 15, 16] for COCO
 # 0 = persona, 1 = bicicleta, 6 = tren, 36 = skateboard, 26 = handbag, 16 = dog, 24  backpack, 13    bench, 28  suitcase
@@ -176,6 +173,8 @@ print("Tiempo de video      :", video_time)
 
 print("HEIGHT: {}".format(height))
 print("WIDTH: {}".format(width))
+
+print("Nº Frame: {}".format(cap.get(cv2.CAP_PROP_FRAME_COUNT)))
 print("")
 print('Opciones:')
 print('------------------------------')
@@ -337,6 +336,7 @@ while True:
     # Obtener el número de marcos de video
     total_frames = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
     frame_number = frame_number + 1
+    # print(frame_number)
 
     # Para que de tiempo a ver los fps
     if counter < 5:

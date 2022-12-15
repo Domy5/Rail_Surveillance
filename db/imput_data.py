@@ -12,7 +12,6 @@
 import sqlite3 as sql
 import sqlalchemy 
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import Column, Integer, String, Table, ForeignKey
 from sqlalchemy import create_engine
 
 from sqlalchemy.orm import relationship
@@ -30,12 +29,12 @@ controler.base.metadata.create_all(controler.engine)
 
 try:
 
-    camara1 = controler.Camara(id_camara = '1', linea = 'L01', estacion = 'Chamartin', anden = '1' , contramarcha = '0', ruta = 'test_video/a1-003 1 minuto 1 via.mkv') 
-    camara2 = controler.Camara(id_camara = '2', linea = 'L02', estacion = 'Las Rosas', anden = '1' , contramarcha = '0', ruta = 'test_video/output.avi') 
-    camara3 = controler.Camara(id_camara = '3', linea = 'L03', estacion = 'Las ', anden = '1' , contramarcha = '0', ruta = 'test_video/Dramatic_footage_Woman_falls_on_Madrid039s_Metro_t.mp4')
-    camara4 = controler.Camara(id_camara = '4', linea = 'L03', estacion = 'Las ', anden = '1' , contramarcha = '0', ruta = 'test_video/Cada_en_el_Metro_de_Madrid2.mp4')        
-    camara5 = controler.Camara(id_camara = '5', linea = 'L03', estacion = 'Las ', anden = '1' , contramarcha = '0', ruta = 'test_video/Rescatada justo antes de ser arrollada por el metro de Madrid.mp4')
-    camara6 = controler.Camara(id_camara = '6', linea = 'L03', estacion = 'Las ', anden = '1' , contramarcha = '0', ruta = 'test_video/Rescatada justo antes de ser arrollada por el metro de Madrid (1).mp4')
+    camara1 = controler.Camara(id_camara = '1', linea = 'L01', estacion = 'Chamartin', anden = '1' , contramarcha = '0', ruta = 'video_test/a1-003 1 minuto 1 via.mkv') 
+    camara2 = controler.Camara(id_camara = '2', linea = 'L02', estacion = 'Las Rosas', anden = '1' , contramarcha = '0', ruta = 'video_test/output.avi') 
+    camara3 = controler.Camara(id_camara = '3', linea = 'L03', estacion = 'Las ', anden = '1' , contramarcha = '0', ruta = 'video_test/Dramatic_footage_Woman_falls_on_Madrid039s_Metro_t.mp4')
+    camara4 = controler.Camara(id_camara = '4', linea = 'L03', estacion = 'Las ', anden = '1' , contramarcha = '0', ruta = 'video_test/Cada_en_el_Metro_de_Madrid2.mp4')        
+    camara5 = controler.Camara(id_camara = '5', linea = 'L03', estacion = 'Las ', anden = '1' , contramarcha = '0', ruta = 'video_test/Rescatada justo antes de ser arrollada por el metro de Madrid.mp4')
+    camara6 = controler.Camara(id_camara = '6', linea = 'L03', estacion = 'Las ', anden = '1' , contramarcha = '0', ruta = 'video_test/Rescatada justo antes de ser arrollada por el metro de Madrid (1).mp4')
   
 #area_pts = np.array([[0, 195], [350, 0], [384, 0], [252, 480], [0, 480]]) 
     ROI_poligono1 = controler.ROI_poligono(id_poligono = '1', punto11 = '0', punto12 = '195', punto21 = '350', punto22 = '0', punto31 = '384', punto32 = '0', punto41 = '252', punto42 = '480', punto51 = '0', punto52 = '480', id_camara = '1') 
