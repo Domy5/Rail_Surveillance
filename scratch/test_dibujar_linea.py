@@ -17,7 +17,6 @@ import torch
 import time
 import numpy as np
 import pandas as pd
-import utiles
 
 '''En geometría analítica las líneas rectas en un plano pueden ser expresadas mediante una ecuación del tipo y = m x + b, donde x, y son variables en un plano cartesiano. En dicha expresión m  es denominada la "pendiente de la recta" y está relacionada con la  inclinación que toma la recta respecto a un par de ejes que definen el  plano. Mientras que b es el denominado "término independiente" u  "ordenada al origen" y es el valor del punto en el cual la recta corta  al eje vertical en el plano.  
 Cita de https://es.wikipedia.org/wiki/Recta'''
