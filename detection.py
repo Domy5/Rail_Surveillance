@@ -6,9 +6,10 @@
 # version ='1.0'
 # https://github.com/Domy5/Rail_Surveillance/
 # ---------------------------------------------------------------------------
-""" Detention of people and/or objects on the railway platform in real time"""
+""" Detention of people and/or objects on the railway platform in real time """
 # ---------------------------------------------------------------------------
 
+import os
 import argparse
 import cv2
 import sys
@@ -415,12 +416,20 @@ while True:
     if k == ord('p'):  # parar si presionas p
         cv2.waitKey(-1)
 
-    if k == ord('c'):  # captura de pantalla
-        print('C:\\capturas\\' + str(img_number) + '.jpg')
-
-        if not cv2.imwrite('C:\\capturas\\' + str(img_number) + '.jpg', frame):
-            raise Exception("No se pudo escribir la imagen")
-        img_number += 1
+    if k == ord('c'):  # screenshots
+        
+        if os.name == "ce" or os.name == "nt" or os.name == "dos":
+            print('C:\\screenshots\\' + str(img_number) + '.jpg')
+            if not cv2.imwrite('C:\\screenshots\\' + str(img_number) + '.jpg', frame):
+                raise Exception("Could not write image")
+            img_number += 1        
+        elif os.name == "posix":
+            print('/screenshots/' + str(img_number) + '.jpg')
+            if not cv2.imwrite('/screenshots/' + str(img_number) + '.jpg', frame):
+                raise Exception("Could not write image")
+            img_number += 1
+        else:
+            print("unknown OS")
         
 # OSD On Screen Display
     if k == ord('1'):                       # Infor Alarma, FPS, N fotos
