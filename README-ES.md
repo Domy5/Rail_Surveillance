@@ -148,12 +148,12 @@ Opciones:
 |:----------|:-------------|:--|
 | -h | --help | Mostrar mensaje de ayuda y salir|
 | -v | --version | Versión del programa|
-| -info | --informacion | Información de las versiones de los paquetes usados|
-| -m | --mascara | Muestra la  mascara|
-| -d | --deteccion | Muestra la detecciones de objetos|
+| -info | --information | Información de las versiones de los paquetes usados|
+| -m | --mask | Muestra la  mascara|
+| -d | --detection | Muestra las detecciones de objetos|
 | -s | --slicer | Muestra barra de desplazamiento (consume muchos recursos)|
 | -mm | --mouse | Muestra por consola las coordenadas de los click|
-| -c | --procesar_imagen | Parámetro GPU o CPU|
+| -c | --process_image | Parámetro GPU o CPU|
 | -i | --input | Ruta de video a procesar|
 
 Una vez **en ejecución** podemos modificar el comportamiento de ciertas características del programa:
