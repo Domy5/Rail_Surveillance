@@ -25,8 +25,8 @@ Implementation of a RAILWAY SURVEILLANCE software tool that allows the detention
 <!---- [:notebook: Index(#notebook-index)-->
 - [:notebook: Index](#notebook-index)
 - [:hammer: Project Functionality](#hammer-project-functionality)
-- [:hammer_and_wrench: Preparing the environment](#hammer_and_wrench-preparing-the-environment)
-- [:page_with_curl::arrow_forward: Program implementation](#page_with_curlarrow_forward-program-implementation)
+- [:hammer\_and\_wrench: Preparing the environment](#hammer_and_wrench-preparing-the-environment)
+- [:page\_with\_curl::arrow\_forward: Program implementation](#page_with_curlarrow_forward-program-implementation)
 - [:pushpin: CUDA Toolkit Installation for Nvidea Graphics Cards](#pushpin-cuda-toolkit-installation-for-nvidea-graphics-cards)
 
 ## :hammer: Project Functionality 
@@ -160,7 +160,7 @@ Options:
 | -info | --information | Information about the versions of the used packages|
 | -m | --mask | Show the mask|
 | -d | --detection | Display object detections |
-| -s | --s-slicer | Show scrollbar (resource-intensive)|
+| -s | --slicer | Show scrollbar (resource-intensive)|
 | -mm | --mouse | Displays console click coordinates|
 | -c | --process_image | GPU or CPU parameter|
 | -i | --input | Video path to process|
