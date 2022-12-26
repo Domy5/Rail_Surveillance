@@ -166,7 +166,7 @@ Una vez **en ejecución** podemos modificar el comportamiento de ciertas caracte
 - OSD :
   - 1:-> Infor Alarma, FPS, numero de fotograma
   - 2:-> ROI
-  - 3:-> Contornos dentro de ROI por subtracion de fondo
+  - 3:-> Contornos dentro de ROI por sustracción de fondo
   - 4:-> Punto pie derecho
   - 5:-> Rectángulo detección, Contornos en la escena (Personas, trenes, bolsos, carros)
   - 6:-> Activar mejor rendimiento
