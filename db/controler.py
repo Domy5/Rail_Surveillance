@@ -23,70 +23,64 @@ from sqlalchemy.exc import IntegrityError as exc
 
 
 # engine = create_engine('sqlite:///db/Camaras.sqlite', echo=True)
-engine = create_engine('sqlite:///db/Camaras.sqlite')
+engine = create_engine('sqlite:///db/Cameras.sqlite')
 base = declarative_base()
 
-class Camara(base):
-    __tablename__ = 'camara'
+class Camera(base):
+    __tablename__ = 'camera'
 
-    id_camara = Column(Integer(), primary_key=True)
-    linea = Column(String(3), nullable=False, unique=False) #L10
-    estacion = Column(String(50), nullable=False, unique=False)
-    anden = Column(Integer(), nullable=False, unique=False)
-    contramarcha = Column(Integer(), nullable=False, unique=False)
-    ruta = Column(String(100), nullable=True, unique=True)
-    ROI_poligono = relationship('ROI_poligono')
+    camera_id = Column(Integer(), primary_key=True)
+    line = Column(String(3), nullable=False, unique=False)
+    station = Column(String(50), nullable=False, unique=False)
+    platform = Column(Integer(), nullable=False, unique=False)
+    against_direction = Column(Integer(), nullable=False, unique=False)
+    path = Column(String(100), nullable=True, unique=True)
+    ROI_polygon = relationship('ROI_polygon')
     
     def __str__(self):
-        return self.id_camara
+        return self.camera_id
 
-class ROI_poligono(base):
-    __tablename__ = 'ROI_poligono'
+class ROI_polygon(base):
+    __tablename__ = 'ROI_polygon'
     
-    id_poligono = Column(Integer, primary_key=True)
-    punto11	= Column(Integer, nullable=False, unique=False)
-    punto12	= Column(Integer, nullable=False, unique=False)
-    punto21	= Column(Integer, nullable=False, unique=False)
-    punto22	= Column(Integer, nullable=False, unique=False)
-    punto31	= Column(Integer, nullable=False, unique=False)
-    punto32	= Column(Integer, nullable=False, unique=False)
-    punto41	= Column(Integer, nullable=False, unique=False)
-    punto42	= Column(Integer, nullable=False, unique=False)
-    punto51	= Column(Integer, nullable=False, unique=False)
-    punto52	= Column(Integer, nullable=False, unique=False)
-    punto_medio11	= Column(Integer, nullable=True, unique=False)
-    punto_medio12	= Column(Integer, nullable=True, unique=False)
-    punto_medio21	= Column(Integer, nullable=True, unique=False)
-    punto_medio22	= Column(Integer, nullable=True, unique=False)
-    id_camara = Column(Integer, ForeignKey("camara.id_camara"))
+    polygon_id = Column(Integer, primary_key=True)
+    point_11	= Column(Integer, nullable=False, unique=False)
+    point_12	= Column(Integer, nullable=False, unique=False)
+    point_21	= Column(Integer, nullable=False, unique=False)
+    point_22	= Column(Integer, nullable=False, unique=False)
+    point_31	= Column(Integer, nullable=False, unique=False)
+    point_32	= Column(Integer, nullable=False, unique=False)
+    point_41	= Column(Integer, nullable=False, unique=False)
+    point_42	= Column(Integer, nullable=False, unique=False)
+    point_51	= Column(Integer, nullable=False, unique=False)
+    point_52	= Column(Integer, nullable=False, unique=False)
+    camera_id = Column(Integer, ForeignKey("camera.camera_id"))
 
     def __str__(self):
-        return self.id_poligono
-    
+        return self.polygon_id
 
-
-def get_ruta_video(id_camara):
+def get_video_path(camera_id):
     
     Session = sessionmaker(bind=engine) 
     session = Session() 
     
-    camara = session.query(Camara).filter(Camara.id_camara == id_camara).all()
+    camera = session.query(Camera).filter(Camera.camera_id == camera_id).all()
     
     session.close()
     
-    return camara[0].ruta
+    return camera[0].path
 
-def get_ROI_video(id_camara):
+def get_video_ROI(camera_id):
     
     Session = sessionmaker(bind=engine) 
     session = Session() 
     
-    poligono = session.query(ROI_poligono).filter(ROI_poligono.id_camara == id_camara).all()
+    polygon = session.query(ROI_polygon).filter(ROI_polygon.camera_id == camera_id).all()
     
     session.close()
     
     # area_pts = np.array([[0, 195], [350, 0], [384, 0], [252, 480], [0, 480]])
 
-    poligono = [[poligono[0].punto11,poligono[0].punto12],[poligono[0].punto21,poligono[0].punto22],[poligono[0].punto31,poligono[0].punto32],[poligono[0].punto41,poligono[0].punto42],[poligono[0].punto51,poligono[0].punto52]]
+    polygon = [[polygon[0].point_11,polygon[0].point_12],[polygon[0].point_21,polygon[0].point_22],[polygon[0].point_31,polygon[0].point_32],[polygon[0].point_41,polygon[0].point_42],[polygon[0].point_51,polygon[0].point_52]]
     
-    return poligono
+    return polygon
