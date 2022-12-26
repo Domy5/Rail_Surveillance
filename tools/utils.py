@@ -13,7 +13,7 @@ import os
 import cv2
 import pygame
 
-lista_puntos = []
+points_list = []
 
 def measures_time(funcion): # Decorator method to measure times of another method
    def funcion_medida(*args, **kwargs):
@@ -57,10 +57,10 @@ def draw_dots(event, x, y, flags, param):
     """
     # We print the information about the events that are being carried out with the mouse
        
-    global lista_puntos
-    puntos = [', punto11 = ', ', punto12 = ',', punto21 = ', ', punto22 = ',', punto31 = ', ', punto32 = ',', punto41 = ', ', punto42 = ',', punto51 = ', ', punto52 = ']
-    lista = []
-    
+    global points_list
+    points = [', point_11 = ', ', point_12 = ',', point_21 = ', ', point_22 = ',', point_31 = ', ', point_32 = ',', point_41 = ', ', point_42 = ',', point_51 = ', ', point_52 = ']
+    list = []
+
     if event == 1:
     # print('event=', event)
     # print('x=', x)
@@ -68,42 +68,41 @@ def draw_dots(event, x, y, flags, param):
     # print('flags=', flags)
     # print('[{},{}],'.format(x, y), end="")
         print('{},{},'.format(x, y))
-        lista_puntos.append('{}'.format(x))
-        lista_puntos.append('{}'.format(y))
+        points_list.append('{}'.format(x))
+        points_list.append('{}'.format(y))
         
-        if len(lista_puntos) > 9:
+        if len(points_list) > 9:
             
-            str1 = 'ROI_poligonoXXX = ROI_poligono(id_poligono = \'XXX\''
-            #str2 = "'".join(lista_puntos).replace('\'',',')
+            str1 = 'ROI_polygon_XXX = ROI_polygon(polygon_id = \'XXX\''
             
-            for p, l in zip(puntos, lista_puntos):
-                lista.append("{}\'{}\'".format(p,l))
+            for p, l in zip(points, points_list):
+                list.append("{}\'{}\'".format(p,l))
             
-            str2 = ''.join(lista)
-            str3 =', id_camara = \'XXX\')'              
-            print (str1 + str2 + str3) # ROI_poligono2 = ROI_poligono(id_poligono = '2', punto11 = '1', punto12 = '1', punto21 = '1', punto22 = '1', punto31 = '1', punto32 = '1', punto41 = '1', punto42 = '1', punto51 = '1', punto52 = '1', id_camara = '2') 
-  
-            lista_puntos = []
+            str2 = ''.join(list)
+            str3 =', camera_id = \'XXX\')'              
+            print (str1 + str2 + str3) #  ROI_polygon_1 = controler.ROI_polygon(polygon_id = '1', point_11 = '0', point_12 = '195', point_21 = '350', point_22 = '0', point_31 = '384', point_32 = '0', point_41 = '252', point_42 = '480', point_51 = '0', point_52 = '480', camera_id = '1') 
+   
+            points_list = []
 
-def point_in_polygon(punto, poligono):
+def point_in_polygon(point, polygon):
     """Ray casting
     Check if a point is inside a polygon
         
         polygon - List of tuples with the points that form the vertices [(x1, x2), (x2, y2), ..., (xn, yn)]
     """
     i = 0
-    x = punto[0]
-    y = punto[1]
+    x = point[0]
+    y = point[1]
     
-    j = len(poligono) - 1
+    j = len(polygon) - 1
     
-    salida = False
-    for i in range(len(poligono)):
-        if (poligono[i][1] < y and poligono[j][1] >= y) or (poligono[j][1] < y and poligono[i][1] >= y):
-            if poligono[i][0] + (y - poligono[i][1]) / (poligono[j][1] - poligono[i][1]) * (poligono[j][0] - poligono[i][0]) < x:
-                salida = not salida
+    output = False
+    for i in range(len(polygon)):
+        if (polygon[i][1] < y and polygon[j][1] >= y) or (polygon[j][1] < y and polygon[i][1] >= y):
+            if polygon[i][0] + (y - polygon[i][1]) / (polygon[j][1] - polygon[i][1]) * (polygon[j][0] - polygon[i][0]) < x:
+                output = not output
         j = i
-    return salida
+    return output
 
 def play_track(main_dir, track, play):
     """Play Music in a loop."""
@@ -115,7 +114,7 @@ def play_track(main_dir, track, play):
         
         #file = os.path.join(main_dir, track)
         #sonido_fondo = pygame.mixer.Sound(file).play()
-        #pygame.mixer.Sound.play(sonido_fondo) # Con -1 indicamos que queremos que se repita indefinidamente
+        #pygame.mixer.Sound.play(sonido_fondo) # With -1 we indicate that we want it to be repeated indefinitely
 
 def nothing(emp):
     pass
