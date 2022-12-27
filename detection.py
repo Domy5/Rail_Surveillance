@@ -15,9 +15,6 @@ import cv2
 import sys
 import datetime
 import torch
-#import torchvision
-##import torch_tensorrt
-#import imutils
 import time
 from playsound import playsound
 import numpy as np
@@ -32,22 +29,24 @@ frame_number = 0
 fpsmax = 0
 counter = 0
 img_number = 0
-windows_name = 'Rail_Surveillance 0.42'
+windows_name = 'Rail_Surveillance 0.75'
 points_list = []
 point = [0, 0]
 frame_counter = 0
 contour_quantity = 0
 
-green_color = (0, 255, 0)  # color verde en BGR
-red_color = (0, 0, 255)  # color rojo en BGR
-blue_color = (255, 0, 0)  # color azul en BGR
-black_color = (0, 0, 0)  # color negro en BGR
-blue_color_cyan = (255, 255, 0)  # color azul_cyan en BGR
-yellow_color = (0, 255, 255)  # color amarillo en BGR
-white_color = (255, 255, 255)  # color blanco en BGR
-orange_color = (26, 127, 239)  # color naranja en BGR
-brown_color = (37, 73, 141)  # color marron en BGR
-gray_color = (150, 150, 150)  # color marron en BGR
+# Colors in BGR
+
+green_color = (0, 255, 0)
+red_color = (0, 0, 255)
+blue_color = (255, 0, 0)
+black_color = (0, 0, 0)
+blue_color_cyan = (255, 255, 0)
+yellow_color = (0, 255, 255)
+white_color = (255, 255, 255)
+orange_color = (26, 127, 239)
+brown_color = (37, 73, 141)
+gray_color = (150, 150, 150)
 
 flag_1 = True
 flag_2 = True
@@ -59,35 +58,33 @@ flag_7 = True
 
 utils.clear_screen()
 
-# print(dir(cv2.cuda))
+parser = argparse.ArgumentParser(description=' Detention of people and/or objects on the railway platform in real time ')
 
-parser = argparse.ArgumentParser(description='Detector de objetos, computación GPU, CPU')
-
-parser.add_argument('-v', '--version', action="store_true",default=False, help='versión del programa')
-parser.add_argument('-info', '--informacion', action="store_true",default=False, help='información de las versiones de los paquetes usados')
-parser.add_argument('-m', '--mascara', action="store_true",default=True, help='muestra la  mascara')
-parser.add_argument('-d', '--deteccion', action="store_true",default=False, help='muestra la detecciones de objetos')
-parser.add_argument('-s', '--slicer', action="store_true", default=False,help='muestra barra de desplazamiento (consume muchos recursos)')
-parser.add_argument('-mm', '--mouse', action="store_true", default=False,help='muestra por consola las coordenadas de los click')
-parser.add_argument('-c', '--procesar_imagen',
+parser.add_argument('-v', '--version', action="store_true",default=False, help='Program version')
+parser.add_argument('-info', '--information', action="store_true",default=False, help='Information about the versions of the packages used')
+parser.add_argument('-m', '--mask', action="store_true",default=True, help='Show the mask')
+parser.add_argument('-d', '--detection', action="store_true",default=False, help='Shows object detections')
+parser.add_argument('-s', '--slicer', action="store_true", default=False,help='Show scrollbar (consumes a lot of resources)')
+parser.add_argument('-mm', '--mouse', action="store_true", default=False,help='Displays the coordinates of the clicks on the console')
+parser.add_argument('-c', '--process_image',
                     type=str,
                     choices=['gpu', 'cpu'],
                     default='gpu',  # default='cpu',
                     required=False,
-                    help='parámetro GPU o CPU')
+                    help='parameter GPU or CPU')
 parser.add_argument('-i', '--input',
                     type=str,
-                    default='1',  # Cambio de camara de video y sus ROI
+                    default='1', # Change of video camera and its ROI
                     required=False,
-                    help='Código administrativo de la estación')
+                    help='Administrative code of the station')
 
 args = parser.parse_args()
 
 if args.version:
     print(windows_name)
-    sys.exit("Hasta la vista.")
+    sys.exit("See you soon!")
 
-if args.informacion:
+if args.information:
     print(f"Version: {windows_name}")
 
     utils.os.system("nvidia-smi")
@@ -109,24 +106,22 @@ if args.informacion:
 
 if not torch.cuda.is_available():
 
-    args.procesar_imagen = 'cpu'
+    args.process_image = 'cpu'
 
-    print('No hay GPU habilitada, se usará CPU para el procesado de imagenes')
+    print('No GPU enabled, CPU will be used for image processing')
     print(' ')
 
 if args.input:
 
-    route = controler.get_ruta_video(args.input)
-    polygon = controler.get_ROI_video(args.input)
+    route = controler.get_video_path(args.input)
+    polygon = controler.get_video_ROI(args.input)
 
     cap = cv2.VideoCapture(f'{route}')
-    area_pts = np.array(polygon)
+    area_points = np.array(polygon)
     
-if args.procesar_imagen == 'gpu':
+if args.process_image == 'gpu':
     gpu_frame = cv2.cuda_GpuMat()  # para usar GPU
 
-# Model https://pytorch.org/hub/research-models
-# Paper https://zenodo.org/record/7002879#.YxNFEHbtb30
 
 # model = torch.hub.load('ultralytics/yolov5', 'yolov5x6', force_reload=True)
 
@@ -145,7 +140,7 @@ model = torch.hub.load('ultralytics/yolov5', 'yolov5x6', pretrained=True)
 # print(model.eval())
 
 # (optional list) filter by class, i.e. = [0, 15, 16] for COCO
-# 0 = persona, 1 = bicicleta, 6 = tren, 36 = skateboard, 26 = handbag, 16 = dog, 24  backpack, 13    bench, 28  suitcase
+# 0 = person, 1 = bike, 6 = train, 36 = skateboard, 26 = handbag, 16 = dog, 24  backpack, 13    bench, 28  suitcase
 model.classes = [0, 6]
 model.conf = 0.3  # NMS confidence threshold   
 model.iou = 0.45  # NMS IoU threshold (0-1)  https://kikaben.com/object-detection-non-maximum-suppression/
@@ -167,36 +162,35 @@ height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
 width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
 
 print("#######################")
-print("## Ejecución en: {} ##".format(args.procesar_imagen))
+print("## Execution in : {} ##".format(args.process_image))
 print("#######################")
-print("Duracion en segundos :", seconds)
-print("Tiempo de video      :", video_time)
+print("Duration in seconds :", seconds)
+print("Video time          :", video_time)
 
 print("HEIGHT: {}".format(height))
 print("WIDTH: {}".format(width))
 
 print("Nº Frame: {}".format(cap.get(cv2.CAP_PROP_FRAME_COUNT)))
 print("")
-print('Opciones:')
+print('Options:')
 print('------------------------------')
-print('- Esc :-> Cierra la ejecución del video')
-print('- p   :-> Parar el video')
-print('- c   :-> Captura un frame del video y lo guarda en \\capturas\\numero_img.jpg')
-print('- s   :-> Activar sonoria de alarmas')
+print('- Esc :-> Close the execution of the video')
+print('- p   :-> Stop the video')
+print('- c   :-> Captures a frame from the video and saves it to \\screenshots\\number_img.jpg')
+print('- s   :-> Activate alarm sound')
 print('')
 print('------------------------------')
 print('')
 print('OSD:')
 print('------------------------------')
-print('- 1 :-> Infor Alarma, FPS, N fotos')
+print('- 1 :-> Infor, Alarm, FPS, Frame number...')
 print('- 2 :-> ROI')
-print('- 3 :-> Contornos dentro de ROI por subtracion de fondo')
-print('- 4 :-> Punto pie derecho en personas')
-print('- 5 :-> Contornos en la escena (Personas, trenes, bolsos, carros)')
-print('- 6 :-> Activar mejor rendimiento')
+print('- 3 :-> Outlines inside ROI by background subtraction')
+print('- 4 :-> Right foot point in people')
+print('- 5 :-> Contours in the scene (People, trains, bags, cars)')
+print('- 6 :-> Enable better performance')
 print('------------------------------')
 print('')
-       
 
 # utiles.clear_screen()
 
@@ -207,11 +201,12 @@ if args.mouse:
     cv2.setMouseCallback(windows_name, utils.draw_dots)
 
 # Subtractors
-#mogSubtractor = cv2.bgsegm.createBackgroundSubtractorMOG(300)
-#mog2Subtractor = cv2.createBackgroundSubtractorMOG2(300, 400, False)
-#gmgSubtractor = cv2.bgsegm.createBackgroundSubtractorGMG(10, .8)
-#knnSubtractor = cv2.createBackgroundSubtractorKNN(100, 400, True)
-#cntSubtractor = cv2.bgsegm.createBackgroundSubtractorCNT(5, True)
+
+# mogSubtractor = cv2.bgsegm.createBackgroundSubtractorMOG(300)
+# mog2Subtractor = cv2.createBackgroundSubtractorMOG2(300, 400, False)
+# gmgSubtractor = cv2.bgsegm.createBackgroundSubtractorGMG(10, .8)
+# knnSubtractor = cv2.createBackgroundSubtractorKNN(100, 400, True)
+# cntSubtractor = cv2.bgsegm.createBackgroundSubtractorCNT(5, True)
 
 # fgbg = cv2.bgsegm.createBackgroundSubtractorMOG( )
 # fgbg = cv2.bgsegm.createBackgroundSubtractorMOG(history = 200,nmixtures = 5, backgroundRatio = 0.7,noiseSigma = 0 )
@@ -220,11 +215,13 @@ if args.mouse:
 
 mog2Subtractor = cv2.createBackgroundSubtractorMOG2()
 
-# https://docs.opencv.org/4.x/d2/d55/group__bgsegm.html
-
 Kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (3, 3))
 
 while True:
+    
+###############################
+
+# Detection
 
     start = time.time()
 
@@ -242,40 +239,38 @@ while True:
     if not ret:
         break
     
-    contorno = False
-    tren = False
-    persona_en_via = False
+    contour = False
+    train = False
+    person_on_via = False
 
-    ## ## # Mejoramos rendimiento
-    ## if flag_6:
-    ##     frame_counter += 1
-    ##     if frame_counter % 2 !=0:
-    ##         print("Mejora rendimoento {}....{}".format(flag_6, frame_counter))
-    ##         continue
+    ## Enable better performance
+    if not flag_6:
+         frame_counter += 1
+         if frame_counter % 2 !=0:
+             print("Enable better performance {}....{}".format(flag_6, frame_counter))
+             continue
 
-    if args.procesar_imagen == 'gpu':
-        gpu_frame.upload(frame)  # para usar GPU
-        gray = cv2.cuda.cvtColor(gpu_frame, cv2.COLOR_BGR2GRAY)  # para usar GPU
-        gray = gray.download()  # para usar GPU
-    elif args.procesar_imagen == 'cpu':
+    if args.process_image == 'gpu':
+        gpu_frame.upload(frame)                                     # to use GPU
+        gray = cv2.cuda.cvtColor(gpu_frame, cv2.COLOR_BGR2GRAY)     # to use GPU
+        gray = gray.download()                                      # to use GPU
+    elif args.process_image == 'cpu':
         gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
     else:
-        print("error de procesador de imagenes")
+        print("Image processor error!")
 
-    # Detección
-    #detect = model(frame, size = 640)
+    # detect = model(frame, size = 640)
     detect = model(frame)
     
     #detect.print()
         #Speed: 11.0ms pre-process, 59.3ms inference, 3.0ms NMS per image at shape (1, 3, 512, 640)
         #image 1/1: 480x640 5 persons
 
-    # info es un objeto de tipo <class 'pandas.core.frame.DataFrame'>
+    # info is an object of type <class 'pandas.core.frame.DataFrame'>
     info = detect.pandas().xyxy[0]
 
-    # .loc y .iloc . La diferencia entre ellos es que .loc acepta etiquetas y .iloc – índices. También cuando usamos los accesores primero especificamos filas y luego columnas.
-
-    # print(info.shape[0]) #numero de filas
+    # .loc y .iloc . The difference between them is that .loc accepts labels and .iloc – indices. Also when we use the accessors we first specify rows and then columns.
+    # print(info.shape[0]) # number of rows
 
     for i in range(info.shape[0]):
         
@@ -291,30 +286,28 @@ while True:
 
         if clase == 0:  # Persona
             
-            # pintamos el un point en esquina inferior derecha de cada persona detectata
+            # We paint a dot in the lower right corner of each detected person
             x = x1.astype(int)
             y = y1.astype(int)
             point = [x - 10, y - 10]
             if flag_4:
-                # Correción Tutor 28/junio
                 cv2.circle(frame, tuple(point), 1, blue_color_cyan, 3)
 
-        if clase == 6:  # Tren
-            tren = True
+        if clase == 6:  # Train
+            train = True
             
         if flag_5:
             cv2.imshow(windows_name, np.squeeze(detect.render()))
 
-    if utils.point_in_polygon(point, area_pts):
-        persona_en_via = True
-        #playsound(AUDIO_ARCHIVO, False)
+    if utils.point_in_polygon(point, area_points):
+        person_on_via = True
 
     imAux = np.zeros(shape=(frame.shape[:2]), dtype=np.uint8)
-    imAux = cv2.drawContours(imAux, [area_pts], -1, (255), -1)
-    imagen_area = cv2.bitwise_and(gray, gray, mask=imAux)
+    imAux = cv2.drawContours(imAux, [area_points], -1, (255), -1)
+    image_area = cv2.bitwise_and(gray, gray, mask=imAux)
 
-    fgmask = mog2Subtractor.apply(imagen_area)
-    fgmask = cv2.morphologyEx(fgmask, cv2.MORPH_OPEN, Kernel)  # Sería mejor aplicar apertura morfológica al resultado para eliminar los ruidos. // https://docs.opencv.org/4.x/d8/d38/tutorial_bgsegm_bg_subtraction.html
+    fgmask = mog2Subtractor.apply(image_area)
+    fgmask = cv2.morphologyEx(fgmask, cv2.MORPH_OPEN, Kernel)  # It would be better to apply morphological aperture to the result to remove the noises.
     fgmask = cv2.dilate(fgmask, None, iterations=2)
 
     cnts = cv2.findContours(fgmask, cv2.RETR_EXTERNAL,cv2.CHAIN_APPROX_SIMPLE)[0]
@@ -323,23 +316,25 @@ while True:
         if cv2.contourArea(cnt) > 250:  # 500
             x, y, w, h = cv2.boundingRect(cnt)
             if flag_3:
-                # dibuja los contornos que se encuentran
+                # Draw the contours that meet
                 cv2.rectangle(frame, (x, y), (x + w, y + h), yellow_color, 2)
-                contorno = True
+                contour = True
     
 ###############################
+
+# Info
     
     end = time.time()
 
     fps = 1 / (end - start)
     fps1 = cap.get(cv2.CAP_PROP_FPS)
 
-    # Obtener el número de marcos de video
+    # Get number of video frames
     total_frames = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
     frame_number = frame_number + 1
     # print(frame_number)
 
-    # Para que de tiempo a ver los fps
+    # So that time to see the fps
     if counter < 5:
         counter = counter + 1
     else:
@@ -348,108 +343,125 @@ while True:
 
 ###############################
 
-#  logica .. si hay tren.. si hay personas en la via, si ha caido un objeto
+#  Logic .. if there is a train .. if there are people on the track, if an object has fallen
 
-    texto_estado = 'Motionless'
+    status_text = 'Motionless'
     color = green_color
 
-    if contorno :
+    if contour :
         contour_quantity +=1
         
         if contour_quantity == 5:
-            texto_estado = 'Caution Movement'
+            status_text = 'Caution Movement'
             color = yellow_color
             contour_quantity = 0
             utils.play_track('assets/sound', 'alarm_2.wav', flag_7)
         
-    if persona_en_via :
-        texto_estado = 'ALERT Movement'
+    if person_on_via :
+        status_text = 'ALERT Movement'
         color = red_color
         print("PEOPLE ON THE TRAIN TRACK¡¡")
         utils.play_track('assets/sound', 'alarm_1.wav', flag_7)
         
-    if  tren and persona_en_via :
-        texto_estado = 'ALERT Movement'
+    if train and person_on_via :
+        status_text = 'ALERT Movement'
         color = red_color
         print("ARRIVAL OF THE TRAIN WITH PERSON ON THE TRAIN TRACK¡¡")
             
-    if  tren : # QUITAR CONTORNOS SI ESTA EL TREN 
+    if train : # Remove contours if the train is present
         flag_3 = False
     else:
         flag_3 = True
 
 ###############################
 
+# Options
+
     if flag_1:
       
-       cv2.putText(frame, texto_estado, (10, 15),cv2.FONT_HERSHEY_SIMPLEX, 0.7, color, 2)
+       cv2.putText(frame, status_text, (10, 15),cv2.FONT_HERSHEY_SIMPLEX, 0.7, color, 2)
+       
+    #   if flag_7:
+    #        cv2.putText(frame, "Sound", (550,18), cv2.FONT_HERSHEY_SIMPLEX, 0.7, green_color, 2)
+    #   else:
+    #        cv2.putText(frame, "Sound", (550,18), cv2.FONT_HERSHEY_SIMPLEX, 0.7, red_color, 2)
+       
       # cv2.putText(frame, 'FPS: {:.2f}'.format(fpsmax), (10, 45),cv2.FONT_HERSHEY_SIMPLEX, 0.7, color, 2)
-      # cv2.putText(frame, 'N fotos: {:.2f}'.format(frame_number), (10, 75),cv2.FONT_HERSHEY_SIMPLEX, 0.7, color, 2)      
+      # cv2.putText(frame, 'N frame: {:.2f}'.format(frame_number), (10, 75),cv2.FONT_HERSHEY_SIMPLEX, 0.7, color, 2)      
       # cv2.putText(frame, 'Alert sound:{}'.format(flag_7), (10, 105),cv2.FONT_HERSHEY_SIMPLEX, 0.7, color, 2)      
        
-       #cv2.putText(frame, texto_estado, (height -130, width -240),cv2.FONT_HERSHEY_SIMPLEX, 0.7, color, 2)
-       #cv2.putText(frame, "FPS: {:.2f}".format(fpsmax), (height -130, width -210),cv2.FONT_HERSHEY_SIMPLEX, 0.7, color, 2)
-       #cv2.putText(frame, "N fotos: {:.2f}".format(frame_number), (height -130, width -180),cv2.FONT_HERSHEY_SIMPLEX, 0.7, color, 2)
-        # cv2.putText(frame, "FPS?: {:.2f}".format(fps1), (10, 120),cv2.FONT_HERSHEY_SIMPLEX, 1, color, 2)
-        # cv2.putText(frame, "Total fotogramas: {:.2f}".format(total_frames), (10, 160),cv2.FONT_HERSHEY_SIMPLEX, 1, color, 2)
+      # cv2.putText(frame, status_text, (height -130, width -240),cv2.FONT_HERSHEY_SIMPLEX, 0.7, color, 2)
+      # cv2.putText(frame, "FPS: {:.2f}".format(fpsmax), (height -130, width -210),cv2.FONT_HERSHEY_SIMPLEX, 0.7, color, 2)
+      # cv2.putText(frame, "N frame: {:.2f}".format(frame_number), (height -130, width -180),cv2.FONT_HERSHEY_SIMPLEX, 0.7, color, 2)
+      # cv2.putText(frame, "FPS?: {:.2f}".format(fps1), (10, 120),cv2.FONT_HERSHEY_SIMPLEX, 1, color, 2)
+      # cv2.putText(frame, "Total frame: {:.2f}".format(total_frames), (10, 160),cv2.FONT_HERSHEY_SIMPLEX, 1, color, 2)
     
     if flag_2:
-        cv2.drawContours(frame, [area_pts], -1, color, 2)  # dibuja ROI
-        cv2.drawContours(fgmask, [area_pts], -1, gray_color, 2) # dibuja ROI en Background Subtraction in ROI
+        cv2.drawContours(frame, [area_points], -1, color, 2)  # draw ROI
+        cv2.drawContours(fgmask, [area_points], -1, gray_color, 2) # Draw ROI in Background Subtraction in ROI
         
-    if args.mascara:
+    if args.mask:
         cv2.imshow('Background Subtraction in ROI', fgmask)
-        #cv2.moveWindow('fgmask', 10, 75 + height);
+        # cv2.moveWindow('fgmask', 10, 75 + height);
 
-    if args.deteccion:
+    if args.detection:
         cv2.imshow(windows_name, np.squeeze(detect.render()))
         print(detect.render())
         
-    # Mostramos FPS
+    # Show info FPS
+    
     cv2.imshow(windows_name, frame)
 
     k = cv2.waitKey(1) & 0xFF
 
-    if k == 27:  # Cerrar ventana desde Esc
+    if k == 27:                 # Close window from Esc
         break
 
-    if k == ord('p'):  # parar si presionas p
+    if k == ord('p'):           # Stop if you press p
         cv2.waitKey(-1)
 
-    if k == ord('c'):  # screenshots
+    if k == ord('c'):           # Screenshots
+    #   if os.name == "ce" or os.name == "nt" or os.name == "dos":
+    #       try:
+    #           os.stat('C:\\screenshots\\')
+    #       except:
+    #           os.mkdir('C:\\screenshots\\')            
+    #       print('C:\\screenshots\\' + str(img_number) + '.jpg')
+    #       if not cv2.imwrite('C:\\screenshots\\' + str(img_number) + '.jpg', frame):
+    #           raise Exception("Could not write image")
+    #       img_number += 1        
+    #   elif os.name == "posix":
+    #       try:
+    #           os.stat('/screenshots/')
+    #       except:
+    #           os.mkdir('/screenshots/')             
+    #       print('/screenshots/' + str(img_number) + '.jpg')
+    #       if not cv2.imwrite('/screenshots/' + str(img_number) + '.jpg', frame):
+    #           raise Exception("Could not write image")
+    #       img_number += 1
+    #   else:
+           print("unknown OS")
         
-        if os.name == "ce" or os.name == "nt" or os.name == "dos":
-            print('C:\\screenshots\\' + str(img_number) + '.jpg')
-            if not cv2.imwrite('C:\\screenshots\\' + str(img_number) + '.jpg', frame):
-                raise Exception("Could not write image")
-            img_number += 1        
-        elif os.name == "posix":
-            print('/screenshots/' + str(img_number) + '.jpg')
-            if not cv2.imwrite('/screenshots/' + str(img_number) + '.jpg', frame):
-                raise Exception("Could not write image")
-            img_number += 1
-        else:
-            print("unknown OS")
-        
-# OSD On Screen Display
-    if k == ord('1'):                       # Infor Alarma, FPS, N fotos
+    # OSD On Screen Display
+
+    if k == ord('1'):                       # Infor, Alarm, FPS, Frame number...
         flag_1 = False if flag_1 else True
     if k == ord('2'):                       # ROI
         flag_2 = False if flag_2 else True   
-    if k == ord('3'):                       # Contornos dentro de ROI por subtracion de fondo
+    if k == ord('3'):                       # Outlines inside ROI by background subtraction
         flag_3 = False if flag_3 else True      
-    if k == ord('4'):                       # Punto pie derecho  
+    if k == ord('4'):                       # Right foot point in people  
         flag_4 =  False if flag_4 else True   
-    if k == ord('5'):                       # Contornos en la escena (Personas, trenes, bolsos, carros)
+    if k == ord('5'):                       # Contours in the scene (People, trains, bags, cars)
         flag_5 = False if flag_5 else True    
-    if k == ord('6'):                       # Activar mejor rendimiento
+    if k == ord('6'):                       # Enable better performance'
         flag_6 = False if flag_6 else True    
-    if k == ord('s'):                       # Activar sonoria de alarmas
+    if k == ord('s'):                       # Activate alarm sound
         flag_7 = False if flag_7 else True
-
-    # Cerrar ventana desde X
-    elif cv2.getWindowProperty(windows_name, cv2.WND_PROP_AUTOSIZE) < 1:
+    elif cv2.getWindowProperty(windows_name, cv2.WND_PROP_AUTOSIZE) < 1: # Close window from X
         break
 
 cap.release()
 cv2.destroyAllWindows()
+
+###############################
