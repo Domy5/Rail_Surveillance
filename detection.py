@@ -381,10 +381,10 @@ while True:
       
        cv2.putText(frame, status_text, (10, 15),cv2.FONT_HERSHEY_SIMPLEX, 0.7, color, 2)
        
-    #   if flag_7:
-    #        cv2.putText(frame, "Sound", (550,18), cv2.FONT_HERSHEY_SIMPLEX, 0.7, green_color, 2)
-    #   else:
-    #        cv2.putText(frame, "Sound", (550,18), cv2.FONT_HERSHEY_SIMPLEX, 0.7, red_color, 2)
+       if flag_7:
+            cv2.putText(frame, "Sound", (550,18), cv2.FONT_HERSHEY_SIMPLEX, 0.7, green_color, 2)
+       else:
+            cv2.putText(frame, "Sound", (550,18), cv2.FONT_HERSHEY_SIMPLEX, 0.7, red_color, 2)
        
       # cv2.putText(frame, 'FPS: {:.2f}'.format(fpsmax), (10, 45),cv2.FONT_HERSHEY_SIMPLEX, 0.7, color, 2)
       # cv2.putText(frame, 'N frame: {:.2f}'.format(frame_number), (10, 75),cv2.FONT_HERSHEY_SIMPLEX, 0.7, color, 2)      
