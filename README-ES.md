@@ -164,7 +164,7 @@ Una vez **en ejecución** podemos modificar el comportamiento de ciertas caracte
   - c   : Captura un frame del video y lo guarda en "\\capturas\\numero_img.jpg'"
   - s   : Activar sonoria de alarmas
 - OSD :
-  - 1:-> Infor Alarma, FPS, numero de fotograma
+  - 1:-> Infor Alarma, FPS, numero de fotograma, Sonido de alarma.
   - 2:-> ROI
   - 3:-> Contornos dentro de ROI por sustracción de fondo
   - 4:-> Punto pie derecho
