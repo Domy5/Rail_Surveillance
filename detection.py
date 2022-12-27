@@ -421,25 +421,25 @@ while True:
         cv2.waitKey(-1)
 
     if k == ord('c'):           # Screenshots
-    #   if os.name == "ce" or os.name == "nt" or os.name == "dos":
-    #       try:
-    #           os.stat('C:\\screenshots\\')
-    #       except:
-    #           os.mkdir('C:\\screenshots\\')            
-    #       print('C:\\screenshots\\' + str(img_number) + '.jpg')
-    #       if not cv2.imwrite('C:\\screenshots\\' + str(img_number) + '.jpg', frame):
-    #           raise Exception("Could not write image")
-    #       img_number += 1        
-    #   elif os.name == "posix":
-    #       try:
-    #           os.stat('/screenshots/')
-    #       except:
-    #           os.mkdir('/screenshots/')             
-    #       print('/screenshots/' + str(img_number) + '.jpg')
-    #       if not cv2.imwrite('/screenshots/' + str(img_number) + '.jpg', frame):
-    #           raise Exception("Could not write image")
-    #       img_number += 1
-    #   else:
+       if os.name == "ce" or os.name == "nt" or os.name == "dos":
+           try:
+               os.stat('C:\\screenshots\\')
+           except:
+               os.mkdir('C:\\screenshots\\')            
+           print('C:\\screenshots\\' + str(img_number) + '.jpg')
+           if not cv2.imwrite('C:\\screenshots\\' + str(img_number) + '.jpg', frame):
+               raise Exception("Could not write image")
+           img_number += 1        
+       elif os.name == "posix":
+           try:
+               os.stat('/screenshots/')
+           except:
+               os.mkdir('/screenshots/')             
+           print('/screenshots/' + str(img_number) + '.jpg')
+           if not cv2.imwrite('/screenshots/' + str(img_number) + '.jpg', frame):
+               raise Exception("Could not write image")
+           img_number += 1
+       else:
            print("unknown OS")
         
     # OSD On Screen Display
