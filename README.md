@@ -173,12 +173,12 @@ Once **in execution** we can modify the behavior of certain program features:
   - c    :-> Captures a frame of the video and saves it in "\\capturas\\numero_img.jpg"
   - s    :-> Activate alarm sound
 - OSD :
-  - 1:-> Infor Alarm, FPS, frame number...
+  - 1:-> Infor Alarm, FPS, frame number, Sound...
   - 2:-> ROI
   - 3:-> Outlines inside ROI by background subtraction
-  - 4:-> Right foot point
-  - 5:-> Rectangle detection, Contours in the scene (People, trains, bags, cars)
-  - 6:-> Enable best performance
+  - 4:-> Right foot point in people
+  - 5:-> Contours in the scene (People, trains, bags, cars)
+  - 6:-> Enable better performance
 
 <h6 align="right">
 
