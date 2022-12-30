@@ -221,7 +221,7 @@ while True:
     
 ###############################
 
-# Detection
+#  Detection
 
     start = time.time()
 
@@ -243,7 +243,7 @@ while True:
     train = False
     person_on_via = False
 
-    ## Enable better performance
+    #  Enable better performance
     if not flag_6:
          frame_counter += 1
          if frame_counter % 2 !=0:
@@ -322,7 +322,7 @@ while True:
     
 ###############################
 
-# Info
+#  Info
     
     end = time.time()
 
@@ -375,7 +375,7 @@ while True:
 
 ###############################
 
-# Options
+#  Options
 
     if flag_1:
       
@@ -442,7 +442,7 @@ while True:
        else:
            print("unknown OS")
         
-    # OSD On Screen Display
+    #  OSD On Screen Display
 
     if k == ord('1'):                       # Infor, Alarm, FPS, Frame number...
         flag_1 = False if flag_1 else True
