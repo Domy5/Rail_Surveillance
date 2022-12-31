@@ -160,9 +160,9 @@ Una vez **en ejecución** podemos modificar el comportamiento de ciertas caracte
 
 - Opciones :
   - Esc : Cierra la ejecución del video
-  - p   : Parar el video
+  - p   : Parar el video (Cualquier otra tecla para reanudar el video)
   - c   : Captura un frame del video y lo guarda en "\\capturas\\numero_img.jpg'"
-  - s   : Activar sonoria de alarmas
+  - s   : Desactivar / Activar sonoria de alarmas
 - OSD :
   - 1:-> Infor Alarma, FPS, numero de fotograma, Sonido de alarma.
   - 2:-> ROI
