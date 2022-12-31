@@ -169,9 +169,9 @@ Once **in execution** we can modify the behavior of certain program features:
 
 - Options :
   - Esc  :-> Close video execution
-  - p    :-> Stop the video
+  - p    :-> Stop the video (Any other key to resume video)
   - c    :-> Captures a frame of the video and saves it in "\\capturas\\numero_img.jpg"
-  - s    :-> Activate alarm sound
+  - s    :-> Desactivate / Activate alarm sound
 - OSD :
   - 1:-> Infor Alarm, FPS, frame number, Sound...
   - 2:-> ROI
