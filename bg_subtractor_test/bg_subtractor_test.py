@@ -29,7 +29,7 @@ with open(fileCSV, "a+", newline ='') as csvfile:
       
 
 # Video Capture
-capture = cv2.VideoCapture("./video_test/a1-003 1 minuto 1 via.mkv")
+capture = cv2.VideoCapture("./video_test/1.avi")
 
 # Subtractors improved parameter
 #mogSubtractor = cv2.bgsegm.createBackgroundSubtractorMOG(300)
