@@ -28,13 +28,6 @@ controler.base.metadata.drop_all(controler.engine)
 controler.base.metadata.create_all(controler.engine)
 
 try:
-
-    # camera_1 = controler.Camera(camera_id = '1', line = 'L01', station = 'Chamartin', platform = '1' , against_direction = '0', path = 'video_test/a1-003 1 minuto 1 via.avi') 
-    # camera_2 = controler.Camera(camera_id = '2', line = 'L02', station = 'Las Rosas', platform = '1' , against_direction = '0', path = 'video_test/output.avi') 
-    # camera_3 = controler.Camera(camera_id = '3', line = 'L03', station = 'Las ', platform = '1' , against_direction = '0', path = 'video_test/Dramatic_footage_Woman_falls_on_Madrid039s_Metro_t.mp4')
-    # camera_4 = controler.Camera(camera_id = '4', line = 'L03', station = 'Las ', platform = '1' , against_direction = '0', path = 'video_test/Cada_en_el_Metro_de_Madrid2.mp4')        
-    # camera_5 = controler.Camera(camera_id = '5', line = 'L03', station = 'Las ', platform = '1' , against_direction = '0', path = 'video_test/Rescatada justo antes de ser arrollada por el metro de Madrid.mp4')
-    # camera_6 = controler.Camera(camera_id = '6', line = 'L03', station = 'Las ', platform = '1' , against_direction = '0', path = 'video_test/Rescatada justo antes de ser arrollada por el metro de Madrid (1).mp4')    
     
     camera_1 = controler.Camera(camera_id = '1', line = 'L01', station = 'Chamartin', platform = '1' , against_direction = '0', path = 'video_test/1.avi') 
     camera_2 = controler.Camera(camera_id = '2', line = 'L02', station = 'Las Rosas', platform = '1' , against_direction = '0', path = 'video_test/2.avi') 
