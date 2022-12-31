@@ -16,12 +16,21 @@ import sys
 import datetime
 import torch
 import time
+import csv
+
 from playsound import playsound
 import numpy as np
 import pandas as pd
 
+from os import remove
+from os import path
+
 import tools.utils as utils
 import db.controler as controler
+
+###############################
+
+#  Variable
 
 loop_flag = 0
 pos = 0
@@ -56,7 +65,21 @@ flag_5 = True
 flag_6 = True
 flag_7 = True
 
+fileCSV = 'system_evaluation/eval.csv'
+
+if path.exists(fileCSV):
+    remove(fileCSV)
+    
+with open(fileCSV, "a+", newline ='') as csvfile:
+        
+    wr = csv.writer(csvfile, dialect='excel', delimiter=';')
+    wr.writerow(['frame_number', 'timer_total', 'fps', 'fps1',  'contour', 'train', 'person_on_via'])
+
 utils.clear_screen()
+
+###############################
+
+#  Parameters
 
 parser = argparse.ArgumentParser(description=' Detention of people and/or objects on the railway platform in real time ')
 
@@ -120,15 +143,17 @@ if args.input:
     area_points = np.array(polygon)
     
 if args.process_image == 'gpu':
-    gpu_frame = cv2.cuda_GpuMat()  # para usar GPU
+    gpu_frame = cv2.cuda_GpuMat()  # to use GPU
+    
+###############################
 
+#  Model 
 
 # model = torch.hub.load('ultralytics/yolov5', 'yolov5x6', force_reload=True)
 
 model = torch.hub.load('ultralytics/yolov5', 'yolov5x6', pretrained=True)
 
 # model = torch.hub.load('ultralytics/yolov5', 'yolov5x6', pretrained=True, force_reload=True)
-
 
 # The compiled module will have precision as specified by "op_precision".
 # Here, it will have FP16 precision.
@@ -148,6 +173,10 @@ model.iou = 0.45  # NMS IoU threshold (0-1)  https://kikaben.com/object-detectio
 # model.multi_label = False  # NMS multiple labels per box
 # model.max_det = 1000  # maximum number of detections per image
 model.amp = False  # Automatic Mixed Precision (AMP) inference
+
+###############################
+
+#  Menu
 
 cv2.namedWindow(windows_name)
 cv2.moveWindow(windows_name, 10, 50)
@@ -217,14 +246,16 @@ mog2Subtractor = cv2.createBackgroundSubtractorMOG2()
 
 Kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (3, 3))
 
-while True:
-    
 ###############################
 
 #  Detection
 
+while True:
+    
     start = time.time()
-
+    
+    frame_number += 1
+    
     if args.slicer:
         if loop_flag == pos:
             loop_flag = loop_flag + 1
@@ -322,7 +353,7 @@ while True:
     
 ###############################
 
-#  Info
+#  Info FPS
     
     end = time.time()
 
@@ -331,8 +362,6 @@ while True:
 
     # Get number of video frames
     total_frames = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
-    frame_number = frame_number + 1
-    # print(frame_number)
 
     # So that time to see the fps
     if counter < 5:
@@ -356,12 +385,14 @@ while True:
             color = yellow_color
             contour_quantity = 0
             utils.play_track('assets/sound', 'alarm_2.wav', flag_7)
+            #print("Contorno -------------------------------------------- {}".format(frame_number))
         
     if person_on_via :
         status_text = 'ALERT Movement'
         color = red_color
         print("PEOPLE ON THE TRAIN TRACK¡¡")
         utils.play_track('assets/sound', 'alarm_1.wav', flag_7)
+        #print("Persona -------------------------------------------- {}".format(frame_number))
         
     if train and person_on_via :
         status_text = 'ALERT Movement'
@@ -370,6 +401,7 @@ while True:
             
     if train : # Remove contours if the train is present
         flag_3 = False
+        #print("Tren -------------------------------------------- {}".format(frame_number))
     else:
         flag_3 = True
 
@@ -387,7 +419,7 @@ while True:
             cv2.putText(frame, "Sound", (550,18), cv2.FONT_HERSHEY_SIMPLEX, 0.7, red_color, 2)
        
       # cv2.putText(frame, 'FPS: {:.2f}'.format(fpsmax), (10, 45),cv2.FONT_HERSHEY_SIMPLEX, 0.7, color, 2)
-      # cv2.putText(frame, 'N frame: {:.2f}'.format(frame_number), (10, 75),cv2.FONT_HERSHEY_SIMPLEX, 0.7, color, 2)      
+       cv2.putText(frame, 'N frame: {:.2f}'.format(frame_number), (10, 75),cv2.FONT_HERSHEY_SIMPLEX, 0.7, color, 2)      
       # cv2.putText(frame, 'Alert sound:{}'.format(flag_7), (10, 105),cv2.FONT_HERSHEY_SIMPLEX, 0.7, color, 2)      
        
       # cv2.putText(frame, status_text, (height -130, width -240),cv2.FONT_HERSHEY_SIMPLEX, 0.7, color, 2)
@@ -460,6 +492,26 @@ while True:
         flag_7 = False if flag_7 else True
     elif cv2.getWindowProperty(windows_name, cv2.WND_PROP_AUTOSIZE) < 1: # Close window from X
         break
+    
+###############################
+
+    end2 = time.time()
+
+    timer_total =(end2 - start)
+
+#  File CSV 
+    
+    #CSV = [frame_number, mogCount, mog2MCount, gmgCount, knnCount, cntCount ,frameCount, MOGtime, MOG2time, GMGtime, KNNtime, CNTtime]
+    CSV = [frame_number,timer_total , fps, fps1,  contour, train, person_on_via ] #, mogCount, mog2MCount, gmgCount, knnCount, cntCount ,frameCount, MOGtime, MOG2time, GMGtime, KNNtime, CNTtime]
+    
+    with open(fileCSV, "a+", newline ='') as csvfile:
+        
+        wr = csv.writer(csvfile, dialect='excel', delimiter=';')
+        wr.writerow(CSV)
+        
+###############################
+
+#  Exit
 
 cap.release()
 cv2.destroyAllWindows()
