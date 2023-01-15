@@ -136,10 +136,10 @@ if not torch.cuda.is_available():
 
 if args.input:
 
-    route = controler.get_video_path(args.input)
+    path = controler.get_video_path(args.input)
     polygon = controler.get_video_ROI(args.input)
 
-    cap = cv2.VideoCapture(f'{route}')
+    cap = cv2.VideoCapture(f'{path}')
     area_points = np.array(polygon)
     
 if args.process_image == 'gpu':
@@ -147,7 +147,7 @@ if args.process_image == 'gpu':
     
 ###############################
 
-#  Model 
+#  Object Classifier (Model)
 
 # model = torch.hub.load('ultralytics/yolov5', 'yolov5x6', force_reload=True)
 
@@ -193,6 +193,7 @@ width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
 print("#######################")
 print("## Execution in : {} ##".format(args.process_image))
 print("#######################")
+print("Video name: {} ".format(args.input))
 print("Duration in seconds :", seconds)
 print("Video time          :", video_time)
 
@@ -225,7 +226,7 @@ print('')
 
 if args.slicer:
     cv2.createTrackbar('time', windows_name, 0, frames, utils.nothing)
-    
+        
 if args.mouse:
     cv2.setMouseCallback(windows_name, utils.draw_dots)
 
@@ -410,7 +411,7 @@ while True:
 #  Options
 
     if flag_1:
-      
+    
        cv2.putText(frame, status_text, (10, 15),cv2.FONT_HERSHEY_SIMPLEX, 0.7, color, 2)
        
        if flag_7:
@@ -499,10 +500,15 @@ while True:
 
     timer_total =(end2 - start)
 
-#  File CSV 
+#  File CSV eval
     
     #CSV = [frame_number, mogCount, mog2MCount, gmgCount, knnCount, cntCount ,frameCount, MOGtime, MOG2time, GMGtime, KNNtime, CNTtime]
-    CSV = [frame_number,timer_total , fps, fps1,  contour, train, person_on_via ] #, mogCount, mog2MCount, gmgCount, knnCount, cntCount ,frameCount, MOGtime, MOG2time, GMGtime, KNNtime, CNTtime]
+    
+    str_timer_total = str(timer_total).replace(".",",")
+    str_fps = str(fps).replace(".",",")
+    str_fps1 = str(fps1).replace(".",",")
+    
+    CSV = [frame_number,str_timer_total ,str_fps, str_fps1,  contour, train, person_on_via ] #, mogCount, mog2MCount, gmgCount, knnCount, cntCount ,frameCount, MOGtime, MOG2time, GMGtime, KNNtime, CNTtime]
     
     with open(fileCSV, "a+", newline ='') as csvfile:
         
@@ -516,4 +522,4 @@ while True:
 cap.release()
 cv2.destroyAllWindows()
 
-###############################
+##############################
