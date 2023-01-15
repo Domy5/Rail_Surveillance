@@ -61,7 +61,7 @@ def draw_dots(event, x, y, flags, param):
     points = [', point_11 = ', ', point_12 = ',', point_21 = ', ', point_22 = ',', point_31 = ', ', point_32 = ',', point_41 = ', ', point_42 = ',', point_51 = ', ', point_52 = ']
     list = []
 
-    if event == 1:
+    if event == cv2.EVENT_LBUTTONDOWN:
     # print('event=', event)
     # print('x=', x)
     # print('y=', y)
@@ -73,15 +73,15 @@ def draw_dots(event, x, y, flags, param):
         
         if len(points_list) > 9:
             
-            str1 = 'ROI_polygon_XXX = ROI_polygon(polygon_id = \'XXX\''
+            str1 = 'ROI_polygon_XX = controler.ROI_polygon(polygon_id = \'XX\''
+            
             
             for p, l in zip(points, points_list):
                 list.append("{}\'{}\'".format(p,l))
             
             str2 = ''.join(list)
-            str3 =', camera_id = \'XXX\')'              
-            print (str1 + str2 + str3) #  ROI_polygon_1 = controler.ROI_polygon(polygon_id = '1', point_11 = '0', point_12 = '195', point_21 = '350', point_22 = '0', point_31 = '384', point_32 = '0', point_41 = '252', point_42 = '480', point_51 = '0', point_52 = '480', camera_id = '1') 
-   
+            str3 =', camera_id = \'XX\')'              
+            print (str1 + str2 + str3) 
             points_list = []
 
 def point_in_polygon(point, polygon):
