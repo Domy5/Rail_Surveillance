@@ -75,7 +75,6 @@ def draw_dots(event, x, y, flags, param):
             
             str1 = 'ROI_polygon_XX = controler.ROI_polygon(polygon_id = \'XX\''
             
-            
             for p, l in zip(points, points_list):
                 list.append("{}\'{}\'".format(p,l))
             
