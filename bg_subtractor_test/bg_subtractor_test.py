@@ -29,7 +29,7 @@ with open(fileCSV, "a+", newline ='') as csvfile:
       
 
 # Video Capture
-capture = cv2.VideoCapture("./video_test/1.avi")
+capture = cv2.VideoCapture("./video_test/01.mp4")
 
 # Subtractors improved parameter
 #mogSubtractor = cv2.bgsegm.createBackgroundSubtractorMOG(300)
@@ -125,7 +125,13 @@ while(1):
     #KnnCSV = ['KNN',frameCount, knnCount, KNNtime]
     #CntCSV = ['CNT',frameCount, cntCount, CNTtime]
     
-    CSV = [frameCount, mogCount, mog2MCount, gmgCount, knnCount, cntCount ,frameCount, MOGtime, MOG2time, GMGtime, KNNtime, CNTtime]
+    str_MOGtime = str(MOGtime).replace(".",",")
+    str_MOG2time = str(MOG2time).replace(".",",")
+    str_GMGtime = str(GMGtime).replace(".",",")
+    str_KNNtime = str(KNNtime).replace(".",",")
+    str_CNTtime = str(CNTtime).replace(".",",")
+    
+    CSV = [frameCount, mogCount, mog2MCount, gmgCount, knnCount, cntCount ,frameCount, str_MOGtime, str_MOG2time, str_GMGtime, str_KNNtime, str_CNTtime]
     
     with open(fileCSV, "a+", newline ='') as csvfile:
         
