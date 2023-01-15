@@ -29,37 +29,61 @@ controler.base.metadata.create_all(controler.engine)
 
 try:
     
-    camera_1 = controler.Camera(camera_id = '1', line = 'L01', station = 'Chamartin', platform = '1' , against_direction = '0', path = 'video_test/1.avi') 
-    camera_2 = controler.Camera(camera_id = '2', line = 'L02', station = 'Las Rosas', platform = '1' , against_direction = '0', path = 'video_test/2.avi') 
-    camera_3 = controler.Camera(camera_id = '3', line = 'L03', station = 'Las ', platform = '1' , against_direction = '0', path = 'video_test/3.mp4')
-    camera_4 = controler.Camera(camera_id = '4', line = 'L03', station = 'Las ', platform = '1' , against_direction = '0', path = 'video_test/4.mp4')        
-    camera_5 = controler.Camera(camera_id = '5', line = 'L03', station = 'Las ', platform = '1' , against_direction = '0', path = 'video_test/5.mp4')
-    camera_6 = controler.Camera(camera_id = '6', line = 'L03', station = 'Las ', platform = '1' , against_direction = '0', path = 'video_test/6.mp4')
-    camera_7 = controler.Camera(camera_id = '7', line = 'L03', station = 'Las ', platform = '1' , against_direction = '0', path = 'video_test/7.mp4')
-    camera_8 = controler.Camera(camera_id = '8', line = 'L03', station = 'Las ', platform = '1' , against_direction = '0', path = 'video_test/8.mp4')
-    camera_9 = controler.Camera(camera_id = '9', line = 'L03', station = 'Las ', platform = '1' , against_direction = '0', path = 'video_test/9.mp4')
-    camera_10 = controler.Camera(camera_id = '10', line = 'L03', station = 'Las ', platform = '1' , against_direction = '0', path = 'video_test/10.mp4')
-    camera_11 = controler.Camera(camera_id = '11', line = 'L03', station = 'Las ', platform = '1' , against_direction = '0', path = 'video_test/11.mp4')
-    camera_12 = controler.Camera(camera_id = '12', line = 'L03', station = 'Las ', platform = '1' , against_direction = '0', path = 'video_test/12.mp4')
-    camera_13 = controler.Camera(camera_id = '13', line = 'L03', station = 'Las ', platform = '1' , against_direction = '0', path = 'video_test/13.mp4')
-    camera_14 = controler.Camera(camera_id = '14', line = 'L03', station = 'Las ', platform = '1' , against_direction = '0', path = 'video_test/14.mp4')
-  
-    # area_pts = np.array([[0, 195], [350, 0], [384, 0], [252, 480], [0, 480]])
+    camera_1 = controler.Camera(camera_id = '1', line = 'L06', station = 'Puerta del Ángel', platform = '2' , against_direction = '0', path = 'video_test/01.mp4') 
+    camera_2 = controler.Camera(camera_id = '2', line = 'L05', station = 'Marqués de Vadillo', platform = '2' , against_direction = '0', path = 'video_test/02.mp4') 
+    camera_3 = controler.Camera(camera_id = '3', line = 'L03', station = 'Lavapiés', platform = '2' , against_direction = '0', path = 'video_test/03.mp4')
+    camera_4 = controler.Camera(camera_id = '4', line = 'L01', station = 'Estrecho', platform = '1' , against_direction = '0', path = 'video_test/04.mp4')        
+    camera_5 = controler.Camera(camera_id = '5', line = 'L05', station = 'Chueca', platform = '1' , against_direction = '0', path = 'video_test/05.mp4')
+    camera_6 = controler.Camera(camera_id = '6', line = 'L02', station = 'Opera', platform = '2' , against_direction = '0', path = 'video_test/06.mp4')
+    camera_7 = controler.Camera(camera_id = '7', line = 'L01', station = 'Sol', platform = '1' , against_direction = '0', path = 'video_test/07.mp4')
+    
+    camera_8 = controler.Camera(camera_id = '8', line = 'L06', station = 'Puerta del Ángel', platform = '2' , against_direction = '0', path = 'video_test/01 b.mp4')
+    camera_9 = controler.Camera(camera_id = '9', line = 'L05', station = 'Marqués de Vadillo', platform = '2' , against_direction = '0', path = 'video_test/02 b.mp4')
+    camera_10 = controler.Camera(camera_id = '10', line = 'L05', station = 'Chueca', platform = '1' , against_direction = '0', path = 'video_test/05 b.mp4')
+    camera_11 = controler.Camera(camera_id = '11', line = 'L02', station = 'Opera', platform = '1' , against_direction = '0', path = 'video_test/06 b.mp4')
+    camera_12 = controler.Camera(camera_id = '12', line = 'L01', station = 'Sol', platform = '1' , against_direction = '0', path = 'video_test/07 b.mp4')
+
+    # # # # # # # # # # # # # # # # 
+    #                             #
+    #       (|,__)                #
+    #    1  (point11,point12)     #
+    #    2  (point21,point22)     #
+    #    3  (point31,point32)     #
+    #    4  (point41,point42)     #
+    #    5  (point51,point52)     #
+    #                             #
+    # # # # # # # # # # # # # # # # 
+    # (0,0)       ___________     # (640,0)
+    #         2  *          * 3   #
+    #           *          *      #
+    #          *          *       #
+    #         *          *        #
+    #        *          *         #
+    #       *          *          #
+    #      *          *           #
+    #   1 *          *            #
+    #     |         *             #
+    #     |        *              #
+    #     |       *               #
+    #   5 |______* 4              #
+    #                             # 
+    # (0,480)                     # (640,480)
+    # # # # # # # # # # # # # # # #
     
     ROI_polygon_1 = controler.ROI_polygon(polygon_id = '1', point_11 = '0', point_12 = '195', point_21 = '350', point_22 = '0', point_31 = '384', point_32 = '0', point_41 = '252', point_42 = '480', point_51 = '0', point_52 = '480', camera_id = '1') 
-    ROI_polygon_2 = controler.ROI_polygon(polygon_id = '2', point_11 = '0', point_12 = '155', point_21 = '228', point_22 = '0', point_31 = '257', point_32 = '0', point_41 = '195', point_42 = '478', point_51 = '0', point_52 = '477', camera_id = '2')
-    ROI_polygon_3 = controler.ROI_polygon(polygon_id = '3', point_11 = '0', point_12 = '201', point_21 = '378', point_22 = '0', point_31 = '478', point_32 = '0', point_41 = '365', point_42 = '718', point_51 = '0', point_52 = '718', camera_id = '3')
-    ROI_polygon_4 = controler.ROI_polygon(polygon_id = '4', point_11 = '0', point_12 = '201', point_21 = '378', point_22 = '0', point_31 = '478', point_32 = '0', point_41 = '365', point_42 = '718', point_51 = '0', point_52 = '718', camera_id = '4')
-    ROI_polygon_5 = controler.ROI_polygon(polygon_id = '5', point_11 = '0', point_12 = '136', point_21 = '214', point_22 = '0', point_31 = '248', point_32 = '0', point_41 = '196', point_42 = '357', point_51 = '0', point_52 = '357', camera_id = '5')
-    ROI_polygon_6 = controler.ROI_polygon(polygon_id = '6', point_11 = '0', point_12 = '136', point_21 = '214', point_22 = '0', point_31 = '248', point_32 = '0', point_41 = '196', point_42 = '357', point_51 = '0', point_52 = '357', camera_id = '6')
-    ROI_polygon_7 = controler.ROI_polygon(polygon_id = '7', point_11 = '0', point_12 = '136', point_21 = '214', point_22 = '0', point_31 = '248', point_32 = '0', point_41 = '196', point_42 = '357', point_51 = '0', point_52 = '357', camera_id = '7')
-    ROI_polygon_8 = controler.ROI_polygon(polygon_id = '8', point_11 = '0', point_12 = '136', point_21 = '214', point_22 = '0', point_31 = '248', point_32 = '0', point_41 = '196', point_42 = '357', point_51 = '0', point_52 = '357', camera_id = '8')
-    ROI_polygon_9 = controler.ROI_polygon(polygon_id = '9', point_11 = '0', point_12 = '136', point_21 = '214', point_22 = '0', point_31 = '248', point_32 = '0', point_41 = '196', point_42 = '357', point_51 = '0', point_52 = '357', camera_id = '9')
-    ROI_polygon_10 = controler.ROI_polygon(polygon_id = '10', point_11 = '0', point_12 = '136', point_21 = '214', point_22 = '0', point_31 = '248', point_32 = '0', point_41 = '196', point_42 = '357', point_51 = '0', point_52 = '357', camera_id = '10')
-    ROI_polygon_11 = controler.ROI_polygon(polygon_id = '11', point_11 = '0', point_12 = '136', point_21 = '214', point_22 = '0', point_31 = '248', point_32 = '0', point_41 = '196', point_42 = '357', point_51 = '0', point_52 = '357', camera_id = '11')
-    ROI_polygon_12 = controler.ROI_polygon(polygon_id = '12', point_11 = '0', point_12 = '136', point_21 = '214', point_22 = '0', point_31 = '248', point_32 = '0', point_41 = '196', point_42 = '357', point_51 = '0', point_52 = '357', camera_id = '12')
-    ROI_polygon_13 = controler.ROI_polygon(polygon_id = '13', point_11 = '0', point_12 = '136', point_21 = '214', point_22 = '0', point_31 = '248', point_32 = '0', point_41 = '196', point_42 = '357', point_51 = '0', point_52 = '357', camera_id = '13')
-    ROI_polygon_14 = controler.ROI_polygon(polygon_id = '14', point_11 = '0', point_12 = '136', point_21 = '214', point_22 = '0', point_31 = '248', point_32 = '0', point_41 = '196', point_42 = '357', point_51 = '0', point_52 = '357', camera_id = '14')
+    ROI_polygon_2 = controler.ROI_polygon(polygon_id = '2', point_11 = '0', point_12 = '155', point_21 = '228', point_22 = '0', point_31 = '246', point_32 = '0', point_41 = '181', point_42 = '480', point_51 = '0', point_52 = '480', camera_id = '2')
+    ROI_polygon_3 = controler.ROI_polygon(polygon_id = '3', point_11 = '0', point_12 = '235', point_21 = '388', point_22 = '98', point_31 = '477', point_32 = '98', point_41 = '182', point_42 = '480', point_51 = '0', point_52 = '480', camera_id = '3')
+    ROI_polygon_4 = controler.ROI_polygon(polygon_id = '4', point_11 = '0', point_12 = '240', point_21 = '400', point_22 = '80', point_31 = '493', point_32 = '80', point_41 = '290', point_42 = '480', point_51 = '0', point_52 = '480', camera_id = '4')
+    ROI_polygon_5 = controler.ROI_polygon(polygon_id = '5', point_11 = '0', point_12 = '220', point_21 = '276', point_22 = '0', point_31 = '295', point_32 = '0', point_41 = '146', point_42 = '480', point_51 = '0', point_52 = '480', camera_id = '5')
+    ROI_polygon_6 = controler.ROI_polygon(polygon_id = '6', point_11 = '0', point_12 = '90', point_21 = '194', point_22 = '15', point_31 = '278', point_32 = '15', point_41 = '142', point_42 = '480', point_51 = '0', point_52 = '480', camera_id = '6')
+    ROI_polygon_7 = controler.ROI_polygon(polygon_id = '7', point_11 = '0', point_12 = '140', point_21 = '274', point_22 = '30', point_31 = '321', point_32 = '30', point_41 = '90', point_42 = '480', point_51 = '0', point_52 = '480', camera_id = '7')
+    
+    ROI_polygon_8 = controler.ROI_polygon(polygon_id = '8', point_11 = '0', point_12 = '195', point_21 = '350', point_22 = '0', point_31 = '375', point_32 = '0', point_41 = '240', point_42 = '480', point_51 = '0', point_52 = '480', camera_id = '8')
+    ROI_polygon_9 = controler.ROI_polygon(polygon_id = '9', point_11 = '0', point_12 = '155', point_21 = '228', point_22 = '0', point_31 = '246', point_32 = '0', point_41 = '181', point_42 = '480', point_51 = '0', point_52 = '480', camera_id = '9')
+    ROI_polygon_10 = controler.ROI_polygon(polygon_id = '10', point_11 = '0', point_12 = '185', point_21 = '261', point_22 = '0', point_31 = '342', point_32 = '0', point_41 = '192', point_42 = '480', point_51 = '0', point_52 = '480', camera_id = '10')
+    ROI_polygon_11 = controler.ROI_polygon(polygon_id = '11', point_11 = '0', point_12 = '132', point_21 = '43', point_22 = '98', point_31 = '50', point_32 = '43', point_41 = '121', point_42 = '43', point_51 = '129', point_52 = '478', camera_id = '11')
+    ROI_polygon_12 = controler.ROI_polygon(polygon_id = '12', point_11 = '0', point_12 = '169', point_21 = '174', point_22 = '69', point_31 = '254', point_32 = '69', point_41 = '100', point_42 = '480', point_51 = '0', point_52 = '480', camera_id = '12')
+    
     
     session.add(camera_1) 
     session.add(camera_2)
@@ -73,9 +97,7 @@ try:
     session.add(camera_10)
     session.add(camera_11)
     session.add(camera_12)
-    session.add(camera_13)
-    session.add(camera_14)
-    
+     
     session.add(ROI_polygon_1)  
     session.add(ROI_polygon_2) 
     session.add(ROI_polygon_3) 
@@ -88,9 +110,7 @@ try:
     session.add(ROI_polygon_10) 
     session.add(ROI_polygon_11) 
     session.add(ROI_polygon_12) 
-    session.add(ROI_polygon_13) 
-    session.add(ROI_polygon_14) 
-  
+   
     session.commit()
     session.close()
     
