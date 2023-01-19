@@ -419,15 +419,8 @@ while True:
        else:
             cv2.putText(frame, "Sound", (550,18), cv2.FONT_HERSHEY_SIMPLEX, 0.7, red_color, 2)
        
-      # cv2.putText(frame, 'FPS: {:.2f}'.format(fpsmax), (10, 45),cv2.FONT_HERSHEY_SIMPLEX, 0.7, color, 2)
+       cv2.putText(frame, 'FPS: {:.2f}'.format(fpsmax), (10, 45),cv2.FONT_HERSHEY_SIMPLEX, 0.7, color, 2)
        cv2.putText(frame, 'N frame: {:.2f}'.format(frame_number), (10, 75),cv2.FONT_HERSHEY_SIMPLEX, 0.7, color, 2)      
-      # cv2.putText(frame, 'Alert sound:{}'.format(flag_7), (10, 105),cv2.FONT_HERSHEY_SIMPLEX, 0.7, color, 2)      
-       
-      # cv2.putText(frame, status_text, (height -130, width -240),cv2.FONT_HERSHEY_SIMPLEX, 0.7, color, 2)
-      # cv2.putText(frame, "FPS: {:.2f}".format(fpsmax), (height -130, width -210),cv2.FONT_HERSHEY_SIMPLEX, 0.7, color, 2)
-      # cv2.putText(frame, "N frame: {:.2f}".format(frame_number), (height -130, width -180),cv2.FONT_HERSHEY_SIMPLEX, 0.7, color, 2)
-      # cv2.putText(frame, "FPS?: {:.2f}".format(fps1), (10, 120),cv2.FONT_HERSHEY_SIMPLEX, 1, color, 2)
-      # cv2.putText(frame, "Total frame: {:.2f}".format(total_frames), (10, 160),cv2.FONT_HERSHEY_SIMPLEX, 1, color, 2)
     
     if flag_2:
         cv2.drawContours(frame, [area_points], -1, color, 2)  # draw ROI
