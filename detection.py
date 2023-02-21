@@ -38,7 +38,7 @@ frame_number = 0
 fpsmax = 0
 counter = 0
 img_number = 0
-windows_name = 'Rail_Surveillance 0.75'
+windows_name = 'Rail_Surveillance 1.00'
 points_list = []
 point = [0, 0]
 frame_counter = 0
@@ -399,7 +399,7 @@ while True:
         status_text = 'ALERT Movement'
         color = red_color
         print("ARRIVAL OF THE TRAIN WITH PERSON ON THE TRAIN TRACK¡¡")
-            
+        
     if train : # Remove contours if the train is present
         flag_3 = False
         #print("Tren -------------------------------------------- {}".format(frame_number))
@@ -443,7 +443,8 @@ while True:
     if k == 27:                 # Close window from Esc
         break
 
-    if k == ord('p'):           # Stop if you press p
+    #if k == ord('p'):  
+    if k == ord('p') or frame_number == 1100:           # Stop if you press p
         cv2.waitKey(-1)
 
     if k == ord('c'):           # Screenshots
